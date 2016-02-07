@@ -1,0 +1,7 @@
+<% @objectives.goals.each do |goal| %>
+	<div class="container-fluid well goal-container" id="goal-<%=goal.id%>">
+		<strong><%= goal.title %></strong><br />
+		<%= goal.description %><br />
+		<%= goal.unfuck_the_fucking_date %>
+	</div>
+<% end %>

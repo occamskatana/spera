@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spera</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+</head>
+<body>
+
+
+  <div class="container-narrow">
+  	<div class="masthead site-header">
+  		<%= render 'layouts/user_header' %>
+  		<h3 class="muted"><%= link_to "Spera", root_path %></h3>
+  		<h5 class="muted">Teh Shiznizzle</h5>
+  </div>
+
+
+    <div class="flash">
+   		<% if flash[:notice] %>
+       <div class="alert alert-success">
+         <button type="button" class="close" data-dismiss="alert">&times;</button>
+         <%= flash[:notice] %>
+       </div>
+     <% elsif flash[:error] %>
+       <div class="alert alert-danger">
+         <button type="button" class="close" data-dismiss="alert">&times;</button>
+         <%= flash[:error] %>
+       </div>
+     <% elsif flash[:alert] %>
+       <div class="alert alert-warning">
+         <button type="button" class="close" data-dismiss="alert">&times;</button>
+         <%= flash[:alert] %>
+       </div>
+     <% end %>
+    </div>
+
+<hr />
+
+
+  <%= yield %>
+
+<% if user_signed_in? %>
+  <div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <div class="container-fluid">
+      <div class="row icons" align="center">
+        <div class="col-xs-3">
+         <h2><span class="glyphicon glyphicon-home"></span></h2>
+        </div>
+        <div class="col-xs-3">
+          <h2><span class="glyphicon glyphicon-flag"></span></h2>
+        </div>
+        <div class="col-xs-3">
+          <h2><span class="glyphicon glyphicon-phone"></span></h2>
+        </div>
+        <div class="col-xs-3">
+          <h2><span class="glyphicon glyphicon-file"></span></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<footer class="footer">
+		<div class="container">
+		  <p class="text-muted copyright" align="center"> Copyright Spera  2016 </p>
+		</div>
+	</footer>
+</body>
+</html>

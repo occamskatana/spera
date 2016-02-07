@@ -1,0 +1,24 @@
+<div class="page-header" align="center">
+	<br>
+	<h1 class="user-show-title"><%= @user.username.capitalize %></h1>
+</div>
+<br />
+<div class="container-fluid">
+	<%= link_to "New Goal", new_user_goal_path(current_user), class: 'btn btn-primary' %>
+</div>
+
+<div class="container-fluid goals">
+	<div class="row-fluid">
+
+		<div class="col-md-12" align="center">
+			<% @objectives.group_by(&:day).each do |day, objectives| %>
+				<div id="day">
+					<h3><%= day %></h3>
+					<%= render partial: objectives%>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div><br />
+
+

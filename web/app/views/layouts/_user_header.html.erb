@@ -1,0 +1,9 @@
+<ul class="pull-right user-info">
+	<% if !current_user %>
+		<li><%= link_to "Sign In", new_user_session_path %></li>
+		<li><%= link_to "Sign Up", new_user_registration_path %> </li>
+	<% else %>
+		<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>&nbsp;|
+		&nbsp;<%= link_to current_user.username%>  </li>
+	<% end %>
+</ul>
