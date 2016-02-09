@@ -4,10 +4,11 @@ class Api::V1::GoalsController < Api::V1::BaseController
 
 	def index
 		
-		objectives = current_user.objectives
-			
-		goals = current_user.goals.all
+		
+		user = current_user
+		goals = user.objectives.all
 		render json: goals
+		
 	end
 
 	def show

@@ -1,8 +1,9 @@
-<ion-view view-title="Dashboard">
-  <ion-content class="padding">
+<ion-view title="{{userName}}">
+  <ion-content>
     <div class="list card" ng-repeat="goal in goals">
-      <div class="item item-divider">{{goal.title}}</div>
-        {{goal.description}}
+      <div class="item item-divider" align="center">
+        <strong><h2>{{goal.goal.title | uppercase }}</h2></strong>
+        <h4> {{goal.description | uppercase }} </h4>
       </div>
     </div>
   </ion-content>

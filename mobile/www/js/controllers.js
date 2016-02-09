@@ -24,8 +24,9 @@ angular.module('starter.controllers', [])
     var user_session = new UserSession({user: $scope.data});
     user_session.$save(
       function(data){
-        window.localStorage['userId'] = data.id;
-        window.localStorage['userName'] = data.name;
+        console.log(data);
+        window.localStorage['userId'] = data.user.id;
+        window.localStorage['userName'] = data.user.username;
         $location.path('tab/dash');
       },
 
@@ -42,7 +43,8 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, Goal) {
   Goal.get().$promise.then(function(response) {
-    $scope.goals = response;
+    $scope.goals = response.goals
+    $scope.userName = localStorage['userName']
   });
 })
 
