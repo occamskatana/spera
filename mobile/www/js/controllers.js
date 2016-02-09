@@ -40,6 +40,12 @@ angular.module('starter.controllers', [])
   }
 })
 
+.controller('DashCtrl', function($scope, Goal) {
+  Goal.get().$promise.then(function(response) {
+    $scope.goals = response;
+  });
+})
+
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
 })

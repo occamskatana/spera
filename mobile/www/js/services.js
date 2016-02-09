@@ -4,6 +4,10 @@ angular.module('starter.services', [])
   return $resource("http://localhost:3000/users/sign_in.json");
 })
 
+.factory('Goal', function($resource){
+  return $resource("http://localhost:3000/api/v1/goals/:id.json");
+})
+
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
