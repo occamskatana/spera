@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
@@ -41,11 +41,26 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('DashCtrl', function($scope, Goal) {
-  Goal.get().$promise.then(function(response) {
-    $scope.goals = response.goals
-    $scope.userName = localStorage['userName']
-  });
+
+
+.controller('DashCtrl', function($scope, Goals) {
+
+   $scope.loadData = function() { 
+      Goals.get().$promise.then(function(response) {
+        $scope.goals = response.goals
+        $scope.userName = localStorage['userName'] 
+
+        });
+    }
+
+    $scope.loadData();
+
+    $scope.goalData = {};
+    $scope.newGoals = function() {
+      var goal = new Goals($scope.goalData);
+      goal.$save();
+    }
+   
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {

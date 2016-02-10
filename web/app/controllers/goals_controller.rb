@@ -7,7 +7,6 @@ class GoalsController < ApplicationController
   end
 
   def create
-    puts "#{goal_params}"
     @user = current_user
     goal = Goal.find_by title: "#{params["goal"]["title"]}"
 
