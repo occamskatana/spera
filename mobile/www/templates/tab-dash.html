@@ -1,12 +1,11 @@
 <ion-view title="{{userName}}">
   <ion-content padding="true">
-  <div class="newForm" ng-controller="DashCtrl">
-    <form  ng-submit="newGoals()">
-    <h4>New Goal</h4>
-    <input ng-model="goalData.title">
-    <input ng-model="goalData.description">
-    <button ng-click="loadData()">Submit</button>
-    </form>
+    <form ng-submit="addGoal()">
+      <h4>New Goal</h4>
+      <input ng-model="goalData.title" placeholder="Put title here">
+      <input ng-model="goalData.description" placeholder="Description">
+      <button>Submit</button>
+     </form>
   </div><br />
     <ion-list ng-repeat="goal in goals">
       <div class="item item-divider" align="center">

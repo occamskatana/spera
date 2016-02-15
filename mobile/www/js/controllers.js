@@ -43,7 +43,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('DashCtrl', function($scope, Goals) {
+.controller('DashCtrl', function($scope, Goals, $http) {
 
    $scope.loadData = function() { 
       Goals.get().$promise.then(function(response) {
@@ -55,10 +55,13 @@ angular.module('starter.controllers', [])
 
     $scope.loadData();
 
-    $scope.goalData = {};
-    $scope.newGoals = function() {
+     $scope.goalData = {title: $scope.title,
+                        description: $scope.description
+                        };
+    $scope.addGoal = function() {
+
       var goal = new Goals($scope.goalData);
-      goal.$save();
+      goal.$http();
     }
    
 })
