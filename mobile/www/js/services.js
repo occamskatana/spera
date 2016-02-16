@@ -6,7 +6,7 @@ angular.module('starter.services', [])
 
 .factory('Goals', function($resource){
   return $resource("http://localhost:3000/api/v1/goals/", {}, {
-    query: {method: 'GET', isArray: true},
+    query: {method: 'GET', isArray: false},
     create: {method: 'POST'}
   })
 })

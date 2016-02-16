@@ -46,7 +46,7 @@ angular.module('starter.controllers', [])
 .controller('DashCtrl', function($scope, Goals, $http) {
 
    $scope.loadData = function() { 
-      Goals.get().$promise.then(function(response) {
+      Goals.query().$promise.then(function(response) {
         $scope.goals = response.goals
         $scope.userName = localStorage['userName'] 
 
@@ -58,11 +58,16 @@ angular.module('starter.controllers', [])
      $scope.goalData = {title: $scope.title,
                         description: $scope.description
                         };
-    $scope.addGoal = function() {
 
+    $scope.addGoal = function() {
       var goal = new Goals($scope.goalData);
-      goal.$http();
+      goal.$create().then($scope.loadData());
+
+      $scope.goalData.title = '';
+      $scope.goalData.description = '';
     }
+
+
    
 })
 
