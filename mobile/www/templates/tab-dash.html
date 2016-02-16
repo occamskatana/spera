@@ -1,17 +1,18 @@
-<ion-view title="{{userName}}">
+<ion-view title="{{userName | uppercase}}'s Profile">
   <ion-content padding="true">
     <form ng-submit="addGoal()">
       <h4>New Goal</h4>
       <input ng-model="goalData.title" placeholder="Put title here">
       <input ng-model="goalData.description" placeholder="Description">
-      <button>Submit</button>
+      <input ng-model="goalData.date" type="date" placeholder="Today">
+      <button class="button button-outline button-positive button-small">Submit</button>
      </form>
   </div><br />
-    <ion-list ng-repeat="goal in goals">
-      <div class="item item-divider" align="center">
+    <ion-list ng-repeat="goal in goals" >
+      <ion-item class="item item-divider goals-tabs" align="center">
         <strong><h2>{{ goal.goal.title | uppercase }}</h2></strong>
         <h4> {{ goal.description | uppercase }} </h4>
-      </div>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>

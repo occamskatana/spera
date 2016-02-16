@@ -56,7 +56,8 @@ angular.module('starter.controllers', [])
     $scope.loadData();
 
      $scope.goalData = {title: $scope.title,
-                        description: $scope.description
+                        description: $scope.description,
+                        date: $scope.date
                         };
 
     $scope.addGoal = function() {
