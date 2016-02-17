@@ -43,7 +43,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('DashCtrl', function($scope, Goals, $http) {
+.controller('DashCtrl', function($scope, Goals, $http, $state) {
 
    $scope.loadData = function() { 
       Goals.query().$promise.then(function(response) {
@@ -66,12 +66,13 @@ angular.module('starter.controllers', [])
 
       $scope.goalData.title = '';
       $scope.goalData.description = '';
+      $state.go('tab.dash');
     };   
 })
 
 .controller('checkinController', function($scope, checkIn, $http, $state, $ionicPopup){
     $scope.checkinData = {
-      use: $scope.use,
+      use: $scope.sober,
       mood: $scope.mood,
       remarks: $scope.remarks,
       need_support: $scope.need_support
@@ -80,8 +81,9 @@ angular.module('starter.controllers', [])
   $scope.newCheckin = function() {
     var checkin = new checkIn($scope.checkinData);
     checkin.$create();
-     $ionicPopup.alert({title:"Thanks for checking in!"});
+    $ionicPopup.alert({title:"Thanks for checking in!"});
     $state.go('tab.dash');
+
   };
 })
 

@@ -1,7 +1,7 @@
 <ion-view view-title="My Checkins">
 	<ion-content>
 	
-		<a class="button button-block button-positive" ui-sref="new-checkin">Check In! <i class="ion-android-calendar"></i></a>
+		<a class="button button-block button-positive" href="#/tab/checkin/new">Check In! <i class="ion-android-calendar"></i></a>
 		<ion-list ng-repeat="checkin in checkIns">
 			<ion-item>
 				{{checkin.created_at | date:short }} | {{checkin.remarks}}

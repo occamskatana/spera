@@ -1,7 +1,7 @@
 class CreateCheckins < ActiveRecord::Migration
   def change
     create_table :checkins do |t|
-      t.boolean :use
+      t.boolean :sober
       t.integer :mood
       t.text :remarks
       t.boolean :need_support

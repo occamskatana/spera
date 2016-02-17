@@ -29,7 +29,7 @@ class Api::V1::CheckinsController < Api::V1::BaseController
 	private
 
 	def checkin_params
-		params.require(:checkin).permit(:user, :use, :mood, :remarks, :need_support)
+		params.require(:checkin).permit(:user, :sober, :mood, :remarks, :need_support)
 	end
 
 end
