@@ -69,7 +69,7 @@ angular.module('starter.controllers', [])
     };   
 })
 
-.controller('checkinController', function($scope, checkIn, $http, $state){
+.controller('checkinController', function($scope, checkIn, $http, $state, $ionicPopup){
     $scope.checkinData = {
       use: $scope.use,
       mood: $scope.mood,
@@ -80,7 +80,7 @@ angular.module('starter.controllers', [])
   $scope.newCheckin = function() {
     var checkin = new checkIn($scope.checkinData);
     checkin.$create();
-    alert("Thanks for checking in!");
+     $ionicPopup.alert({title:"Thanks for checking in!"});
     $state.go('tab.dash');
   };
 })
