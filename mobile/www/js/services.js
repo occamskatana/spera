@@ -11,6 +11,12 @@ angular.module('starter.services', [])
   })
 })
 
+.factory('newCheckin', function($resource) {
+  return $resource("http://localhost:3000/api/v1/checkins", {}, {
+    create: {method: 'POST'}
+  })
+})
+
 
 
 .factory('Chats', function() {

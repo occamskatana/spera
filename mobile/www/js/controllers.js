@@ -66,10 +66,11 @@ angular.module('starter.controllers', [])
 
       $scope.goalData.title = '';
       $scope.goalData.description = '';
-    };
+    };   
+})
 
-
-   
+.controller('checkinController', function($scope, newCheckin, $http){
+  
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
