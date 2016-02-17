@@ -61,14 +61,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
-  .state('checkin.new', {
+  .state('new-checkin', {
     url: '/new',
-    views: {
-      'tab-checkin@tabs': {
-        controller: "checkinController",
-        templateUrl: "templates/new-checkin.html"
-      }
-    }
+    controller: "checkinController",
+    templateUrl: "templates/new-checkin.html"
+    
   })
 
   .state('tab.chats', {
