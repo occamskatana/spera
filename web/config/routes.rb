@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   	namespace :v1 do 
   		resources :users, only: [:show]
   		resources :goals
-      resources :checkins, only: [:show, :create]
+      resources :checkins, only: [:show, :create, :index]
   	end
   end
 

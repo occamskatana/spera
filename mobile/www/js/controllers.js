@@ -85,6 +85,16 @@ angular.module('starter.controllers', [])
   };
 })
 
+.controller('checkinListController', function($scope, checkIn, $http, $state){
+  checkIn.query().$promise.then(function(response){
+    $scope.checkIns = response;
+  });
+
+  $scope.redirect = function() {
+    $state.go('tab.checkin')
+  }
+})
+
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
 })

@@ -19,6 +19,12 @@ class Api::V1::CheckinsController < Api::V1::BaseController
 		render json: checkin.to_json, status: 200
 	end
 
+	def index
+		user = current_user
+		checkins = user.checkins
+		render json: checkins.to_json, status: 200
+	end
+
 
 	private
 

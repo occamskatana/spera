@@ -56,7 +56,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     views: {
       'tab-checkin': {
         templateUrl: 'templates/tab-checkin.html',
-        controller: 'checkinController'
+        controller: 'checkinListController'
+      }
+    }
+  })
+
+  .state('checkin.new', {
+    url: '/new',
+    views: {
+      'tab-checkin@tabs': {
+        controller: "checkinController",
+        templateUrl: "templates/new-checkin.html"
       }
     }
   })
