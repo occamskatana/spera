@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
          
-
+    has_many :checkins
     has_many :objectives
     has_many :goals, through: :objectives
 end

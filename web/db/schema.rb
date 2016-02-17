@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160205211505) do
+ActiveRecord::Schema.define(version: 20160217025513) do
+
+  create_table "base_events", force: :cascade do |t|
+    t.integer  "recurrence_period_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "base_events", ["recurrence_period_id"], name: "index_base_events_on_recurrence_period_id"
+
+  create_table "checkins", force: :cascade do |t|
+    t.boolean  "use"
+    t.integer  "mood"
+    t.text     "remarks"
+    t.boolean  "need_support"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "checkins", ["user_id"], name: "index_checkins_on_user_id"
 
   create_table "goals", force: :cascade do |t|
     t.string   "title"
@@ -27,10 +47,19 @@ ActiveRecord::Schema.define(version: 20160205211505) do
     t.datetime "updated_at",  null: false
     t.date     "date"
     t.text     "description"
+    t.boolean  "active"
   end
 
   add_index "objectives", ["goal_id"], name: "index_objectives_on_goal_id"
   add_index "objectives", ["user_id"], name: "index_objectives_on_user_id"
+
+  create_table "recurrence_periods", force: :cascade do |t|
+    t.integer  "objective_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "recurrence_periods", ["objective_id"], name: "index_recurrence_periods_on_objective_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

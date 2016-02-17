@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  use: false
+  mood: 1
+  remarks: MyText
+  need_support: false
+  user_id: 
+
+two:
+  use: false
+  mood: 1
+  remarks: MyText
+  need_support: false
+  user_id: 
