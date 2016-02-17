@@ -66,7 +66,7 @@ angular.module('starter.controllers', [])
 
       $scope.goalData.title = '';
       $scope.goalData.description = '';
-    }
+    };
 
 
    
