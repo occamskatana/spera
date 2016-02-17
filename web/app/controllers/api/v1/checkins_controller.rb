@@ -1,5 +1,5 @@
-class Api::V1::CheckinController < Api::V1::BaseController
-
+class Api::V1::CheckinsController < Api::V1::BaseController
+	respond_to :json
 
 	def create
 		user = current_user

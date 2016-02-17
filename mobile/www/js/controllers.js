@@ -69,8 +69,20 @@ angular.module('starter.controllers', [])
     };   
 })
 
-.controller('checkinController', function($scope, newCheckin, $http){
-  
+.controller('checkinController', function($scope, checkIn, $http, $state){
+    $scope.checkinData = {
+      use: $scope.use,
+      mood: $scope.mood,
+      remarks: $scope.remarks,
+      need_support: $scope.need_support
+  };
+
+  $scope.newCheckin = function() {
+    var checkin = new checkIn($scope.checkinData);
+    checkin.$create();
+    alert("Thanks for checking in!");
+    $state.go('tab.dash');
+  };
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {

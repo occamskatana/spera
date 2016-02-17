@@ -2,9 +2,18 @@
   <ion-content padding="true">
     <form ng-submit="addGoal()">
       <h4>New Goal</h4>
-      <input ng-model="goalData.title" placeholder="Put title here">
-      <input ng-model="goalData.description" placeholder="Description">
-      <input ng-model="goalData.date" type="date" placeholder="Today">
+      <label class="item item-input">
+        <span class="input-label">Goal Title</span>
+        <input ng-model="goalData.title" placeholder="Put title here">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Description</span>
+        <input ng-model="goalData.description" placeholder="Description">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Date</span>
+        <input ng-model="goalData.date" type="date">
+      </label>
       <button class="button button-outline button-positive button-small">Submit</button>
      </form>
   </div><br />

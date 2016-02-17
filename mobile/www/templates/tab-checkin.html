@@ -1,10 +1,22 @@
 <ion-view view-title="Checkin">
-	<ion-content>
-		<h3>User Check-In</h3>
+	<ion-content><br>
+		<h3 align="center">User Check-In</h3>
 		<div class="list">
 			<label class="item item-input">
-				<span class="input-label">How are you doing?</span>
-				<input type="text">
-		</div>
+				<span class="input"></span>
+				<input type="text" placeholder="How are you doing?" ng-model="checkinData.remarks">
+			</label>
+			<h4 align="center">How is your mood?</h4>
+				<div class="item range range-positive">
+					<i class="icon ion-heart-broken"></i>
+					<input type="range" name="mood" min="0" max="5" value="50" ng-model="checkinData.mood">
+					<i class="icon ion-heart"></i>
+				</div>
+			<ion-list>
+				<ion-checkbox ng-model="checkinData.use">Sober since last checkin?</ion-checkbox>
+				<ion-checkbox ng-model="checkinData.need_support">Do you need support?</ion-checkbox>
+			</ion-list>
+		<button class="button button-block button-positive" ng-click="newCheckin()">Submit</button>
+
 	</ion-content>
 </ion-view>
