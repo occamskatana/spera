@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     relations = Friendable.all.select do |f|
     		f.accepted == true && f.to_id == self.id || f.from_id == self.id 
     	end
-    	friends = Array.new
+    	friends_ids = Array.new
 	    relations.each do |r|
 	    	if r.from_id == self.id 
 	    		friend_id = r.to_id 
@@ -22,12 +22,13 @@ class User < ActiveRecord::Base
 	    		friend_id = r.from_id 
 	    	end
 	    	
-	    	friends << friend_id
+	    	friends_ids << friend_id
 	    end  
-	    return friends
+	    return friends_ids
     end
 
-    def my_friends
+    def friends
+
     	buddies = []
     	friend_list.each do |f|
     	buddies <<	User.find(f)
