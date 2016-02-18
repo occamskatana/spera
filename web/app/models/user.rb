@@ -10,10 +10,20 @@ class User < ActiveRecord::Base
     has_many :friendables
     has_many :users, through: :friendables
 
-    def friends
-    	Friendable.all.select do |f|
+    def friend_list
+    relations = Friendable.all.select do |f|
     		f.accepted == true && f.to_id == self.id || f.from_id == self.id 
     	end
+
+	    relations.each do |r|
+	    	if r.from_id == self.id 
+	    		friend_id = r.to_id 
+	    	else r.to_id == self.id 
+	    		friend_id = r.from_id 
+	    	end
+	    	puts friend_id
+	    end
+	    
     end
 
     
