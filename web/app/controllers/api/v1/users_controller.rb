@@ -8,4 +8,11 @@ class Api::V1::UsersController < Api::V1::BaseController
 
 		render json: friends.to_json, status: 201
 	end
+
+	def show
+			friends = current_user.friends.to_a
+			friend = User.find(params[:id])
+			
+			render json: friend.to_json, status: 201			
+	end
 end
