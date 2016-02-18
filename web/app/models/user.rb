@@ -14,16 +14,17 @@ class User < ActiveRecord::Base
     relations = Friendable.all.select do |f|
     		f.accepted == true && f.to_id == self.id || f.from_id == self.id 
     	end
-
+    	friends = Array.new
 	    relations.each do |r|
 	    	if r.from_id == self.id 
 	    		friend_id = r.to_id 
 	    	else r.to_id == self.id 
 	    		friend_id = r.from_id 
 	    	end
-	    	puts friend_id
-	    end
-	    
+	    	
+	    	friends << friend_id
+	    end  
+	    return friends
     end
 
     
