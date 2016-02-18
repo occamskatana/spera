@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217025513) do
+ActiveRecord::Schema.define(version: 20160218024107) do
 
   create_table "checkins", force: :cascade do |t|
     t.boolean  "use"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20160217025513) do
   end
 
   add_index "checkins", ["user_id"], name: "index_checkins_on_user_id"
+
+  create_table "friendables", force: :cascade do |t|
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.boolean  "accepted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "goals", force: :cascade do |t|
     t.string   "title"

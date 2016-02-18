@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
     has_many :checkins
     has_many :objectives
     has_many :goals, through: :objectives
+    has_many :friendables
+    has_many :users, through: :friendables
 end

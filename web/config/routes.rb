@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
  
 
+  get 'friendables/friend_request'
+
   root to: 'welcome#index'
   
   devise_for :users, controllers: {registrations: 'registrations', passwords: 'users/passwords', sessions: 'users/sessions' }
@@ -8,6 +10,12 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do 
     resources :goals
     resources :checkins, only: []
+  end
+
+  resources :friendable do
+   member do 
+    put 'friend_request' 
+   end 
   end
 
   namespace :api do 
