@@ -27,5 +27,13 @@ class User < ActiveRecord::Base
 	    return friends
     end
 
+    def my_friends
+    	buddies = []
+    	friend_list.each do |f|
+    	buddies <<	User.find(f)
+    	end
+    	return buddies
+    end
+
     
 end
