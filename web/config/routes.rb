@@ -13,10 +13,18 @@ Rails.application.routes.draw do
   end
 
   resources :friendable do
-   member do 
-    put 'friend_request' 
-   end 
+    member do 
+      put 'friend_request' 
+    end 
   end
+
+  resources :friendables do
+  member do
+    put 'friend_request'
+    put 'friend_request_accept'
+    delete 'friend_request_reject'
+  end
+end
 
   namespace :api do 
   	namespace :v1 do 
