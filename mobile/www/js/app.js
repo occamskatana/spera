@@ -89,7 +89,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       views: {
         'tab-dash': {      
           controller: 'DashCtrl',
-          templateUrl: 'templates/new-goal.html'
+          templateUrl: "templates/new-goal.html"
         }
     }
   })
