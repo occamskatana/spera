@@ -28,7 +28,9 @@ end
 
   namespace :api do 
   	namespace :v1 do 
-  		resources :users, only: [:show, :index]
+  		resources :users, only: [:show, :index] do 
+        resources :checkins, only: [:show, :index] 
+      end
   		resources :goals
       resources :checkins, only: [:show, :create, :index]
   	end
