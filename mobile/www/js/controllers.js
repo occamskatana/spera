@@ -48,9 +48,9 @@ angular.module('starter.controllers', [])
   });
 })
 
-.controller('friendCtrl', function($scope, friends, $http, $state, $stateParams) {
-  friends.query($stateParams.id).$promise.then(function(response){
-    console.log(response);
+.controller('friendCtrl', function($scope, friend, $http, $state, $stateParams) {
+  friend.get({id: $stateParams.id}).$promise.then(function(response){
+    console.log($stateParams.id);
     $scope.friend = response
   })
 })
