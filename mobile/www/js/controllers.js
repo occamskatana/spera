@@ -41,7 +41,19 @@ angular.module('starter.controllers', [])
   }
 })
 
+.controller('friendsCtrl', function($scope, friends, $http, $state){
+  friends.query().$promise.then(function(response){
+    console.log(response);
+    $scope.friends = response
+  });
+})
 
+.controller('friendCtrl', function($scope, friends, $http, $state, $stateParams) {
+  friends.query($stateParams.id).$promise.then(function(response){
+    console.log(response);
+    $scope.friend = response
+  })
+})
 
 .controller('DashCtrl', function($scope, Goals, $http, $state) {
 

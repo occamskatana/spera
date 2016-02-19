@@ -1,0 +1,12 @@
+<ion-view view-title="My Friends">
+	<ion-content padding="true">
+		<div class="list" ng-repeat="friend in friends">
+			<a class="item item-avatar item-icon-right" href="#/tab/chats/{{friend.id}}">
+				<img src="img/nedry.jpg">
+				<h2>{{friend.first_name}} {{friend.last_name}}</h2>
+				<p>Last checkin here</p>
+				<i class="icon ion-chevron-right icon-accessory"></i>
+			</a>
+		</div>
+	</ion-content>
+</ion-view>
