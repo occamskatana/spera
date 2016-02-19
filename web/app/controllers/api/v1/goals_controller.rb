@@ -6,8 +6,8 @@ class Api::V1::GoalsController < Api::V1::BaseController
 		
 		
 		user = current_user
-		goals = user.objectives.all
-		render json: goals
+		objectives = user.objectives.all
+		render json: objectives, status: 201
 		
 	end
 
@@ -27,9 +27,10 @@ class Api::V1::GoalsController < Api::V1::BaseController
 	end
 
 	def show
-		goals = Goal.all
+		user = current_user
+		goal = user.objectives.find(params[:id])
 
-		render json: goals
+		render json: goal, status: 201, root: false
 	end
 	
 private

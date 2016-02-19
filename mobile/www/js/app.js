@@ -53,6 +53,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
+  .state('tab.goal', {
+    url:'/dash/:id',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/goal.html',
+        controller: 'goalCtrl'
+      }
+    }
+  })
+
   .state('tab.checkin', {
     url: '/checkin',
     views: {
@@ -84,6 +94,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
+
   .state('tab.chats', {
       url: '/chats',
       views: {
@@ -98,6 +109,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       views: {
         'tab-chats': {
           templateUrl: 'templates/friend.html',
+          controller: 'friendCtrl'
+        }
+      }
+    })
+
+    .state('tab.friend-checkin', {
+      url: '/chats/:id/checkin',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/friend-checkin.html',
           controller: 'friendCtrl'
         }
       }

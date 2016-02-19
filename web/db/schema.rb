@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218024107) do
+ActiveRecord::Schema.define(version: 20160219225650) do
 
   create_table "boards", force: :cascade do |t|
     t.integer  "user_id"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160218024107) do
     t.datetime "updated_at",  null: false
     t.date     "date"
     t.text     "description"
+    t.boolean  "completed"
   end
 
   add_index "objectives", ["goal_id"], name: "index_objectives_on_goal_id"

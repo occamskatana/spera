@@ -1,0 +1,21 @@
+<ion-view view-title="{{friend.first_name}} {{friend.last_name}}">
+	<ion-content>
+		<div class="list card">
+			<div class="item item-avatar">
+				<h2>Latest Check-in</h2>
+				<p>{{checkin.created_at | date:short }}</p>
+			</div>
+				<div class="item item-body">
+				
+					<div class="item item-image">
+						<img src="img/max.png">
+					</div>
+						<p>{{checkin.remarks}}</p>
+					<ion-list>
+						<ion-checkbox ng-model="checkin.sober">Sober</ion-checkbox>
+						<ion-checkbox ng-model="checkin.need_support">Needs Help</ion-checkbox>
+					</ion-list>
+				</div>
+			</div>
+	</ion-content>	
+</ion-view>
