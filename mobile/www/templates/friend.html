@@ -1,5 +1,20 @@
-<ion-view>
-	<ion-content>
-			Specific Friend here
+<ion-view view-title="{{friend.first_name}} {{friend.last_name}}">
+	<ion-content padding="true">
+		<div class="list card">
+			<div class="item item-avatar">
+				<img src="img/nedry.jpg">
+				<h2>Last Checkin</h2>
+				<p>Mood: {{checkin.mood}}</p>
+			</div>
+
+			<div class="item item-body">
+				<ion-list>
+					<ion-checkbox ng-model="checkin.sober">Sober</ion-checkbox>
+					<ion-checkbox ng-model="checkin.need_support">Needs Help</ion-checkbox>
+				</ion-list>
+				<img class="full-image" src="img/adam.jpg">
+				<p>{{checkin.remarks}}</p>
+			</div>
+		</div>
 	</ion-content>
 </ion-view>

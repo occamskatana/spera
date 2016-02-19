@@ -25,11 +25,15 @@ angular.module('starter.services', [])
 })
 
 .factory('friend', function($resource){
-  return $resource("http://localhost:3000/api/v1/users/:id", {}, {
-    query: {method: 'GET', isArray: false}
+  return $resource("http://localhost:3000/api/v1/users/:id", {id: '@id'}, {
   })
 })
 
+.factory('userCheckins', function($resource){
+  return $resource("http://localhost:3000/api/v1/users/:id/checkins", {id: '@id'}, {
+    query: {method: 'GET', isArray: true}
+  })
+})
 
 
 

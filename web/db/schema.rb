@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20160218024107) do
   add_index "boards", ["user_id"], name: "index_boards_on_user_id"
 
   create_table "checkins", force: :cascade do |t|
-    t.boolean  "use"
+    t.boolean  "sober"
     t.integer  "mood"
     t.text     "remarks"
     t.boolean  "need_support"
