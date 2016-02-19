@@ -24,7 +24,7 @@ angular.module('starter.controllers', [])
     var user_session = new UserSession({user: $scope.data});
     user_session.$save(
       function(data){
-        console.log(data);
+        
         window.localStorage['userId'] = data.user.id;
         window.localStorage['userName'] = data.user.username;
         $location.path('tab/dash');
@@ -43,19 +43,18 @@ angular.module('starter.controllers', [])
 
 .controller('friendsCtrl', function($scope, friends, $http, $state){
   friends.query().$promise.then(function(response){
-    console.log(response);
     $scope.friends = response
   });
 })
 
 .controller('friendCtrl', function($scope, friend, userCheckins, $http, $state, $stateParams) {
   friend.get({id: $stateParams.id}).$promise.then(function(response){
-    console.log(response);
     $scope.friend = response
+
   })
 
   userCheckins.query({id: $stateParams.id}).$promise.then(function(response){
-    console.log(response[0]);
+    
     $scope.checkin = response[0];
   })
 
@@ -70,7 +69,7 @@ angular.module('starter.controllers', [])
       Goals.query().$promise.then(function(response) {
         $scope.goals = response.goals
         $scope.userName = localStorage['userName'] 
-
+        
         });
     }
 
@@ -89,6 +88,11 @@ angular.module('starter.controllers', [])
       $scope.goalData.description = '';
       $state.go('tab.dash');
     };   
+})
+
+.controller('goalCtrl', function($state, $stateParams, objective, $http, $scope) {
+  $scope.objective = objective.get({id: $stateParams.id})
+  
 })
 
 .controller('checkinController', function($scope, checkIn, $http, $state, $ionicPopup){

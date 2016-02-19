@@ -53,6 +53,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
+  .state('tab.goal', {
+    url:'/dash/:id',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/goal.html',
+        controller: 'goalCtrl'
+      }
+    }
+  })
+
   .state('tab.checkin', {
     url: '/checkin',
     views: {
@@ -83,6 +93,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
     }
   })
+
 
   .state('tab.chats', {
       url: '/chats',

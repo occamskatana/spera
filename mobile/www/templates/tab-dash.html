@@ -1,11 +1,15 @@
 <ion-view title="Home">
-  <ion-content padding="true">
-    <a class="button button-block button-positive" href="#/tab/dash/goal">New Goal <i class="ion-android-calendar"></i></a>
+  <ion-content>
+    <a class="button button-block button-positive" href="/#tab/dash/">New Goal <i class="ion-android-calendar"></i></a>
   </div><br />
-    <ion-list ng-repeat="goal in goals" >
-      <ion-item class="item item-divider goals-tabs" align="center">
-        <strong><h2>{{ goal.goal.title | uppercase }}</h2></strong>
-        <h4> {{ goal.description | uppercase }} </h4>
+    <ion-list ng-repeat="objective in goals">
+      <ion-item class="card" align="center">  
+        <div class="item item-text-wrap"> 
+          <p>{{ objective.title | uppercase }}</p>
+          <a href="/#/tab/dash/{{objective.id}}" class="item-icon-right"><i class="icon ion-chevron-right icon-accessory"></i></a>
+          <p>{{goal.goal.created_at | date:short }}</p> 
+
+        </div>
       </ion-item>
     </ion-list>
   </ion-content>
