@@ -103,6 +103,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     })
 
+    .state('tab.friend-checkin', {
+      url: '/chats/:id/checkin',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/friend-checkin.html',
+          controller: 'friendCtrl'
+        }
+      }
+    })
+
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',

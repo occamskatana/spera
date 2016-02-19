@@ -58,6 +58,10 @@ angular.module('starter.controllers', [])
     console.log(response[0]);
     $scope.checkin = response[0];
   })
+
+
+
+
 })
 
 .controller('DashCtrl', function($scope, Goals, $http, $state) {
