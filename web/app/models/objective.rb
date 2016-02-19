@@ -2,7 +2,7 @@ class Objective < ActiveRecord::Base
   belongs_to :user
   belongs_to :goal
 
-  before_save {self.completed ||= false}
+  before_save {self.completed ||= :false}
 
   default_scope {order('date DESC')}
 
