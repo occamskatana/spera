@@ -50,7 +50,7 @@ angular.module('starter.controllers', [])
 
 .controller('friendCtrl', function($scope, friend, $http, $state, $stateParams) {
   friend.get({id: $stateParams.id}).$promise.then(function(response){
-    console.log($stateParams.id);
+    console.log(response);
     $scope.friend = response
   })
 })

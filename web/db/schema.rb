@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20160218024107) do
 
   create_table "checkins", force: :cascade do |t|
-    t.boolean  "use"
+    t.boolean  "sober"
     t.integer  "mood"
     t.text     "remarks"
     t.boolean  "need_support"
