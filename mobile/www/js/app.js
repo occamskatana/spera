@@ -104,6 +104,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
       }
     })
+
+  .state('tab.friendRequest', {
+    url: '/chats/requests/:id',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/friendrequest.html',
+          controller: 'friendRequestsCtrl'
+        }
+      }
+  })
+
+
     .state('tab.chat-detail', {
       url: '/chats/:id',
       views: {
