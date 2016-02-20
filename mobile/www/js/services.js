@@ -11,6 +11,16 @@ angular.module('starter.services', [])
   })
 })
 
+.factory('friendRequests', function($resource){
+  return $resource("http://localhost:3000/api/v1/friendables/:id", {id: '@id'}, {
+    query: {method: 'GET', isArray: true },
+  })
+})
+
+
+
+
+
 .factory('checkIn', function($resource) {
   return $resource("http://localhost:3000/api/v1/checkins", {}, {
     query: {method: 'GET', isArray: true},

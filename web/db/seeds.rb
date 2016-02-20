@@ -27,9 +27,10 @@
 
 	goals = Goal.all 
 
-	objective = 100.times do Objective.create!(
+	objective = 100.times do Objective.create(
 		user: users.sample,
 		goal: goals.sample,
+		description: Faker::Hacker.say_something_smart,
 		date: Faker::Date.between(5.days.ago, Date.today)
 		)
 	end

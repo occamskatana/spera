@@ -17,7 +17,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('LoginCtrl', function($scope, $location, UserSession, $ionicPopup, $rootScope) {
+.controller('LoginCtrl', function($scope, $location, UserSession, $ionicPopup, $rootScope){
   $scope.data = {};
 
   $scope.login = function(){
@@ -41,13 +41,24 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('friendsCtrl', function($scope, friends, $http, $state){
-  friends.query().$promise.then(function(response){
-    $scope.friends = response
+.controller('friendRequestsCtrl', function($scope, friendRequests, $http, $state, $stateParams){
+  friendRequests.query().$promise.then(function(response){
+    
+    $scope.requests = response
+    $scope.request = response.find({id: $stateParams.id})
+    console.log($scope.request)
+    
   });
 })
 
-.controller('friendCtrl', function($scope, friend, userCheckins, $http, $state, $stateParams) {
+.controller('friendsCtrl', function($scope, friends, $http, $state){
+  friends.query().$promise.then(function(response){
+    $scope.friends = response
+    console.log(response)
+  });
+})
+
+.controller('friendCtrl', function($scope, friend, userCheckins, $http, $state, $stateParams){
   friend.get({id: $stateParams.id}).$promise.then(function(response){
     $scope.friend = response
 
@@ -57,10 +68,6 @@ angular.module('starter.controllers', [])
     
     $scope.checkin = response[0];
   })
-
-
-
-
 })
 
 .controller('DashCtrl', function($scope, Goals, $http, $state) {
@@ -90,9 +97,8 @@ angular.module('starter.controllers', [])
     };   
 })
 
-.controller('goalCtrl', function($state, $stateParams, objective, $http, $scope) {
+.controller('goalCtrl', function($state, $stateParams, objective, $http, $scope){
   $scope.objective = objective.get({id: $stateParams.id})
-  
 })
 
 .controller('checkinController', function($scope, checkIn, $http, $state, $ionicPopup){
