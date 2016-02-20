@@ -1,13 +1,25 @@
-<ion-view>
+<ion-view view-title="Friend Request">
 	<ion-content>
 
 		<div class="list card">
 			<div class="item item-avatar">
 				<img src="img/ben.png">
-				<h2></h2>
+				<h2>{{friendRequest.from_user}}</h2>
+				<p>Wants to be your friend!</p>
 			</div>
+			<div class="item item-image">
+				<img src="img/nedry.jpg">
+			</div>
+
+			<a class="item item-left assertive" href="#">
+				<i class="icon ion-close-circled">Reject</i>
+			</a>
+
+			<a class="item item-right positive" href="#">
+				<i class="icon ion-plus-circled">Accept</i>
+			</a>
 		</div>
 
-		{{request}}
+		
 	</ion-content>
 </ion-view>

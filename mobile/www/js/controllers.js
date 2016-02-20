@@ -45,10 +45,14 @@ angular.module('starter.controllers', [])
   friendRequests.query().$promise.then(function(response){
     
     $scope.requests = response
-    $scope.request = friendRequests.query({id: $stateParams.id})
-    console.log(friendRequests.query({id: $stateParams.id}))
+    
     
   });
+
+  friendRequests.query({id: $stateParams.id}).$promise.then(function(response){
+    $scope.friendRequest = response[0]
+    console.log($scope.friendRequest)
+  })
 })
 
 .controller('friendsCtrl', function($scope, friends, $http, $state){
