@@ -92,8 +92,8 @@ angular.module('starter.controllers', [])
 
 .controller('goalCtrl', function($state, $stateParams, objective, $http, $scope) {
   $scope.objective = objective.get({id: $stateParams.id})
-  
-  
+
+ 
 })
 
 .controller('checkinController', function($scope, checkIn, $http, $state, $ionicPopup){

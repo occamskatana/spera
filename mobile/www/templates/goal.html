@@ -1,5 +1,15 @@
-<ion-view view-title="Objective">
-	<ion-content>
-		<p>{{objective.id}}</p>
+<ion-view view-title="{{objective.title}}">
+	<ion-content align="center">
+		<h3>{{objective.date}}
+		<ion-list padding="true">
+			<ion-item>
+				<ion-checkbox ng-model="completed"> Goal Completed?
+			</ion-item>
+			<ion-item>
+				<div class="item item-text-wrap">
+					{{objective.description}}
+				</div>
+			</ion-item>
+		</ion-list>
 	</ion-content>
 </ion-view>

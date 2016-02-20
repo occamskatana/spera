@@ -4,7 +4,7 @@ class Objective < ActiveRecord::Base
 
   before_save {self.completed ||= :false}
 
-  default_scope {order('date DESC')}
+  
 
   def day 
   	self.date.strftime('%D')
