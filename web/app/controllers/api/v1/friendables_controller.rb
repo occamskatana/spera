@@ -7,8 +7,9 @@ class Api::V1::FriendablesController < Api::V1::BaseController
 	end
 
 	def show
-		request = Friendable.where(id: params[:id])
-		render json: request.to_json, status: 201
+		
+		render json: Friendable.where(id: params[:id]), status: 201, root: false
+
 	end
 
 end
