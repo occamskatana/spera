@@ -1,5 +1,8 @@
 class FriendablesController < ApplicationController
 
+  respond_to :json, :html
+  
+
   def set_current_user
     User.current = current_user
   end
@@ -11,13 +14,22 @@ class FriendablesController < ApplicationController
   end
 
   def friend_request_accept
-  	friendable = Friendable.where(to_id: current_user.id, from_id: params[:id]).first 
-  	friendable.update_attributes(accepted: true)
+  	friendable = Friendable.where(id: params[:id]).first
+  	
+     friendable.update_attributes(accepted: true)
+    
+    respond_with friendable
+      
+     
+    
+ 
   end
 
   def friend_request_reject
   	friendable = Friendable.where(to_id: current_user.id, from_id: params[:id]).first 
   	friendable.destroy
   end
+
+ 
 
 end

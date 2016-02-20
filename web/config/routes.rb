@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :checkins, only: []
   end
 
-  resources :friendable do
+  resources :friendable, defaults: {format: 'json'} do
     member do 
       put 'friend_request' 
     end 

@@ -17,6 +17,13 @@ angular.module('starter.services', [])
   })
 })
 
+// backup friend request function
+.factory('friendRequestAccept', function($resource){
+ return $resource("http://localhost:3000/friendables/:id/friend_request_accept", {id: '@id'}, {
+    put: {method: 'PUT'},
+  });
+ })
+
 .factory('checkIn', function($resource) {
   return $resource("http://localhost:3000/api/v1/checkins", {}, {
     query: {method: 'GET', isArray: true},
