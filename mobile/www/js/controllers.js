@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('friendRequestsCtrl', function($scope, friendRequests, $http, $state, $stateParams){
+.controller('friendRequestsCtrl', function($scope, $ionicPopup, friendRequests, $http, $state, $stateParams, $resource, friendRequestAccept){
   friendRequests.query().$promise.then(function(response){
     
     $scope.requests = response
@@ -49,11 +49,29 @@ angular.module('starter.controllers', [])
     
   });
 
+  $scope.acceptFriendRequest = function() {
+    friendRequestAccept.put({id: $stateParams.id})
+    $ionicPopup.alert({
+      title: "Thanks!",
+      template: "You now have a new friend!"
+    })
+    $state.go('tab.chats')
+  }
   friendRequests.query({id: $stateParams.id}).$promise.then(function(response){
-    $scope.friendRequest = response[0]
+    
+    
+    $scope.friendRequest = response[0];
+    
+
+     
+
     console.log($scope.friendRequest)
-  })
+  });
+
+
 })
+
+
 
 .controller('friendsCtrl', function($scope, friends, $http, $state){
   friends.query().$promise.then(function(response){
