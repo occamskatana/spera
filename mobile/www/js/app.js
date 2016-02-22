@@ -152,11 +152,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
-  .state('tab.boards', {
-    url: '/boards',
+  .state('tab.resources', {
+    url :'/resources',
     views: {
-      'tab-boards': {
-        templateUrl: 'templates/tab-boards.html',
+      'tab-resources': {
+        templateUrl: 'templates/tab-resources.html',
+        controller: 'ResourcesCtrl'
+      }
+    }
+  })
+
+  .state('tab.boards', {
+    url: '/resources/boards',
+    views: {
+      'tab-resources': {
+        templateUrl: 'templates/boards.html',
         controller: 'BoardCtrl'
       }
     }
@@ -165,7 +175,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   .state('tab.board-detail', {
     url: '/boards/:id',
     views: {
-      'tab-boards': {
+      'tab-resources': {
         templateUrl: 'templates/tab-board-detail.html',
         controller: 'PostCtrl'
       }

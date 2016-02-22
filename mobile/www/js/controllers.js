@@ -76,6 +76,25 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller('ResourcesCtrl', function($scope, $http, $state){ 
+  $scope.resources = [{
+    name: "Boards",
+    url: "http://localhost:8100/#/tab/resources/boards"
+  }, {
+    name: "Meetings"
+  }, {
+    name: "Find Alumni"
+  }, {
+    name: "Education"
+  }, {
+    name: "Jobs and Volunteering"
+  }, {
+    name: "Journal"
+  }];
+
+  console.log($scope.resources)
+})
+
 
 
 .controller('friendsCtrl', function($scope, friends, $http, $state){
