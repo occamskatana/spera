@@ -45,9 +45,23 @@ angular.module('starter.services', [])
 })
 
 .factory('friendSearch', function($resource){
-  return $resource("http://localhost:3000/api/v1/users", {params: '@search'}, {
+  return $resource("http://localhost:3000/api/v1/users", {search: '@search'}, {
+    query: {method: 'GET', isArray: true}
   })
 })
+
+.factory('friendSearchResults', function(){
+  searchResults = {}
+
+  searchResults.users = []
+
+  searchResults.add = function(user){
+    searchResults.users.push({id: searchResults.users.length, users: user})
+  };
+
+  return searchResults;
+})
+
 
 .factory('friends', function($resource) {
   return $resource("http://localhost:3000/api/v1/users/:user_id/friend_list", {user_id: "@user_id"}, {
@@ -59,6 +73,7 @@ angular.module('starter.services', [])
   return $resource("http://localhost:3000/api/v1/users/:id", {id: '@id'}, {
   })
 })
+
 
 .factory('userCheckins', function($resource){
   return $resource("http://localhost:3000/api/v1/users/:user_id/checkins/", {user_id: '@user_id'}, {

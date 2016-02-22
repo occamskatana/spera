@@ -6,9 +6,9 @@ class Api::V1::UsersController < Api::V1::BaseController
 	def index
 			if params[:search]
 				users = User.search("#{params[:search]}")
-				render json: users, each_serializer: UserSerializer, root: false, status: 201
+				render json: users, each_serializer: UserSerializer, root: false
 			else
-				render json: {message: "nope", status: 401}, status: 401
+				render json: {message: "nope"}
 			end
 	end
 

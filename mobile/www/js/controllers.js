@@ -72,10 +72,23 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('friendSearchCtrl', function($scope, $http, $state, friendSearch){
-  friendSearch.query().$promise.then(function(response){
-    console.log(response)
-  })
+.controller('friendSearchCtrl', function($scope, $http, $state, friendSearch, friendSearchResults, $ionicPopup){
+  
+
+   $scope.Search = function() {
+      searchParams = $scope.searchParams
+
+      friendSearch.query({search: searchParams }).$promise.then(function(response){
+        friendSearchResults.add(response)
+
+        console.log(response);
+        $scope.users = friendSearchResults.users[0].users;
+        
+    });
+
+    
+
+  }
 })
 
 .controller('ResourcesCtrl', function($scope, $http, $state){ 
