@@ -3,9 +3,25 @@
 	
 		<a class="button button-block button-positive" href="#/tab/checkin/new">Check In! <i class="ion-android-calendar"></i></a>
 		<ion-list ng-repeat="checkin in checkIns">
-			<ion-item>
-				{{checkin.created_at | date:short }} | {{checkin.remarks}}
-			</ion-item>
+
+				<div class="list card">
+					<div class="item item-avatar">
+						<img src="img/manuel.jpg">
+						<h2>Checkin</h2>
+						<p>{{checkin.created_at | date:short }}</p>
+					</div>
+
+					<div class="item item-body">
+						<img class="full-image" src="img/nedry.jpg">
+						<p>
+							{{checkin.remarks}}
+						</p>
+						 <p>
+				      <a href="#" class="subdued">1 Like</a>
+				      <a href="#" class="subdued">5 Comments</a>
+				    </p>
+					</div>
+				</div>
 		</ion-list>
 	</ion-content>
 </ion-view>

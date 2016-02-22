@@ -33,7 +33,7 @@ angular.module('starter.services', [])
 })
 
 .factory('checkIn', function($resource) {
-  return $resource("http://localhost:3000/api/v1/checkins", {}, {
+  return $resource("http://localhost:3000/api/v1/checkins", {user_id: "@user_id"}, {
     query: {method: 'GET', isArray: true},
     create: {method: 'POST'}
   })

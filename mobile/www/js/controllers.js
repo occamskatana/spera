@@ -145,8 +145,9 @@ angular.module('starter.controllers', [])
 })
 
 .controller('checkinListController', function($scope, checkIn, $http, $state){
-  checkIn.query().$promise.then(function(response){
+  checkIn.query({user_id: window.localStorage.userId}).$promise.then(function(response){
     $scope.checkIns = response;
+    
   });
 
   $scope.redirect = function() {
