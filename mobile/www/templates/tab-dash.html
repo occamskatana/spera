@@ -1,14 +1,14 @@
 <ion-view title="Home">
   <ion-content>
     <a class="button button-block button-positive" ui-sref="tab.new-goal">New Goal <i class="ion-android-calendar"></i></a>
-  </div><br />
-    <ion-list ng-repeat="objective in goals">
-      <ion-item class="card" align="center">  
-        <div class="item item-text-wrap"> 
+  </div>
+    <ion-list ng-repeat="objective in goals"> 
+      <ion-item class="card">    
+        <div class="item item-text-wrap item-thumbnail-left"> 
+          <img src="http://lorempixel.com/200/200/">
           <p>{{ objective.title | uppercase }}</p>
           <a href="/#/tab/dash/{{objective.id}}" class="item-icon-right"><i class="icon ion-chevron-right icon-accessory"></i></a>
           <p>{{ objective.date | date:short }}</p> 
-
         </div>
       </ion-item>
     </ion-list>

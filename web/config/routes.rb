@@ -31,7 +31,7 @@ end
   		resources :users, only: [:show, :index] do 
         resources :checkins, only: [:show, :index] 
       end
-      resources :friendables
+      resources :friendables, only: [:show]
   		resources :goals
       resources :checkins, only: [:show, :create, :index]
       resources :boards do

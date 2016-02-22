@@ -3,10 +3,6 @@ class FriendablesController < ApplicationController
   respond_to :json, :html
   
 
-  def set_current_user
-    User.current = current_user
-  end
-
   def friend_request
   	from_id = current_user.id 
   	to_id = params[:id] 

@@ -88,12 +88,13 @@ angular.module('starter.controllers', [])
 .controller('friendCtrl', function($scope, friend, userCheckins, $http, $state, $stateParams){
   friend.get({id: $stateParams.id}).$promise.then(function(response){
     $scope.friend = response
+    $scope.lastCheckin = response.last_checkin
     console.log(response)
   })
 
-  userCheckins.query({user_id: $stateParams.id}).$promise.then(function(response){
-    $scope.checkin = response[0];
-  })
+  // userCheckins.query({user_id: $stateParams.id}).$promise.then(function(response){
+  //   $scope.checkin = response[0];
+  // })
 })
 
 .controller('DashCtrl', function($scope, Goals, $http, $state) {
