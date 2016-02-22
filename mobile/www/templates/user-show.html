@@ -1,0 +1,18 @@
+<ion-view view-title="View User">
+	<ion-content>
+		<div class="list card">
+				<div class="item item-avatar">
+					<img src="img/ben.png">
+						<h2>{{user.username}}</h2>
+						<p>Sober Since: {{user.sober_date | date:short}}</p>
+				</div>
+				<div class="item item-body" align="center">
+					<h2 align="center">About Me</h2>
+					<p>
+						Blah blah blah about  me blah blah blah blah
+					</p>
+					<button class="button button-calm button-small" ng-click="newFriend()">Send Friend Request</button>
+				</div>
+			</div>
+	</ion-content>
+</ion-view>

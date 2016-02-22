@@ -68,26 +68,33 @@ angular.module('starter.controllers', [])
   friendRequests.query({id: $stateParams.id}).$promise.then(function(response){  
     $scope.friendRequest = response[0];  
   });
+})
 
+.controller('userShow', function($scope, $ionicPopup, friend, $state, $http, $stateParams, newFriendRequest){
+  friend.get({id: $stateParams.id}).$promise.then(function(response){
+    $scope.user = response;
+  })
+
+  $scope.newFriend = function(){
+    newFriendRequest.put({id: $stateParams.id})
+    $ionicPopup.alert({
+      title: "You have sent this user a friend request ",
+      body: "They should be back to you shortly!"
+    })
+    $state.go('tab.dash');
+  }
 
 })
 
-.controller('friendSearchCtrl', function($scope, $http, $state, friendSearch, friendSearchResults, $ionicPopup){
-  
 
+.controller('friendSearchCtrl', function($scope, $http, $state, friendSearch, friendSearchResults, $ionicPopup){
    $scope.Search = function() {
+      $scope.users = null
       searchParams = $scope.searchParams
 
       friendSearch.query({search: searchParams }).$promise.then(function(response){
-        friendSearchResults.add(response)
-
-        console.log(response);
-        $scope.users = friendSearchResults.users[0].users;
-        
+        $scope.users = response      
     });
-
-    
-
   }
 })
 

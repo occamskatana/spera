@@ -74,6 +74,12 @@ angular.module('starter.services', [])
   })
 })
 
+.factory('newFriendRequest', function($resource){
+  return $resource("http://localhost:3000/friendables/:id/friend_request", {id: '@id'}, {
+    put: {method: 'PUT'}
+  })
+})
+
 
 .factory('userCheckins', function($resource){
   return $resource("http://localhost:3000/api/v1/users/:user_id/checkins/", {user_id: '@user_id'}, {

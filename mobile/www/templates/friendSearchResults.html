@@ -10,9 +10,15 @@
 		    </button>
 		  </div>
 		  <ion-list ng-repeat="user in users">
-		  	<ion-item>
-		  		{{user.username}}
-		  	</ion-item>
+		  <a ui-sref="tab.user-show({id: {{user.id}} })" class="item item-thumbnail-left item-icon-right item-text-wrap">	
+	  		<img src="img/nedry.jpg">
+	  		<p>
+		  		Username: {{user.username}}<br>
+		  		Name: {{user.first_name}} {{user.last_name}}<br>
+		  		Sober Since: {{user.sober_date | date:short }}
+		  	</p>
+	  		<i class="icon ion-chevron-right icon-accessory"></i>		  	
+		  </a>
 		  </ion-list>
 		</div>
 	</ion-content>
