@@ -19,15 +19,13 @@ class FriendablesController < ApplicationController
      friendable.update_attributes(accepted: true)
     
     respond_with friendable
-      
-     
     
- 
   end
 
   def friend_request_reject
-  	friendable = Friendable.where(to_id: current_user.id, from_id: params[:id]).first 
-  	friendable.destroy
+  	friendable = Friendable.where(id: params[:id]).first 
+  	friendable.delete
+    render json: {status: 200, message: "Success"}, status: 200
   end
 
  

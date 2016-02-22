@@ -1,4 +1,5 @@
 angular.module('starter.services', [])
+.constant('BaseUrl', 'http://localhost:3000/api/v1')
 
 .factory('UserSession', function($resource) {
   return $resource("http://localhost:3000/users/sign_in.json");
@@ -17,12 +18,19 @@ angular.module('starter.services', [])
   })
 })
 
-// backup friend request function
+//  friend request accept
 .factory('friendRequestAccept', function($resource){
  return $resource("http://localhost:3000/friendables/:id/friend_request_accept", {id: '@id'}, {
     put: {method: 'PUT'},
   });
  })
+
+// friend request reject
+
+.factory('friendRequestReject', function($resource){
+  return $resource('http://localhost:3000/friendables/:id/friend_request_reject', {id: '@id'}, {
+  });
+})
 
 .factory('checkIn', function($resource) {
   return $resource("http://localhost:3000/api/v1/checkins", {}, {
@@ -49,7 +57,7 @@ angular.module('starter.services', [])
 })
 
 .factory('userCheckins', function($resource){
-  return $resource("http://localhost:3000/api/v1/users/:id/checkins", {id: '@id'}, {
+  return $resource("http://localhost:3000/api/v1/users/:user_id/checkins/", {user_id: '@user_id'}, {
     query: {method: 'GET', isArray: true}
   })
 })
@@ -58,7 +66,7 @@ angular.module('starter.services', [])
   return $resource(BaseUrl+'/boards/:id')
 })
 
-.constant('BaseUrl', 'http://localhost:3000/api/v1')
+
 
 
 .factory('Chats', function() {

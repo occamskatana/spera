@@ -1,11 +1,29 @@
 <ion-view view-title="{{friend.first_name}} {{friend.last_name}}">
-
 	<ion-content>
 		<ion-list>
 			<div class="list card">
-			
 				<div class="item item-avatar">
 					<img src="img/nedry.jpg">
+						<h2>About Me</h2>
+						<p>Member Since: {{friend.created_at | date:short}}
+				</div>
+				<div class="item item-body">
+					<img class="full-image" src="img/manuel.jpg">
+					<p>
+						Blah blah blah about  me blah blah blah blah
+					</p>
+					<p class="subdued">
+						<a href="#" class="subdued">1  like</a> 
+						<a href="#" class="subdued">340 friends </a>
+					</p>
+				</div>
+			</div>
+
+
+
+			<div class="list card">
+				<div class="item item-thumbnail-left">
+					<img src="img/max.png">
 					<h2>Last Checkin</h2>
 					<p>Mood: {{checkin.mood}}</p>
 					<p class="muted">{{checkin.created_at | date:short}}</p>
@@ -14,6 +32,8 @@
 	        </a>
 				</div>
 			</div>
+
+
 		</ion-list>
 	</ion-content>	
 </ion-view>

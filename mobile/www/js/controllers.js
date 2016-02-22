@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('friendRequestsCtrl', function($scope, $ionicPopup, friendRequests, $http, $state, $stateParams, $resource, friendRequestAccept){
+.controller('friendRequestsCtrl', function($scope, $ionicPopup, friendRequests, $http, $state, $stateParams, $resource, friendRequestAccept, friendRequestReject){
   friendRequests.query().$promise.then(function(response){
     
     $scope.requests = response
@@ -49,11 +49,20 @@ angular.module('starter.controllers', [])
     
   });
 
-  $scope.acceptFriendRequest = function() {
+  $scope.Accept = function() {
     friendRequestAccept.put({id: $stateParams.id})
     $ionicPopup.alert({
       title: "Thanks!",
       template: "You now have a new friend!"
+    })
+    $state.go('tab.chats').$apply
+  }
+
+  $scope.Reject = function() {
+    friendRequestReject.delete({id: $stateParams.id})
+    $ionicPopup.alert({
+      title: "Friend Request Rejected",
+      template: "de NIED"
     })
     $state.go('tab.chats')
   }
@@ -62,10 +71,6 @@ angular.module('starter.controllers', [])
     
     $scope.friendRequest = response[0];
     
-
-     
-
-    console.log($scope.friendRequest)
   });
 
 
@@ -83,11 +88,10 @@ angular.module('starter.controllers', [])
 .controller('friendCtrl', function($scope, friend, userCheckins, $http, $state, $stateParams){
   friend.get({id: $stateParams.id}).$promise.then(function(response){
     $scope.friend = response
-
+    console.log(response)
   })
 
-  userCheckins.query({id: $stateParams.id}).$promise.then(function(response){
-    
+  userCheckins.query({user_id: $stateParams.id}).$promise.then(function(response){
     $scope.checkin = response[0];
   })
 })

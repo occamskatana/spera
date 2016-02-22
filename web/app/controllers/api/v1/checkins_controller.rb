@@ -14,13 +14,13 @@ class Api::V1::CheckinsController < Api::V1::BaseController
 	end
 
 	def show
-		user = current_user
+		user = User.find(params[:user_id])
 		checkin = user.checkin.find(params[:id])
 		render json: checkin.to_json, status: 200
 	end
 
 	def index
-		user = current_user
+		user = User.find(params[:user_id])
 		checkins = user.checkins
 		render json: checkins.to_json, status: 200
 	end
