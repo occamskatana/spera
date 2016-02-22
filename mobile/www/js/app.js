@@ -40,7 +40,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
   // Each tab has its own nav history stack:
 
+  
+
   .state('tab.dash', {
+    cache: false,
     url: '/dash',
     views: {
       'tab-dash': {
@@ -50,21 +53,85 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
+  .state('tab.goal', {
+    url:'/dash/:id',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/goal.html',
+        controller: 'goalCtrl'
+      }
+    }
+  })
+
+  .state('tab.checkin', {
+    url: '/checkin',
+    views: {
+      'tab-checkin': {
+        templateUrl: 'templates/tab-checkin.html',
+        controller: 'checkinListController'
+      }
+    }
+  })
+
+  .state('tab.new-checkin', {
+    url: '/checkin/new',
+    views: {
+      'tab-checkin': {
+        controller: "checkinController",
+        templateUrl: "templates/new-checkin.html"
+      }
+    }
+    
+  })
+
+  .state('tab.new-goal', {
+    url: '/dash/goal',
+      views: {
+        'tab-dash': {      
+          controller: 'DashCtrl',
+          templateUrl: "templates/new-goal.html"
+        }
+    }
+  })
+
+
   .state('tab.chats', {
       url: '/chats',
       views: {
         'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+          templateUrl: 'templates/friends.html',
+          controller: 'friendsCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+
+  .state('tab.friendRequest', {
+    url: '/chats/requests/:id',
       views: {
         'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+          templateUrl: 'templates/friendrequest.html',
+          controller: 'friendRequestsCtrl'
+        }
+      }
+  })
+
+
+    .state('tab.chat-detail', {
+      url: '/chats/:id',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/friend.html',
+          controller: 'friendCtrl'
+        }
+      }
+    })
+
+    .state('tab.friend-checkin', {
+      url: '/chats/:id/checkin',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/friend-checkin.html',
+          controller: 'friendCtrl'
         }
       }
     })
@@ -83,7 +150,28 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         controller: 'AccountCtrl'
       }
     }
-  });
+  })
+
+  .state('tab.boards', {
+    url: '/boards',
+    views: {
+      'tab-boards': {
+        templateUrl: 'templates/tab-boards.html',
+        controller: 'BoardCtrl'
+      }
+    }
+  })
+
+  .state('tab.board-detail', {
+    url: '/boards/:id',
+    views: {
+      'tab-boards': {
+        templateUrl: 'templates/tab-board-detail.html',
+        controller: 'PostCtrl'
+      }
+    }
+  })
+  ;
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');

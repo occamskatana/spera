@@ -1,0 +1,25 @@
+<ion-view view-title="Friend Request">
+	<ion-content>
+
+		<div class="list card">
+			<div class="item item-avatar">
+				<img src="img/ben.png">
+				<h2>{{friendRequest.from_user}}</h2>
+				<p>Wants to be your friend!</p>
+			</div>
+			<div class="item item-image">
+				<img src="img/nedry.jpg">
+			</div>
+
+			<a class="item item-left assertive" href="#">
+				<i class="icon ion-close-circled">Reject</i>
+			</a>
+
+			<button class="item item-right positive" ng-click="acceptFriendRequest()">
+				<i class="icon ion-plus-circled">Accept</i>
+			</button>
+		</div>
+
+		
+	</ion-content>
+</ion-view>

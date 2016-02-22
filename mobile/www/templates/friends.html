@@ -1,0 +1,24 @@
+<ion-view view-title="My Friends">
+	<ion-content>
+		<div ng-controller="friendRequestsCtrl">
+			<div class="list" ng-repeat="request in requests">
+				<ion-item>
+					<a class="item item-thumbnail-left item-icon-right" ui-sref="tab.friendRequest({id: {{request.id}}})">
+						<img src="img/nedry.jpg">
+						<p class="">{{request.from_user}} wants to be friends</p>
+						<i class="icon ion-chevron-right icon-accessory"></i>
+					</a>
+				</ion-item>
+			</div>
+		</div>
+
+		<ion-list ng-repeat="friend in friends">
+			<a class="item item-avatar item-icon-right" href="#/tab/chats/{{friend.id}}">
+				<img src="img/nedry.jpg">
+				<h2>{{friend.first_name}} {{friend.last_name}}</h2>
+				<p>Friend Status Here </p>
+				<i class="icon ion-chevron-right icon-accessory"></i>
+			</a>
+		</ion-list>
+	</ion-content>
+</ion-view>

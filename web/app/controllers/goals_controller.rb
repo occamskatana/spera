@@ -1,4 +1,5 @@
 class GoalsController < ApplicationController
+  respond_to :json, :html
 
   before_action :set_goals, only: [:show, :edit, :update, :destroy]
   def new
@@ -7,7 +8,6 @@ class GoalsController < ApplicationController
   end
 
   def create
-    puts "#{goal_params}"
     @user = current_user
     goal = Goal.find_by title: "#{params["goal"]["title"]}"
 
@@ -20,6 +20,13 @@ class GoalsController < ApplicationController
     end
    
     redirect_to user_path(current_user)
+  end
+
+  def index
+    @user = User.find(params[:user_id])
+    @goals = @user.goals.all 
+
+    render json: @goals
   end
 
   def update

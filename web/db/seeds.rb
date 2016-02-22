@@ -27,14 +27,49 @@
 
 	goals = Goal.all 
 
-	objective = 100.times do Objective.create!(
+	objective = 100.times do Objective.create(
 		user: users.sample,
 		goal: goals.sample,
+		description: Faker::Hacker.say_something_smart,
 		date: Faker::Date.between(5.days.ago, Date.today)
 		)
 	end
 
+	checkin = 40.times do Checkin.create!(
+		user: users.sample,
+		remarks: Faker::Hipster.sentence, 
+		mood: Faker::Number.between(0, 6),
+		sober: true,
+		need_support: true,
+		created_at: Faker::Time.between(10.days.ago, Time.now, :all)
+		)
+	end
+
+	friendables = 15.times do Friendable.create!(
+		to_id: users.sample.id, 
+		from_id: users.sample.id, 
+		accepted: true
+		)
+	end
+
+	board = Board.create!(
+		title: "Recovery Jobs",
+		description: "Recovery friendly jobs in Nashville",
+		user_id: users.sample.id
+		)
+
+	posts = Post.create!(
+		title: "Panera Bread Cashier",
+		content: "Panera on 21st is hiring part time positions at $10/hr",
+		board_id: board.id,
+		user_id: users.sample.id
+		)
+
 	puts "#{Objective.count} Objectives in database"
 	puts "#{Goal.count} goals in database"
 	puts "#{User.count} users in database"
+	puts "#{Checkin.count} checkins in database"
+	puts "#{Friendable.count} friend records added"
+	puts "#{Board.count} boards in database"
+	puts "#{Post.count} posts in database"
 

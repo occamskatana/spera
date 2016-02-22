@@ -1,4 +1,11 @@
-<h1>Spera Health Product Outline</h1>
+<h1>Spera Health Product Outline <br>
+		<h3>Current Contributors
+			<ul>
+				<li>John Carter</li>
+				<li>Chase Merlin</li>
+			</ul>
+		</h3>
+</h1>
  
  
 <h2> Product Vision: Technology that helps people stay sober, receive social support, and ultimately live happier lives. </h2>

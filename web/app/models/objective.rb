@@ -2,7 +2,9 @@ class Objective < ActiveRecord::Base
   belongs_to :user
   belongs_to :goal
 
-  default_scope {order('date DESC')}
+  before_save {self.completed ||= :false}
+
+  
 
   def day 
   	self.date.strftime('%D')

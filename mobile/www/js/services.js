@@ -4,6 +4,63 @@ angular.module('starter.services', [])
   return $resource("http://localhost:3000/users/sign_in.json");
 })
 
+.factory('Goals', function($resource){
+  return $resource("http://localhost:3000/api/v1/goals", {}, {
+    query: {method: 'GET', isArray: false},
+    create: {method: 'POST'}
+  })
+})
+
+.factory('friendRequests', function($resource){
+  return $resource("http://localhost:3000/api/v1/friendables/:id", {id: '@id'}, {
+    query: {method: 'GET', isArray: true },
+  })
+})
+
+// backup friend request function
+.factory('friendRequestAccept', function($resource){
+ return $resource("http://localhost:3000/friendables/:id/friend_request_accept", {id: '@id'}, {
+    put: {method: 'PUT'},
+  });
+ })
+
+.factory('checkIn', function($resource) {
+  return $resource("http://localhost:3000/api/v1/checkins", {}, {
+    query: {method: 'GET', isArray: true},
+    create: {method: 'POST'}
+  })
+})
+
+.factory('objective', function($resource){
+  return $resource("http://localhost:3000/api/v1/goals/:id", {id: '@id'}, {
+
+  })
+})
+
+.factory('friends', function($resource) {
+  return $resource("http://localhost:3000/api/v1/users", {}, {
+    query: {method: 'GET', isArray: true}
+  })
+})
+
+.factory('friend', function($resource){
+  return $resource("http://localhost:3000/api/v1/users/:id", {id: '@id'}, {
+  })
+})
+
+.factory('userCheckins', function($resource){
+  return $resource("http://localhost:3000/api/v1/users/:id/checkins", {id: '@id'}, {
+    query: {method: 'GET', isArray: true}
+  })
+})
+
+.factory('Board', function($resource, BaseUrl) {
+  return $resource(BaseUrl+'/boards/:id')
+})
+
+.constant('BaseUrl', 'http://localhost:3000/api/v1')
+
+
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 

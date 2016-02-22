@@ -1,0 +1,19 @@
+<ion-view view-title="{{friend.first_name}} {{friend.last_name}}">
+
+	<ion-content>
+		<ion-list>
+			<div class="list card">
+			
+				<div class="item item-avatar">
+					<img src="img/nedry.jpg">
+					<h2>Last Checkin</h2>
+					<p>Mood: {{checkin.mood}}</p>
+					<p class="muted">{{checkin.created_at | date:short}}</p>
+					<a href="/#/tab/chats/{{friend.id}}/checkin" class="item-icon-right">
+	            <i class="icon ion-chevron-right"></i>
+	        </a>
+				</div>
+			</div>
+		</ion-list>
+	</ion-content>	
+</ion-view>
