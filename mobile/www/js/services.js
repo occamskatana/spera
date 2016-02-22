@@ -54,6 +54,7 @@ angular.module('starter.services', [])
   })
 })
 
+.constant('BaseUrl', 'http://localhost:3000/api/v1')
 
 
 .factory('Chats', function() {
