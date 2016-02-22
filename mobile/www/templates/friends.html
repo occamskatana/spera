@@ -1,19 +1,6 @@
 <ion-view view-title="My Friends">
 	<ion-content>
-		
-			<div class="list" ng-controller="friendSearchCtrl">
-			  <div class="item item-input-inset">
-			    <label class="item-input-wrapper">
-			      <input type="text" placeholder="Email" ng-model="searchParams">
-			    </label>
-			    <button class="button button-small" ng-click="Search()">
-			      Submit
-			    </button>
-			  </div>
-			  <div class="list" ng-repeat="user in users">
-			  {{user.username}}
-			  </div>
-			</div>
+		<button class="button button-full button-energized" ui-sref="tab.friendSearchResults">Find new Friends</button>
 		
 		<div ng-controller="friendRequestsCtrl">
 			<div class="list" ng-repeat="request in requests">

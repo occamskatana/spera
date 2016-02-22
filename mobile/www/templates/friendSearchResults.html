@@ -1,4 +1,19 @@
-<div class="list" ng-repeat="user in users">
-	{{user}}
-
-</div>
+<ion-view>
+	<ion-content padding="true">
+		<div class="list" ng-controller="friendSearchCtrl">
+		  <div class="item item-input-inset">
+		    <label class="item-input-wrapper">
+		      <input type="text" placeholder="Email" ng-model="searchParams">
+		    </label>
+		    <button class="button button-small" ng-click="Search()">
+		      Submit
+		    </button>
+		  </div>
+		  <ion-list ng-repeat="user in users">
+		  	<ion-item>
+		  		{{user.username}}
+		  	</ion-item>
+		  </ion-list>
+		</div>
+	</ion-content>
+</ion-view>
