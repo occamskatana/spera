@@ -150,7 +150,28 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         controller: 'AccountCtrl'
       }
     }
-  });
+  })
+
+  .state('tab.boards', {
+    url: '/boards',
+    views: {
+      'tab-boards': {
+        templateUrl: 'templates/tab-boards.html',
+        controller: 'BoardCtrl'
+      }
+    }
+  })
+
+  .state('tab.board-detail', {
+    url: '/boards/:id',
+    views: {
+      'tab-boards': {
+        templateUrl: 'templates/tab-board-detail.html',
+        controller: 'PostCtrl'
+      }
+    }
+  })
+  ;
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');

@@ -158,4 +158,17 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
+})
+
+.controller('BoardCtrl', function($scope, $stateParams, Board) {
+  Board.query().$promise.then(function(response) {
+    $scope.boards = response;
+  });
+})
+
+.controller('PostCtrl', function($scope, $stateParams, Board) {
+  Board.get({id: $stateParams.id}).$promise.then(function(response) {
+    $scope.board = response.board;
+    $scope.posts = response.board.posts
+  })
 });

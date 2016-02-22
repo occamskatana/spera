@@ -34,6 +34,9 @@ end
       resources :friendables
   		resources :goals
       resources :checkins, only: [:show, :create, :index]
+      resources :boards do
+        resources :posts
+      end
   	end
   end
 

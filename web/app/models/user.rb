@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
     has_many :goals, through: :objectives
     has_many :friendables
     has_many :users, through: :friendables
+    has_many :posts
 
     def friend_list
     relations = Friendable.all.select do |f|

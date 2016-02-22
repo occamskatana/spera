@@ -1,0 +1,17 @@
+<ion-view view-title="Boards">
+  <ion-content>
+    <ion-list ng-repeat="board in boards">
+      <a href="#/tab/boards/{{board.id}}">  
+        <div class="list card">
+          <div class="item">
+            <h2>{{board.title}}</h2>
+            <p>{{board.description}}</p>
+            <p>
+              <a href="#" class="subdued">X Number of Likes</a>
+            </p>
+          </div>
+        </div>
+      </a>
+    </ion-list>
+  </ion-content>
+</ion-view>

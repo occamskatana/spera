@@ -54,6 +54,10 @@ angular.module('starter.services', [])
   })
 })
 
+.factory('Board', function($resource, BaseUrl) {
+  return $resource(BaseUrl+'/boards/:id')
+})
+
 .constant('BaseUrl', 'http://localhost:3000/api/v1')
 
 

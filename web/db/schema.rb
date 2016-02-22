@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219225650) do
+ActiveRecord::Schema.define(version: 20160222003830) do
 
   create_table "boards", force: :cascade do |t|
-    t.integer  "user_id"
     t.string   "title"
     t.string   "description"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -64,10 +64,10 @@ ActiveRecord::Schema.define(version: 20160219225650) do
   add_index "objectives", ["user_id"], name: "index_objectives_on_user_id"
 
   create_table "posts", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "board_id"
     t.string   "title"
     t.text     "content"
+    t.integer  "user_id"
+    t.integer  "board_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

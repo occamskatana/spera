@@ -1,0 +1,10 @@
+<ion-view view-title="{{board.title}}">
+  <ion-content>
+    <ion-list ng-repeat="post in posts">
+      <ion-item>
+      	<p> {{post.content}} </p>
+      	<p> {{post.user.username}}
+    	</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

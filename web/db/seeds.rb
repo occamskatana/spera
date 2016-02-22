@@ -51,9 +51,25 @@
 		accepted: true
 		)
 	end
+
+	board = Board.create!(
+		title: "Recovery Jobs",
+		description: "Recovery friendly jobs in Nashville",
+		user_id: users.sample.id
+		)
+
+	posts = Post.create!(
+		title: "Panera Bread Cashier",
+		content: "Panera on 21st is hiring part time positions at $10/hr",
+		board_id: board.id,
+		user_id: users.sample.id
+		)
+
 	puts "#{Objective.count} Objectives in database"
 	puts "#{Goal.count} goals in database"
 	puts "#{User.count} users in database"
 	puts "#{Checkin.count} checkins in database"
 	puts "#{Friendable.count} friend records added"
+	puts "#{Board.count} boards in database"
+	puts "#{Post.count} posts in database"
 
