@@ -8,7 +8,7 @@ class Api::V1::BoardsController < Api::V1::BaseController
 
 	def show
 		board = Board.find(params[:id])
-		render json: BoardSerializer.new(board).to_json
+		render json: board, serializer: BoardSerializer, status: 201
 	end
 
 end

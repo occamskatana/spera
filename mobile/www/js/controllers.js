@@ -190,6 +190,7 @@ angular.module('starter.controllers', [])
 .controller('BoardCtrl', function($scope, $stateParams, Board) {
   Board.query().$promise.then(function(response) {
     $scope.boards = response;
+    console.log(response)
   });
 })
 
