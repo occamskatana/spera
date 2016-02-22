@@ -1,5 +1,14 @@
 <ion-view view-title="My Friends">
 	<ion-content>
+		
+			<div class="list list-inset" ng-controller="friendSearchCtrl">
+				<label class="item item-input">
+				<i class="icon ion-search placeholder-icon"></i>
+					<input type="text" placeholder="Search for friends here">
+					<button class="button button-small">Submit</button>
+				</label>
+			</div>
+		
 		<div ng-controller="friendRequestsCtrl">
 			<div class="list" ng-repeat="request in requests">
 				<ion-item>

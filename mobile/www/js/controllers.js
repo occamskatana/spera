@@ -36,8 +36,7 @@ angular.module('starter.controllers', [])
           title: 'An error occured. Please try again',
           template: 'error'
         });
-      }
-      );
+      });     
   }
 })
 
@@ -66,14 +65,17 @@ angular.module('starter.controllers', [])
     })
     $state.go('tab.chats')
   }
-  friendRequests.query({id: $stateParams.id}).$promise.then(function(response){
-    
-    
-    $scope.friendRequest = response[0];
-    
+  friendRequests.query({id: $stateParams.id}).$promise.then(function(response){  
+    $scope.friendRequest = response[0];  
   });
 
 
+})
+
+.controller('friendSearchCtrl', function($scope, $http, $state, friendSearch){
+  friendSearch.query().$promise.then(function(response){
+    console.log(response)
+  })
 })
 
 .controller('ResourcesCtrl', function($scope, $http, $state){ 
@@ -98,7 +100,7 @@ angular.module('starter.controllers', [])
 
 
 .controller('friendsCtrl', function($scope, friends, $http, $state){
-  friends.query().$promise.then(function(response){
+  friends.query({user_id: window.localStorage.userId}).$promise.then(function(response){
     $scope.friends = response
     
   });

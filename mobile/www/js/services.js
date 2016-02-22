@@ -41,12 +41,16 @@ angular.module('starter.services', [])
 
 .factory('objective', function($resource){
   return $resource("http://localhost:3000/api/v1/goals/:id", {id: '@id'}, {
+  })
+})
 
+.factory('friendSearch', function($resource){
+  return $resource("http://localhost:3000/api/v1/users", {params: '@search'}, {
   })
 })
 
 .factory('friends', function($resource) {
-  return $resource("http://localhost:3000/api/v1/users", {}, {
+  return $resource("http://localhost:3000/api/v1/users/:user_id/friend_list", {user_id: "@user_id"}, {
     query: {method: 'GET', isArray: true}
   })
 })

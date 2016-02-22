@@ -65,12 +65,12 @@
 		user_id: users.sample.id
 		)
 
-	friend_requests = 15.times do Friendable.create!(
-		to_id: 1, 
-		from_id: users.sample.id, 
-		accepted: false
-		)
-	end
+	# friend_requests = 15.times do Friendable.create!(
+	# 	to_id: 1, 
+	# 	from_id: users.sample.id, 
+	# 	accepted: false
+	# 	)
+	# end
 
 	puts "#{Objective.count} Objectives in database"
 	puts "#{Goal.count} goals in database"

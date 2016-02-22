@@ -4,11 +4,12 @@ class Api::V1::UsersController < Api::V1::BaseController
 	
 
 	def index
-			user = current_user
-				
-			friends = current_user.friends.to_a
-
-		 render json: friends, each_serializer: UserSerializer, root: false
+			if params[:search]
+				users = User.search("#{params[:search]}")
+				render json: users, each_serializer: UserSerializer, root: false, status: 201
+			else
+				render json: {message: "nope", status: 401}, status: 401
+			end
 	end
 
 	def show
@@ -18,5 +19,14 @@ class Api::V1::UsersController < Api::V1::BaseController
 			friend = User.find(params[:id])
 			
 			render json: friend, serializer: UserSerializer, root: false, status: 201			
+	end
+
+
+	def friend_list
+		user = current_user
+				
+			friends = current_user.friends.to_a
+
+		 render json: friends, each_serializer: UserSerializer, root: false
 	end
 end

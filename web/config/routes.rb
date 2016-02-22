@@ -29,9 +29,10 @@ end
   namespace :api do 
   	namespace :v1 do 
   		resources :users, only: [:show, :index] do 
+        get 'friend_list'
         resources :checkins, only: [:show, :index] 
       end
-      resources :friendables, only: [:show]
+      resources :friendables, only: [:show, :index]
   		resources :goals
       resources :checkins, only: [:show, :create, :index]
       resources :boards do

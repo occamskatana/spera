@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+    before_save {self.private ||= :true}
       
     has_many :checkins
     has_many :objectives
@@ -35,6 +37,10 @@ class User < ActiveRecord::Base
     	buddies <<	User.find(f)
     	end
     	return buddies
+    end
+
+    def self.search(search)
+        where("username LIKE :search OR first_name LIKE :search OR last_name LIKE :search", search: "%#{search}%")
     end
 
     
