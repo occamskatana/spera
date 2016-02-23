@@ -40,46 +40,37 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('friendRequestsCtrl', function($scope, $ionicPopup, $ionicPopover, friendRequests, $http, $state, $stateParams, $resource, friendRequestAccept, friendRequestReject){
-  friendRequests.query().$promise.then(function(response){
-    
-    $scope.requests = response;
-    $scope.friendRequestCount = response.length;
-   
-    
-    $ionicPopover.fromTemplateUrl('/templates/friend-request-popover.html', {
-    scope: $scope
-  }).then(function(popover) {
-    $scope.popover = popover;
-  });
+.controller('modalCtrl', function($scope, $ionicModal){
+  $ionicModal.fromTemplateUrl('/templates/friend-request-modal.html', function($ionicModal) {
+        $scope.modal = $ionicModal;
+    }, {
+        // Use our scope for the scope of the modal to keep it simple
+        scope: $scope,
+        // The animation we want to use for the modal entrance
+        animation: 'slide-in-up'
+    });  
+})
+
+.controller('friendRequestsCtrl', function($scope, $ionicPopup, $ionicModal, friendRequests, $http, $state, $stateParams, $resource, friendRequestAccept, friendRequestReject){
+
+  getData = function() {
+    friendRequests.query().$promise.then(function(response){    
+      $scope.requests = response;
+      $scope.friendRequestCount = response.length;
+      console.log($scope.requests)
+    })
+  }
+   getData();
 
 
-  $scope.openPopover = function($event) {
-    $scope.popover.show($event);
-  };
-  $scope.closePopover = function() {
-    $scope.popover.hide();
-  };
-  //Cleanup the popover when we're done with it!
-  $scope.$on('$destroy', function() {
-    $scope.popover.remove();
-  });
-  // Execute action on hide popover
-  $scope.$on('popover.hidden', function() {
-    // Execute action
-  });
-  // Execute action on remove popover
-  $scope.$on('popover.removed', function() {
-    // Execute action
-  });
-});
   $scope.Accept = function() {
     friendRequestAccept.put({id: $stateParams.id})
     $ionicPopup.alert({
       title: "Thanks!",
       template: "You now have a new friend!"
     })
-    $state.go('tab.chats').$apply
+    $state.go('tab.chats')
+    getData();
   }
 
   $scope.Reject = function() {
@@ -89,11 +80,11 @@ angular.module('starter.controllers', [])
       template: "de NIED"
     })
     $state.go('tab.chats')
+    getData();
   }
-  friendRequests.query({id: $stateParams.id}).$promise.then(function(response){  
-    $scope.friendRequest = response[0];  
-  });
 })
+
+
 
 .controller('userShow', function($scope, $ionicPopup, friend, $state, $http, $stateParams, newFriendRequest){
   friend.get({id: $stateParams.id}).$promise.then(function(response){

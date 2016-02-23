@@ -1,0 +1,15 @@
+<ion-modal-view>
+	<ion-header-bar class="bar bar-header bar-positive">
+	  <h1 class="title">My Modal title</h1>
+	  <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
+	</ion-header-bar>
+	<ion-content ng-controller="friendRequestsCtrl">
+	  <ion-list ng-repeat="request in requests">
+	  	<a class="item item-avatar-left item-icon-right" ng-click="modal.hide()" ui-sref="tab.friendRequest({id: request.id})">
+	  		<img src="img/manuel.jpg">
+	  		{{request.from_user}}
+	  		<i class="icon ion-chevron-right icon-accessory"></i>
+	  	</a>
+	  </ion-list>
+	</ion-content>
+</ion-modal-view>
