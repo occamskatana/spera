@@ -4,10 +4,12 @@
 		
 		<div ng-controller="modalCtrl" align="center">
 			<button class="button button-wide" ng-click="modal.show()" align="center">
-				<i class="icon ion-person-stalker">{{friendRequestCount}} Friend Requests</i>
+				<i class="icon ion-person-stalker" ng-controller="friendRequestsCtrl">{{friendRequestCount}} Friend Requests</i>
 			</button>
 		</div>
-
+		<ion-item class="item item-divider">
+				<h2 align="center">Friends</h2>
+		</ion-item>
 		<ion-list ng-repeat="friend in friends">
 			<a class="item item-avatar item-icon-right" href="#/tab/chats/{{friend.id}}">
 				<img src="img/nedry.jpg">

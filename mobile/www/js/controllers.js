@@ -53,14 +53,14 @@ angular.module('starter.controllers', [])
 
 .controller('friendRequestsCtrl', function($scope, $ionicPopup, $ionicModal, friendRequests, $http, $state, $stateParams, $resource, friendRequestAccept, friendRequestReject){
 
-  getData = function() {
+  $scope.getData = function() {
     friendRequests.query().$promise.then(function(response){    
       $scope.requests = response;
       $scope.friendRequestCount = response.length;
       console.log($scope.requests)
     })
   }
-   getData();
+   $scope.getData();
 
 
   $scope.Accept = function() {
@@ -70,7 +70,7 @@ angular.module('starter.controllers', [])
       template: "You now have a new friend!"
     })
     $state.go('tab.chats')
-    getData();
+  
   }
 
   $scope.Reject = function() {
@@ -80,7 +80,6 @@ angular.module('starter.controllers', [])
       template: "de NIED"
     })
     $state.go('tab.chats')
-    getData();
   }
 })
 
