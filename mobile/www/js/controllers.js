@@ -40,14 +40,39 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('friendRequestsCtrl', function($scope, $ionicPopup, friendRequests, $http, $state, $stateParams, $resource, friendRequestAccept, friendRequestReject){
+.controller('friendRequestsCtrl', function($scope, $ionicPopup, $ionicPopover, friendRequests, $http, $state, $stateParams, $resource, friendRequestAccept, friendRequestReject){
   friendRequests.query().$promise.then(function(response){
     
-    $scope.requests = response
+    $scope.requests = response;
+    $scope.friendRequestCount = response.length;
+   
     
-    
+    $ionicPopover.fromTemplateUrl('/templates/friend-request-popover.html', {
+    scope: $scope
+  }).then(function(popover) {
+    $scope.popover = popover;
   });
 
+
+  $scope.openPopover = function($event) {
+    $scope.popover.show($event);
+  };
+  $scope.closePopover = function() {
+    $scope.popover.hide();
+  };
+  //Cleanup the popover when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.popover.remove();
+  });
+  // Execute action on hide popover
+  $scope.$on('popover.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove popover
+  $scope.$on('popover.removed', function() {
+    // Execute action
+  });
+});
   $scope.Accept = function() {
     friendRequestAccept.put({id: $stateParams.id})
     $ionicPopup.alert({
@@ -114,7 +139,7 @@ angular.module('starter.controllers', [])
     name: "Journal"
   }];
 
-  console.log($scope.resources)
+  
 })
 
 
@@ -130,7 +155,6 @@ angular.module('starter.controllers', [])
   friend.get({id: $stateParams.id}).$promise.then(function(response){
     $scope.friend = response
     $scope.lastCheckin = response.last_checkin
-    console.log(response)
   })
 
   // userCheckins.query({user_id: $stateParams.id}).$promise.then(function(response){
@@ -210,7 +234,7 @@ angular.module('starter.controllers', [])
 .controller('BoardCtrl', function($scope, $stateParams, Board) {
   Board.query().$promise.then(function(response) {
     $scope.boards = response;
-    console.log(response)
+    
   });
 })
 

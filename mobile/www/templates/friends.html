@@ -3,7 +3,7 @@
 		<button class="button button-full button-energized" ui-sref="tab.friendSearchResults">Find new Friends</button>
 		
 		<div ng-controller="friendRequestsCtrl">
-			<div class="list" ng-repeat="request in requests">
+			<!-- <div class="list" ng-repeat="request in requests">
 				<ion-item>
 					<a class="item item-thumbnail-left item-icon-right" ui-sref="tab.friendRequest({id: {{request.id}}})">
 						<img src="img/nedry.jpg">
@@ -11,7 +11,12 @@
 						<i class="icon ion-chevron-right icon-accessory"></i>
 					</a>
 				</ion-item>
-			</div>
+			</div> -->
+				<div align="center" class="">
+					<button class="button button-wide" ng-click="openPopover($event)" align="center">
+						<i class="icon ion-person-stalker">{{friendRequestCount}} Friend Requests</i>
+					</button>
+				</div>
 		</div>
 
 		<ion-list ng-repeat="friend in friends">

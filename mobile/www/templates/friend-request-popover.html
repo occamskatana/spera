@@ -1,0 +1,18 @@
+<ion-popover-view>
+	<ion-header-bar>
+	  <h1 class="title">Friend Requests</h1>
+	</ion-header-bar>
+	<ion-content>
+	 <div ng-controller="friendRequestsCtrl">
+			<div class="list" ng-repeat="request in requests">
+				<ion-item>
+					<a class="item item-thumbnail-left item-icon-right" ng-click="closePopover()" ui-sref="tab.friendRequest({id: {{request.id}}})">
+						<img src="img/nedry.jpg">
+						<p class="">{{request.from_user}} wants to be friends</p>
+						<i class="icon ion-chevron-right icon-accessory"></i>
+					</a>
+				</ion-item>
+			</div>
+		</div>
+	</ion-content>
+</ion-popover-view>
