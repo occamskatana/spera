@@ -192,6 +192,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
+  .state('tab.journal', {
+    url:'/resources/journal',
+    views: {
+      'tab-resources': {
+        templateUrl: 'templates/journal.html',
+        controller: 'JournalCtrl'
+      }
+    }
+  })
+
   .state('tab.boards', {
     url: '/resources/boards',
     views: {

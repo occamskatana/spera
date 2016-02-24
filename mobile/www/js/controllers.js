@@ -127,7 +127,8 @@ angular.module('starter.controllers', [])
   }, {
     name: "Jobs and Volunteering"
   }, {
-    name: "Journal"
+    name: "Journal",
+    url: "http://localhost:8100/#/tab/resources/journal"
   }];
 
   
@@ -310,6 +311,20 @@ angular.module('starter.controllers', [])
       $scope.clickTest = function() {
         alert('Example of infowindow with ng-click')
       };
+})
+
+.controller('JournalCtrl', function($scope, $http, $timeout){
+
+
+  $scope.autoExpand = function(e) {
+        var element = typeof e === 'object' ? e.target : document.getElementById(e);
+        var scrollHeight = element.scrollHeight -20; // replace 60 by the sum of padding-top and padding-bottom
+        element.style.height =  scrollHeight + "px";    
+    };
+  
+  function expand() {
+    $scope.autoExpand('TextArea');
+  }
 })
 
 .controller('PostCtrl', function($scope, $stateParams, Board) {
