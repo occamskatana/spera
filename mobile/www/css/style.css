@@ -30,6 +30,15 @@ transition: height 2s ease;
   height: 100%;
 }
 
+./*popover {
+  height: auto;
+}
+
+ion-popover-view.fit ion-content {
+  position: relative !important;
+}*/
+
+
 .scroll {
   height: 100%;
 }

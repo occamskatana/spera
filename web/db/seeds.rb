@@ -37,7 +37,7 @@
 
 	checkin = 40.times do Checkin.create!(
 		user: users.sample,
-		remarks: Faker::Hipster.sentence, 
+		remarks: Faker::Company.bs, 
 		mood: Faker::Number.between(0, 6),
 		sober: true,
 		need_support: true,
@@ -65,12 +65,12 @@
 		user_id: users.sample.id
 		)
 
-	# friend_requests = 15.times do Friendable.create!(
-	# 	to_id: 1, 
-	# 	from_id: users.sample.id, 
-	# 	accepted: false
-	# 	)
-	# end
+	friend_requests = 20.times do Friendable.create!(
+		to_id: 1, 
+		from_id: users.sample.id, 
+		accepted: false
+		)
+	end
 
 	puts "#{Objective.count} Objectives in database"
 	puts "#{Goal.count} goals in database"
@@ -79,5 +79,5 @@
 	puts "#{Friendable.count} friend records added"
 	puts "#{Board.count} boards in database"
 	puts "#{Post.count} posts in database"
-	puts "#{Friendable.count} friend requests made for user 1"
+	puts "#{Friendable.where(to_id: 1).count} friend requests made for user 1"
 
