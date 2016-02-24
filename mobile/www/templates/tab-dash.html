@@ -7,7 +7,7 @@
         <div class="item item-text-wrap item-thumbnail-left"> 
           <img src="http://lorempixel.com/200/200/">
           <p>{{ objective.title | uppercase }}</p>
-          <a href="/#/tab/dash/{{objective.id}}" class="item-icon-right"><i class="icon ion-chevron-right icon-accessory"></i></a>
+          <a class="item-icon-right" ng-controller="goalPopoverCtrl" ng-click="openPopover($event)"><i class="icon ion-android-more-vertical"></i></a>
           <p>{{ objective.date | date:short }}</p> 
         </div>
       </ion-item>
