@@ -1,9 +1,38 @@
 <ion-view view-title="Account">
   <ion-content>
     <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
+	    <ion-toggle ng-model="settings.enableFriends">
+	        Enable Friends
+	    </ion-toggle>
+	    <ion-toggle>
+	    	Enable Messaging
+	    </ion-toggle>
+	    <div class="card">
+		    <div class="item item-divider" align="center">
+		    	Share Checkins With
+		    </div>
+	    	<div class="item item-text-wrap"> 
+	    		<ion-checkbox>Friends</ion-checkbox>
+	    		<ion-checkbox>Sponsor</ion-checkbox>
+	    		<ion-checkbox>Caron Renaissance</ion-checkbox>
+	    		<ion-checkbox>Sober Network</ion-checkbox>
+	    	</div>
+	    </div>
+
+	    <div class="card">
+		    <div class="item item-divider" align="center">
+		    	Alerts
+		    </div>
+	    	<div class="item item-text-wrap"> 
+	    		<ion-checkbox>Missed Check-In</ion-checkbox>
+	    		<ion-checkbox>Upcoming UA</ion-checkbox>
+	    		<ion-checkbox>Mood Low</ion-checkbox>
+	    		<ion-checkbox>Craving High</ion-checkbox>
+	    		<ion-checkbox>Missed IOP</ion-checkbox>
+	    		<ion-checkbox>Relapse</ion-checkbox>
+	    	</div>
+	    </div>
+
     </ion-list>
   </ion-content>
 </ion-view>
