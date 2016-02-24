@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     has_many :posts
 
     def friend_list
-    relations = Friendable.all.select do |f|
+        relations = Friendable.all.select do |f|
     		f.accepted == true && f.to_id == self.id || f.from_id == self.id 
     	end
     	friends_ids = Array.new

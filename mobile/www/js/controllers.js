@@ -57,7 +57,7 @@ angular.module('starter.controllers', [])
     friendRequests.query().$promise.then(function(response){    
       $scope.requests = response;
       $scope.friendRequestCount = response.length;
-      console.log($scope.requests)
+      
     })
   }
    $scope.getData();
@@ -137,7 +137,7 @@ angular.module('starter.controllers', [])
 .controller('friendsCtrl', function($scope, friends, $http, $state){
   friends.query({user_id: window.localStorage.userId}).$promise.then(function(response){
     $scope.friends = response
-    
+    console.log($scope.friends)
   });
 })
 

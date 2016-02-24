@@ -8,15 +8,15 @@
 			</button>
 		</div>
 		<ion-item class="item item-divider">
-				<h2 align="center">Friends</h2>
+				<input type="text" ng-model="query" placeholder="Search My Friends">
 		</ion-item>
-		<ion-list ng-repeat="friend in friends">
+		<div ng-repeat="friend in friends | filter:query">
 			<a class="item item-avatar item-icon-right" href="#/tab/chats/{{friend.id}}">
 				<img src="img/nedry.jpg">
 				<h2>{{friend.first_name}} {{friend.last_name}}</h2>
 				<p>Friend Status Here </p>
 				<i class="icon ion-chevron-right icon-accessory"></i>
 			</a>
-		</ion-list>
+		</div>
 	</ion-content>
 </ion-view>
