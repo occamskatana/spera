@@ -50,17 +50,23 @@ angular.module('starter.services', [])
   })
 })
 
-.factory('friendSearchResults', function(){
-  searchResults = {}
-
-  searchResults.users = []
-
-  searchResults.add = function(user){
-    searchResults.users.push({id: searchResults.users.length, users: user})
-  };
-
-  return searchResults;
+.factory('userEvents', function($resource){
+  return $resource("http://localhost:3000/api/v1/events", {}, {
+    query: {method: 'GET', isArray: true}
+  })
 })
+
+// .factory('friendSearchResults', function(){
+//   searchResults = {}
+
+//   searchResults.users = []
+
+//   searchResults.add = function(user){
+//     searchResults.users.push({id: searchResults.users.length, users: user})
+//   };
+
+//   return searchResults;
+// })
 
 
 .factory('friends', function($resource) {

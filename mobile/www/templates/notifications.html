@@ -1,0 +1,9 @@
+<ion-popover-view ng-controller="userEventsCtrl">
+	<ion-content padding="true">
+		<div class="list" ng-repeat="event in events">
+			<div class="item-text-wrap">
+				<p>{{event.user.first_name}} {{event.user.last_name}} {{event.name}}</p> 
+			</div>
+		</div>
+	</ion-content>
+</ion-popover-view>

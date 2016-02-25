@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
     has_many :friendables
     has_many :users, through: :friendables
     has_many :posts
+    has_many :events
 
     def friend_list
         relations = Friendable.all.select do |f|
@@ -37,6 +38,10 @@ class User < ActiveRecord::Base
     	buddies <<	User.find(f)
     	end
     	return buddies
+    end
+
+    def show_event
+        Event.where(user_id: friend_list)
     end
 
     def self.search(search)

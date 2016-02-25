@@ -72,6 +72,11 @@
 		)
 	end
 
+	events = 50.times do Event.create!(
+		name: Faker::Company.bs, 
+		user_id: users.sample.id
+		)
+	end
 	puts "#{Objective.count} Objectives in database"
 	puts "#{Goal.count} goals in database"
 	puts "#{User.count} users in database"
@@ -80,4 +85,5 @@
 	puts "#{Board.count} boards in database"
 	puts "#{Post.count} posts in database"
 	puts "#{Friendable.where(to_id: 1).count} friend requests made for user 1"
+	puts "#{Event.count} events in database"
 

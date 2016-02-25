@@ -133,8 +133,38 @@ angular.module('starter.controllers', [])
 
   
 })
+.controller('eventsPopoverCtrl', function($state, userEvents, $http, $scope, $ionicPopover){
+  $ionicPopover.fromTemplateUrl('templates/notifications.html', {
+    scope: $scope
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });
+    $scope.openPopover = function($event) {
+    $scope.popover.show($event);
+  };
+  $scope.closePopover = function() {
+    $scope.popover.hide();
+  };
+  //Cleanup the popover when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.popover.remove();
+  });
+  // Execute action on hide popover
+  $scope.$on('popover.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove popover
+  $scope.$on('popover.removed', function() {
+    // Execute action
+  });
+})
 
 
+.controller('userEventsCtrl', function($scope, userEvents){
+  userEvents.query().$promise.then(function(response){
+    $scope.events = response
+  })
+})
 
 .controller('friendsCtrl', function($scope, friends, $http, $state){
   friends.query({user_id: window.localStorage.userId}).$promise.then(function(response){
