@@ -10,7 +10,7 @@ class UserSerializer < ActiveModel::Serializer
 	end
 
 	def notifications
-		object.show_event
+		object.notifications
 	end
 
 	
