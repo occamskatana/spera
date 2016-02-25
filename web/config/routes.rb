@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
  
 
+  get 'events/create'
+
   get 'friendables/friend_request'
 
   root to: 'welcome#index'
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do 
     resources :goals
     resources :checkins, only: []
+    resources :events, only: [:create]
   end
 
   resources :friendable, defaults: {format: 'json'} do
@@ -34,8 +37,9 @@ end
       end
       resources :friendables, only: [:show, :index]
   		resources :goals
-      resources :events, only: [:index]
+      resources :events, only: [:index] 
       resources :checkins, only: [:show, :create, :index]
+      resources :notifications, only: [:index, :update]
       resources :boards do
         resources :posts
       end

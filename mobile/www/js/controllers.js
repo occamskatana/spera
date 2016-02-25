@@ -149,16 +149,15 @@ angular.module('starter.controllers', [])
   $scope.$on('$destroy', function() {
     $scope.popover.remove();
   });
-  // Execute action on hide popover
+  
   $scope.$on('popover.hidden', function() {
-    // Execute action
+    // Execute action on hide popover
   });
   // Execute action on remove popover
   $scope.$on('popover.removed', function() {
     // Execute action
   });
 })
-
 
 .controller('userEventsCtrl', function($scope, userEvents){
   userEvents.query().$promise.then(function(response){

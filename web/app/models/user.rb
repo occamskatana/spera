@@ -40,8 +40,8 @@ class User < ActiveRecord::Base
     	return buddies
     end
 
-    def show_event
-        Event.where(user_id: friend_list)
+    def notifications
+        Notification.where({to_id: self.id, viewed: false})
     end
 
     def self.search(search)

@@ -51,7 +51,7 @@ angular.module('starter.services', [])
 })
 
 .factory('userEvents', function($resource){
-  return $resource("http://localhost:3000/api/v1/events", {}, {
+  return $resource("http://localhost:3000/api/v1/notifications", {}, {
     query: {method: 'GET', isArray: true}
   })
 })
