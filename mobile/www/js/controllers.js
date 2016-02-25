@@ -133,7 +133,7 @@ angular.module('starter.controllers', [])
 
   
 })
-.controller('eventsPopoverCtrl', function($state, userEvents, $http, $scope, $ionicPopover){
+.controller('eventsPopoverCtrl', function($state, $http, $scope, $ionicPopover){
   $ionicPopover.fromTemplateUrl('templates/notifications.html', {
     scope: $scope
   }).then(function(popover) {
@@ -159,8 +159,8 @@ angular.module('starter.controllers', [])
   });
 })
 
-.controller('userEventsCtrl', function($scope, userEvents){
-  userEvents.query().$promise.then(function(response){
+.controller('userEventsCtrl', function($scope, userAlerts){
+  userAlerts.query().$promise.then(function(response){
     $scope.events = response
   })
 })
@@ -183,7 +183,7 @@ angular.module('starter.controllers', [])
   // })
 })
 
-.controller('DashCtrl', function($scope, Goals, $http, $state) {
+.controller('DashCtrl', function($scope, Goals, $http, $state, Events) {
 
    $scope.loadData = function() { 
       Goals.query().$promise.then(function(response) {
@@ -202,6 +202,8 @@ angular.module('starter.controllers', [])
     $scope.addGoal = function() {
       var goal = new Goals($scope.goalData);
       goal.$create().then($scope.loadData());
+      var event = new Events({title: "Created a new goal!"});
+      event.$create().then(console.log(event))
 
       $scope.goalData.title = '';
       $scope.goalData.description = '';

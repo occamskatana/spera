@@ -44,14 +44,21 @@ angular.module('starter.services', [])
   })
 })
 
+.factory('Events', function($resource) {
+  return $resource("http://localhost:3000/api/v1/events", {}, {
+    query: {method: 'GET', isArray: true},
+    create: {method: 'POST'}
+  })
+})
+
 .factory('friendSearch', function($resource){
   return $resource("http://localhost:3000/api/v1/users", {search: '@search'}, {
     query: {method: 'GET', isArray: true}
   })
 })
 
-.factory('userEvents', function($resource){
-  return $resource("http://localhost:3000/api/v1/notifications", {}, {
+.factory('userAlerts', function($resource){
+  return $resource("http://localhost:3000/api/v1/notifications/:id", {id: '@id'}, {
     query: {method: 'GET', isArray: true}
   })
 })
