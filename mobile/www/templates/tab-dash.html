@@ -2,8 +2,7 @@
   <ion-content>
     
       <button class="button button-full button-balanced" ng-controller="eventsPopoverCtrl" ng-click="openPopover($event)">
-      <i class="icon ion-alert"></i>
-      <p ng-controller="userEventsCtrl">{{events.length}} Notifications</p>
+      <p ng-controller="userEventsCtrl"> <i class="icon ion-alert"></i>&nbsp;&nbsp;{{events.length}} Notifications</p>
       </button>
     
     <a class="button button-block button-positive" ui-sref="tab.new-goal">New Goal <i class="ion-android-calendar"></i></a>

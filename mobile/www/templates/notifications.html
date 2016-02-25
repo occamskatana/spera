@@ -1,9 +1,11 @@
+<style>.popover { height:70%; width: 75%; }</style>
 <ion-popover-view ng-controller="userEventsCtrl">
 	<ion-content padding="true">
 		<div class="list" ng-repeat="event in events">
-			<div class="item-text-wrap">
-				<p>{{event.user.first_name}} {{event.user.last_name}} {{event.name}}</p> 
-			</div>
+			<ion-item class="item item-text-wrap item-avatar-left">
+				<img src="img/manuel.jpg">
+				<p><strong>{{event.user.first_name}} {{event.user.last_name}}</strong>: {{event.name}}</p> 
+			</ion-item >
 		</div>
 	</ion-content>
 </ion-popover-view>
