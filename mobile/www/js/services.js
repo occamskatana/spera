@@ -63,17 +63,17 @@ angular.module('starter.services', [])
   })
 })
 
-// .factory('friendSearchResults', function(){
-//   searchResults = {}
+.factory('friendSearchResults', function(){
+  searchResults = {}
 
-//   searchResults.users = []
+  searchResults.users = []
 
-//   searchResults.add = function(user){
-//     searchResults.users.push({id: searchResults.users.length, users: user})
-//   };
+  searchResults.add = function(user){
+    searchResults.users.push({id: searchResults.users.length, users: user})
+  };
 
-//   return searchResults;
-// })
+  return searchResults;
+})
 
 
 .factory('friends', function($resource) {
