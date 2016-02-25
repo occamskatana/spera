@@ -31,7 +31,17 @@ class User < ActiveRecord::Base
 	    return friends_ids.uniq.delete_if{|id| id == self.id}
     end
 
-    
+    def friend_requests
+        friend_requests = Friendable.where(to_id: self.id, accepted: false).to_a.uniq!{|e| e.from_id}
+    end
+
+    def check
+        check = Array.new
+        self.friend_requests.each do |x|
+            check << x.from_id
+        end
+        puts check.uniq.count
+    end 
 
     def friends
 

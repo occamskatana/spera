@@ -243,7 +243,7 @@ angular.module('starter.controllers', [])
   $scope.objective = objective.get({id: $stateParams.id})
 })
 
-.controller('checkinController', function($scope, checkIn, $http, $state, $ionicPopup){
+.controller('checkinController', function($scope, checkIn, $http, $state, $ionicPopup, Events){
     $scope.checkinData = {
       use: $scope.sober,
       mood: $scope.mood,
@@ -254,6 +254,8 @@ angular.module('starter.controllers', [])
   $scope.newCheckin = function() {
     var checkin = new checkIn($scope.checkinData);
     checkin.$create();
+    var event = new Events({title: window.localStorage.userName + " Checked in!"})
+    event.$create();
     $ionicPopup.alert({title:"Thanks for checking in!"});
     $state.go('tab.dash');
 
