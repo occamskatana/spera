@@ -7,9 +7,6 @@
 				<i class="icon ion-person-stalker" ng-controller="friendRequestsCtrl">{{friendRequestCount}} Friend Requests</i>
 			</button>
 		</div>
-		<ion-item class="item item-divider">
-				<input type="text" ng-model="query" placeholder="Search My Friends">
-		</ion-item>
 		<div ng-repeat="friend in friends | filter:query">
 			<a class="item item-avatar item-icon-right" href="#/tab/chats/{{friend.id}}">
 				<img src="img/nedry.jpg">
