@@ -101,7 +101,10 @@ angular.module('starter.services', [])
 })
 
 .factory('Board', function($resource, BaseUrl) {
-  return $resource(BaseUrl+'/boards/:id')
+  return $resource('http://localhost:3000/api/v1/boards/:id', {id: '@id'}, {
+    query: {method: 'GET', isArray: true},
+    create: {method: 'POST'}
+  })
 })
 
 

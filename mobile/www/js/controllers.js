@@ -294,12 +294,33 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('BoardCtrl', function($scope, $stateParams, Board) {
+.controller('BoardCtrl', function($scope, $state, Board, $ionicPopup) {
   Board.query().$promise.then(function(response) {
     $scope.boards = response;   
   });
+
+  $scope.newTopic = function(){
+    $scope.topicData = {
+      title: $scope.title,
+      description: $scope.description,
+      user: window.localStorage.userName
+    }
+    topic = new Board($scope.topicData)
+    topic.$create();
+    $ionicPopup.alert({title: "Thanks! Your post is live"})
+  } 
 })
 
+.controller('boardModalCtrl', function($scope, $ionicModal){
+  $ionicModal.fromTemplateUrl('/templates/new-board.html', function($ionicModal) {
+        $scope.modal = $ionicModal;
+    }, {
+        // Use our scope for the scope of the modal to keep it simple
+        scope: $scope,
+        // The animation we want to use for the modal entrance
+        animation: 'slide-in-up'
+    });  
+})
 .controller('MeetingCtrl', function($scope, $ionicLoading, $compile){
   function initialize() {
         var myLatlng = new google.maps.LatLng(43.07493,-89.381388);
@@ -373,7 +394,7 @@ angular.module('starter.controllers', [])
 
 .controller('PostCtrl', function($scope, $stateParams, Board) {
   Board.get({id: $stateParams.id}).$promise.then(function(response) {
-    $scope.board = response.board;
-    $scope.posts = response.board.posts
+    $scope.board = response;
+    $scope.posts = response.posts
   })
 });

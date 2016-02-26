@@ -1,5 +1,6 @@
 <ion-view view-title="Boards">
   <ion-content>
+  <button class="button button-full button-royal" ng-controller="boardModalCtrl" ng-click="modal.show()">Post a New Topic</button>
     <ion-list ng-repeat="board in boards">
       <a class="item item-icon-right" href="#/tab/boards/{{board.id}}">
         <div>             

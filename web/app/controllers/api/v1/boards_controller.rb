@@ -8,7 +8,18 @@ class Api::V1::BoardsController < Api::V1::BaseController
 
 	def show
 		board = Board.find(params[:id])
-		render json: board, serializer: BoardSerializer, status: 201
+		render json: board, serializer: BoardSerializer, status: 201, root: false
 	end
 
+	def create
+		puts params
+		board = Board.create!(board_params)
+		render json: board, serializer: BoardSerializer, status: 301
+	end
+
+
+private
+	def board_params
+		params.require(:board).permit(:title, :description, :user)
+	end
 end
