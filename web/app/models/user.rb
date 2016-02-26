@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
     has_many :posts
     has_many :events
 
+    
+
     def friend_list
         relations = Friendable.all.select do |f|
     		f.accepted == true && f.to_id == self.id || f.from_id == self.id 

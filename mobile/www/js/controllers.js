@@ -113,6 +113,17 @@ angular.module('starter.controllers', [])
   }
 })
 
+.controller('panicButtonCtrl', function($scope, $ionicPopup, $state, Events){
+  $scope.panic = function(){
+    event = new Events({title: window.localStorage.userName + " could use some help!"})
+    event.$create();
+    $ionicPopup.alert({
+      title: "Your network has been alerted!",
+      template: "In the meantime, please checkout the following resources"
+    });
+    $state.go('tab.dash')
+  }
+})
 .controller('ResourcesCtrl', function($scope, $http, $state){ 
   $scope.resources = [{
     name: "Boards",
