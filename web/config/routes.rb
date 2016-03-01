@@ -41,7 +41,10 @@ end
       resources :checkins, only: [:show, :create, :index]
       resources :notifications, only: [:index, :update]
       resources :boards do
-        resources :posts
+        post '/up-vote' => 'votes#up_vote', as: :up_vote
+        post '/down-vote' => 'votes#down_vote', as: :down_vote
+        resources :posts 
+        
       end
   	end
   end

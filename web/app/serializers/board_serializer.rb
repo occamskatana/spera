@@ -1,6 +1,6 @@
 class BoardSerializer < ActiveModel::Serializer 
 
-	attributes :id, :title, :description
+	attributes :id, :title, :description, :points
 	has_many :posts
 
 	

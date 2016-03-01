@@ -57,6 +57,7 @@
 		description: "Recovery friendly jobs in Nashville",
 		user_id: users.sample.id
 		)
+	boards = Board.all
 
 	posts = Post.create!(
 		title: "Panera Bread Cashier",
@@ -69,6 +70,13 @@
 		to_id: 1, 
 		from_id: users.sample.id, 
 		accepted: false
+		)
+	end
+
+	 votes =20.times do Vote.create!(
+		board: boards.sample,
+		user: users.sample,
+		value: 1
 		)
 	end
 
