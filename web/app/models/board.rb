@@ -12,7 +12,7 @@ class Board < ActiveRecord::Base
 	end
 
 	def points
-		votes.sum(:value) == 0 	
+		votes.sum(:value)
 	end
 
 	def update_rank

@@ -55,7 +55,8 @@
 	board = Board.create!(
 		title: "Recovery Jobs",
 		description: "Recovery friendly jobs in Nashville",
-		user_id: users.sample.id
+		user_id: users.sample.id, 
+		rank: 0
 		)
 	boards = Board.all
 
