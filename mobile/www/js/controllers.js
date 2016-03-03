@@ -294,9 +294,10 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('BoardCtrl', function($scope, $state, Board, $ionicPopup) {
+.controller('BoardCtrl', function($scope, $state, Board, $ionicPopup, upVote, $stateParams) {
   Board.query().$promise.then(function(response) {
-    $scope.boards = response;   
+    $scope.boards = response;  
+    console.log(response)
   });
 
   $scope.newTopic = function(){
@@ -309,6 +310,12 @@ angular.module('starter.controllers', [])
     topic.$create();
     $ionicPopup.alert({title: "Thanks! Your post is live"})
   } 
+
+  $scope.upVote = function(board_id){
+    upVote.post({board_id: board_id}).$promise.then(function(response){
+      console.log(response)
+    })
+  }
 })
 
 .controller('boardModalCtrl', function($scope, $ionicModal){

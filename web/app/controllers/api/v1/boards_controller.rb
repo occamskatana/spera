@@ -3,7 +3,7 @@ class Api::V1::BoardsController < Api::V1::BaseController
 
 	def index
 		boards = Board.all
-		render json: boards.to_json
+		render json: boards, each_serializer: BoardSerializer, status: 201, root: false
 	end
 
 	def show

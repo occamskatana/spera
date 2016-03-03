@@ -74,7 +74,7 @@
 		)
 	end
 
-	 votes =20.times do Vote.create!(
+	 votes = 20.times do Vote.create!(
 		board: boards.sample,
 		user: users.sample,
 		value: 1

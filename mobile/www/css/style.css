@@ -1,5 +1,19 @@
 /* Empty. Add your own CSS if you like */
 
+
+.board-points {
+	margin-right: 4.5%;
+}
+
+
+
+
+.vote-arrows {
+	width: 40px;
+	text-align: center;
+}
+
+
 textarea {
   height:auto;
   max-width:600px;

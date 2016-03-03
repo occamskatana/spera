@@ -2,14 +2,24 @@
   <ion-content>
   <button class="button button-full button-royal" ng-controller="boardModalCtrl" ng-click="modal.show()">Post a New Topic</button>
     <ion-list ng-repeat="board in boards">
-      <a class="item item-icon-right" href="#/tab/boards/{{board.id}}">
-        <div>             
-          <h2>{{board.title}}</h2>
-          <p>{{board.description}}</p>
-          <i class="icon ion-chevron-right icon-accessory"></i>          
-          <p>1 like</p>
+      <ion-item class="row">
+        <div class="col col-20 vote-arrows">
+          <a href="#" ng-click="upVote({{board.id}})" class="button icon-left ion-chevron-up">
+            
+          </a>
+          <div class="board-points">{{board.points}}</div>
+          <a href="#" class="button icon-left ion-chevron-down">
+
+          </a>
         </div>
-      </a>
+      <div class="col item-icon-right">
+          <h2>{{board.title}}</h2><br />
+          <p>{{board.description}}</p>
+        <a href="#/tab/boards/{{board.id}}"> 
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </a>
+      </div>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>
