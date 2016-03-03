@@ -7,13 +7,16 @@
     
     <a class="button button-block button-positive" ui-sref="tab.new-goal">New Goal <i class="ion-android-calendar"></i></a>
   </div>
-    <ion-list ng-repeat="objective in goals">      
+    <ion-list ng-repeat="(key, value) in goals">   
+    {{value.date}}   
+      <div ng-repeat="objective in goals">
         <div class="item item-text-wrap item-thumbnail-left"> 
-          <img src="http://lorempixel.com/200/200/">
+          <!-- <img src="http://lorempixel.com/200/200/"> -->
           <p>{{ objective.title | uppercase }}</p>
           <a class="item-icon-right" ng-controller="goalPopoverCtrl" ng-click="openPopover($event)"><i class="icon ion-android-more-vertical"></i></a>
-          <p>{{ objective.date | date:short }}</p> 
+          <!-- <p>{{ objective.date | date:short }}</p>  -->
         </div>
+      </div>
     </ion-list>
   </ion-content>
 </ion-view>

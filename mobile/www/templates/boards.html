@@ -4,11 +4,11 @@
     <ion-list ng-repeat="board in boards">
       <ion-item class="row">
         <div class="col col-20 vote-arrows">
-          <a href="#" ng-click="upVote({{board.id}}); addPoint(board)" class="button icon-left ion-chevron-up">
+          <a ng-click="upVote({{board.id}}); addPoint(board)" class="button icon-left ion-chevron-up">
             
           </a>
           <div class="board-points">{{board.points}}</div>
-          <a href="#" ng-click="downVote({{board.id}}); removePoint(board)" class="button icon-left ion-chevron-down">
+          <a ng-click="downVote({{board.id}}); removePoint(board)" class="button icon-left ion-chevron-down">
 
           </a>
         </div>
