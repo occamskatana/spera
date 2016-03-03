@@ -313,8 +313,11 @@ angular.module('starter.controllers', [])
 
   $scope.upVote = function(board_id){
     upVote.post({board_id: board_id}).$promise.then(function(response){
-      console.log(response)
     })
+  }
+
+  $scope.addPoint = function(board){
+    board.points += 1;
   }
 })
 
