@@ -28,6 +28,12 @@ angular.module('starter.services', [])
   })
 })
 
+.factory('downVote', function($resource){
+  return $resource("http://localhost:3000/api/v1/boards:board_id/down-vote", {board_id: '@board_id'}, {
+    post: {method: 'POST'},
+  })
+})
+
 //  friend request accept
 .factory('friendRequestAccept', function($resource){
  return $resource("http://localhost:3000/friendables/:id/friend_request_accept", {id: '@id'}, {

@@ -8,7 +8,7 @@
             
           </a>
           <div class="board-points">{{board.points}}</div>
-          <a href="#" class="button icon-left ion-chevron-down">
+          <a href="#" ng-click="downVote({{board.id}}); removePoint(board)" class="button icon-left ion-chevron-down">
 
           </a>
         </div>

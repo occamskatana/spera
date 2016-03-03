@@ -294,7 +294,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('BoardCtrl', function($scope, $state, Board, $ionicPopup, upVote, $stateParams) {
+.controller('BoardCtrl', function($scope, $state, Board, $ionicPopup, upVote, $stateParams, downVote) {
   Board.query().$promise.then(function(response) {
     $scope.boards = response;  
     console.log(response)
@@ -318,6 +318,15 @@ angular.module('starter.controllers', [])
 
   $scope.addPoint = function(board){
     board.points += 1;
+  }
+
+  $scope.removePoint = function(board){
+    board.points -=1;
+  }
+
+  $scope.downVote = function(board_id){
+    downVote.post({board_id: board_id}).$promise.then(function(repsonse){
+    })
   }
 })
 
