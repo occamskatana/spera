@@ -9,6 +9,7 @@
 		<div class="list" ng-controller="objectivesCtrl">
 			<div class="item item-icon-right item-text-wrap" ng-repeat="objective in objectives">
 				 {{objective.description}}
+				 <a class="item-icon-right" ng-controller="objectivePopoverCtrl" ng-click="openPopover($event)"><i class="icon ion-android-more-vertical"></i></a>
 			</div>
 		</div>
 	</ion-content>

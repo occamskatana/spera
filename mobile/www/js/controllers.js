@@ -243,8 +243,8 @@ angular.module('starter.controllers', [])
     // };   
 })
 
-.controller('goalPopoverCtrl', function($state, objective, $http, $scope, $ionicPopover){
-  $ionicPopover.fromTemplateUrl('templates/goal.html', {
+.controller('objectivePopoverCtrl', function($state, $http, $scope, $ionicPopover){
+  $ionicPopover.fromTemplateUrl('templates/objective-popover.html', {
     scope: $scope
   }).then(function(popover) {
     $scope.popover = popover;
