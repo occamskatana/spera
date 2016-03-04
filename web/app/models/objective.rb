@@ -4,7 +4,13 @@ class Objective < ActiveRecord::Base
 
   before_save {self.completed ||= :false}
 
-  
+  def build_objectives
+		$i = 0
+		until $i >= self.length do 
+			Objective.create!(title: self.title, description: self.description, date: self.date += 1.day)
+			$i += 1
+		end
+	end
 
   def day 
   	self.date.strftime('%D')

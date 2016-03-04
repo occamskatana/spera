@@ -2,17 +2,13 @@ class Api::V1::ObjectivesController < Api::V1::BaseController
 
 	def index
 		user = current_user
-		objectives = user.objectives.all 
+		goal = Goal.find(params[:goal_id])
+		objectives = Objective.where(user_id: user.id, goal_id: goal.id) 
 		render json: objectives, status: 201, root: false
 	end
 
 	def create
-		def build_objectives
-			$i = 0
-			until $i >= params[:length]
-				Objective.create!(title: params[:title], description: params[:description], date: params[:date] += 1.day)
-		end
-
+	
 		goal = Goal.find_by title: "#{params["objective"]["title"]}"
 
 		if goal == nil

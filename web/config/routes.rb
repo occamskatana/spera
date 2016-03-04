@@ -36,7 +36,9 @@ end
         resources :checkins, only: [:show, :index] 
       end
       resources :friendables, only: [:show, :index]
-  		resources :goals
+  		resources :goals do
+        resources :objectives, only: [:index, :create]
+      end
       resources :events, only: [:index, :create] 
       resources :checkins, only: [:show, :create, :index]
       resources :notifications, only: [:index, :update]

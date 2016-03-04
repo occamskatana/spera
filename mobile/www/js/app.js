@@ -58,7 +58,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     views: {
       'tab-dash': {
         templateUrl: 'templates/goal.html',
-        controller: 'goalCtrl'
+        controller: 'goalShowCtrl'
+      }
+    }
+  })
+
+  .state('tab.goal-list', {
+    url: 'dash/goal-list',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/goal-list.html',
+        controller: 'goalListCtrl'
       }
     }
   })

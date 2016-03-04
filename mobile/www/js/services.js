@@ -6,9 +6,10 @@ angular.module('starter.services', [])
 })
 
 .factory('Goals', function($resource){
-  return $resource("http://localhost:3000/api/v1/goals", {}, {
+  return $resource("http://localhost:3000/api/v1/goals/:id", {}, {
     query: {method: 'GET', isArray: false},
-    create: {method: 'POST'}
+    create: {method: 'POST'},
+    get: {method: 'GET', isArray: false, id: '@id'}
   })
 })
 
@@ -55,8 +56,10 @@ angular.module('starter.services', [])
   })
 })
 
-.factory('objective', function($resource){
-  return $resource("http://localhost:3000/api/v1/goals/:id", {id: '@id'}, {
+.factory('Objectives', function($resource){
+  return $resource("http://localhost:3000/api/v1/goals/:goal_id/objectives", {goal_id: '@goal_id'}, {
+    query: {method: 'GET', isArray: true},
+    create: {method: 'POST'}
   })
 })
 

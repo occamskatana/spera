@@ -1,0 +1,10 @@
+<ion-view view-title="My Goals">
+	<ion-content>
+		<ion-list ng-repeat="goal in goals">
+			<a class="item item-icon-right item-text-wrap" ui-sref="tab.goal({id:{{goal.id}}})">
+				<i class="icon ion-chevron-right"></i>
+				{{goal.title}}
+			</a>
+		</ion-list>
+	</ion-content>
+</ion-view>

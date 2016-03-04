@@ -194,32 +194,53 @@ angular.module('starter.controllers', [])
   // })
 })
 
+.controller('goalListCtrl', function($scope, Goals, $http, $state, Events){
+  Goals.query().$promise.then(function(response){
+    $scope.goals = response.goals 
+  })
+})
+
+.controller('goalShowCtrl', function($scope, Goals, $http, $stateParams, Events){
+  Goals.get({id: $stateParams.id}).$promise.then(function(response){
+    $scope.goal = response 
+    
+  })
+})
+
+.controller('objectivesCtrl', function($scope, Objectives, $stateParams){
+  Objectives.query({goal_id: $stateParams.id}).$promise.then(function(response){
+    console.log(response)
+    $scope.objectives = response;
+    
+  })
+})
+
 .controller('DashCtrl', function($scope, Goals, $http, $state, Events) {
 
-   $scope.loadData = function() { 
-      Goals.query().$promise.then(function(response) {
-        $scope.goals = response.goals
-        $scope.userName = localStorage['userName'] 
-        });
-    }
+   // $scope.loadData = function() { 
+   //    Goals.query().$promise.then(function(response) {
+   //      $scope.goals = response.goals
+   //      $scope.userName = localStorage['userName'] 
+   //      });
+   //  }
 
-    $scope.loadData();
+   //  $scope.loadData();
 
-     $scope.goalData = {title: $scope.title,
-                        description: $scope.description,
-                        date: $scope.date
-                        };
+     // $scope.goalData = {title: $scope.title,
+     //                    description: $scope.description,
+     //                    date: $scope.date
+     //                    };
 
-    $scope.addGoal = function() {
-      var goal = new Goals($scope.goalData);
-      goal.$create().then($scope.loadData());
-      var event = new Events({title: "Created a new goal!"});
-      event.$create().then(console.log(event))
+    // $scope.addGoal = function() {
+    //   var goal = new Goals($scope.goalData);
+    //   goal.$create().then($scope.loadData());
+    //   var event = new Events({title: "Created a new goal!"});
+    //   event.$create().then(console.log(event))
 
-      $scope.goalData.title = '';
-      $scope.goalData.description = '';
-      $state.go('tab.dash');
-    };   
+    //   $scope.goalData.title = '';
+    //   $scope.goalData.description = '';
+    //   $state.go('tab.dash');
+    // };   
 })
 
 .controller('goalPopoverCtrl', function($state, objective, $http, $scope, $ionicPopover){

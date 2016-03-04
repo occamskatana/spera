@@ -5,7 +5,7 @@
       <p ng-controller="userEventsCtrl"> <i class="icon ion-alert"></i>&nbsp;&nbsp;{{events.length}} Notifications</p>
       </button>
     
-    <a class="button button-block button-positive" ui-sref="tab.new-goal">New Goal <i class="ion-android-calendar"></i></a>
+    <a class="button button-block button-positive item-icon-right" ui-sref="tab.goal-list">Goals &nbsp;<i class="ion-chevron-right"></i></a>
   </div>
     <ion-list ng-repeat="(key, value) in goals">   
     {{value.date}}   
