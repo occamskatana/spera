@@ -31,7 +31,10 @@
 		user: users.sample,
 		goal: goals.sample,
 		description: Faker::Hacker.say_something_smart,
-		date: Faker::Date.between(5.days.ago, Date.today)
+		date: Faker::Date.between(5.days.ago, Date.today),
+		start_date: Time.now,
+		every: "day",
+		end_date: "2016-11-11"
 		)
 	end
 

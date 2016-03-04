@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301232429) do
+ActiveRecord::Schema.define(version: 20160304011229) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "title"
@@ -79,6 +79,10 @@ ActiveRecord::Schema.define(version: 20160301232429) do
     t.date     "date"
     t.text     "description"
     t.boolean  "completed"
+    t.text     "schedule"
+    t.date     "start_date"
+    t.string   "every"
+    t.date     "end_date"
   end
 
   add_index "objectives", ["goal_id"], name: "index_objectives_on_goal_id"
