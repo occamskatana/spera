@@ -58,7 +58,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     views: {
       'tab-dash': {
         templateUrl: 'templates/goal.html',
-        controller: 'goalCtrl'
+        controller: 'objectiveCtrl'
       }
     }
   })

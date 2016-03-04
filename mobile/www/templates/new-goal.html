@@ -3,13 +3,13 @@
     <div class="list">
       <h4 align="center">New Goal</h4>
       <label class="item item-input">
-        <input ng-model="goalData.title" type="text" placeholder="Title" >
+        <input ng-model="objectiveData.title" type="text" placeholder="Title" >
       </label>
       <label class="item item-input">
-        <input ng-model="goalData.description" type="text" placeholder="Description">  
+        <input ng-model="objectiveData.description" type="text" placeholder="Description">  
       </label>
       <label class="item item-input">
-        <input ng-model="goalData.date" type="date">
+        <input ng-model="objectiveData.date" type="hidden" class="hidden">
       </label><br>
       <button class="button button-outline button-positive button-small" ng-click="addGoal()">Submit</button>
     </div>

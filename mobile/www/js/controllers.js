@@ -194,35 +194,37 @@ angular.module('starter.controllers', [])
   // })
 })
 
-.controller('DashCtrl', function($scope, Goals, $http, $state, Events) {
+.controller('DashCtrl', function($scope, Objectives, Objective, $http, $state, Events) {
 
    $scope.loadData = function() { 
-      Goals.query().$promise.then(function(response) {
-        $scope.goals = response.goals
+      Objectives.query().$promise.then(function(response) {
+        $scope.goals = response
         $scope.userName = localStorage['userName'] 
         });
     }
 
     $scope.loadData();
 
-     $scope.goalData = {title: $scope.title,
+     $scope.objectiveData = {title: $scope.title,
                         description: $scope.description,
-                        date: $scope.date
+                        date: $scope.date, 
+                        schedule_attributes: {rule: $scope.rule, date: new Date(), }
                         };
 
     $scope.addGoal = function() {
-      var goal = new Goals($scope.goalData);
-      goal.$create().then($scope.loadData());
-      var event = new Events({title: "Created a new goal!"});
+      // $scope.data = {title: $scope.title, description: $scope.description}
+      var objective = new Objective($scope.objectiveData);
+      objective.$create().then($scope.loadData());
+      var event = new Events({title: "Created a new objective!"});
       event.$create().then(console.log(event))
 
       $scope.goalData.title = '';
       $scope.goalData.description = '';
-      $state.go('tab.dash');
+      // $state.go('tab.dash');
     };   
 })
 
-.controller('goalPopoverCtrl', function($state, objective, $http, $scope, $ionicPopover){
+.controller('objectivePopoverCtrl', function($state, Objectives, $http, $scope, $ionicPopover){
   $ionicPopover.fromTemplateUrl('templates/goal.html', {
     scope: $scope
   }).then(function(popover) {
@@ -250,8 +252,8 @@ angular.module('starter.controllers', [])
   });
 })
 
-.controller('goalCtrl', function($state, $stateParams, objective, $http, $scope){
-  $scope.objective = objective.get({id: $stateParams.id})
+.controller('objectiveCtrl', function($state, $stateParams, Objectives, $http, $scope){
+  $scope.objective = Objectives.get({id: $stateParams.id})
 })
 
 .controller('checkinController', function($scope, checkIn, $http, $state, $ionicPopup, Events){

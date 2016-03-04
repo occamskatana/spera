@@ -14,9 +14,9 @@ class GoalsController < ApplicationController
     if goal == nil
       @goal = Goal.create(goal_params)
       @goal.save
-      Objective.create!(goal: @goal, user: current_user, date: params[:date], description: params[:description] )
+      Objective.create!(goal: @goal, user: current_user, date: params[:date], description: params[:description])
     else
-      Objective.create!(goal: goal, user: current_user, date: params[:date], description: params[:description] )
+      Objective.create!(goal: goal, user: current_user, date: params[:date], description: params[:description])
     end
    
     redirect_to user_path(current_user)
@@ -41,6 +41,6 @@ class GoalsController < ApplicationController
 private
 
   def goal_params
-    params.require(:goal).permit(:title, :description)
+    params.require(:goal).permit(:title, :description, schedule_attributes: Schedulable::ScheduleSupport.param_names)
   end
 end

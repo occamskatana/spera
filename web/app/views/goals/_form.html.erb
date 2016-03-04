@@ -4,7 +4,10 @@
 
 			<%= f.label :description, "Description" %><br>
 			<%= text_area_tag :description, nil, class: 'form-control', rows: 4 %><br />
-
+			<div class="field">
+    <%= f.label :schedule %><br>
+    <%= f.schedule_select :schedule %>
+  </div>
 			<%= f.label :date, "Date" %>
 			<%= date_field_tag :date, Date.today, class: 'form-control' %><br>
 		<%= f.submit %>

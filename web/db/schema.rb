@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301232429) do
+ActiveRecord::Schema.define(version: 20160304180901) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "title"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160301232429) do
     t.date     "date"
     t.text     "description"
     t.boolean  "completed"
+    t.string   "title"
   end
 
   add_index "objectives", ["goal_id"], name: "index_objectives_on_goal_id"
@@ -95,6 +96,21 @@ ActiveRecord::Schema.define(version: 20160301232429) do
 
   add_index "posts", ["board_id"], name: "index_posts_on_board_id"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer  "schedulable_id"
+    t.string   "schedulable_type"
+    t.date     "date"
+    t.time     "time"
+    t.string   "rule"
+    t.string   "interval"
+    t.text     "day"
+    t.text     "day_of_week"
+    t.datetime "until"
+    t.integer  "count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

@@ -2,6 +2,8 @@ class Objective < ActiveRecord::Base
   belongs_to :user
   belongs_to :goal
 
+  acts_as_schedulable :schedule
+
   before_save {self.completed ||= :false}
 
   

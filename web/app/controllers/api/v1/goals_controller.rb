@@ -7,6 +7,8 @@ class Api::V1::GoalsController < Api::V1::BaseController
 		
 		user = current_user
 		objectives = user.objectives.all
+			
+		
 		render json: objectives, status: 201
 		
 	end

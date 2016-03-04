@@ -5,9 +5,8 @@ angular.module('starter.services', [])
   return $resource("http://localhost:3000/users/sign_in.json");
 })
 
-.factory('Goals', function($resource){
-  return $resource("http://localhost:3000/api/v1/goals", {}, {
-    query: {method: 'GET', isArray: false},
+.factory('Objective', function($resource){
+  return $resource("http://localhost:3000/api/v1/objectives", {}, {
     create: {method: 'POST'}
   })
 })
@@ -55,8 +54,8 @@ angular.module('starter.services', [])
   })
 })
 
-.factory('objective', function($resource){
-  return $resource("http://localhost:3000/api/v1/goals/:id", {id: '@id'}, {
+.factory('Objectives', function($resource){
+  return $resource("http://localhost:3000/api/v1/objectives/:id", {id: '@id'}, {
   })
 })
 

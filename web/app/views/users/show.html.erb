@@ -3,13 +3,11 @@
 	<h1 class="user-show-title"><%= @user.username.capitalize %></h1>
 </div>
 <br />
-<div class="container-fluid">
-	<%= link_to "rawr", user_events_path(current_user), class: 'btn btn-danger', method: :post %>
-</div>
+
 
 <div class="container-fluid goals">
 	<div class="row-fluid">
-
+	<%= link_to "rawR", new_user_goal_path(current_user) %>
 		<div class="col-md-12" align="center">
 			<% @objectives.group_by(&:day).each do |day, objectives| %>
 				<div id="day">
