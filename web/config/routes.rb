@@ -39,6 +39,9 @@ end
   		resources :goals do
         resources :objectives, only: [:index, :create]
       end
+        resources :objectives, only: [] do 
+          resources :occurrences, only: [:index]
+        end
       resources :events, only: [:index, :create] 
       resources :checkins, only: [:show, :create, :index]
       resources :notifications, only: [:index, :update]

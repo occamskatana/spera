@@ -32,7 +32,8 @@
 		goal: goals.sample,
 		description: Faker::Hacker.say_something_smart,
 		date: Faker::Date.between(5.days.ago, Date.today),
-		length: Faker::Number.between(30, 90)
+		length: Faker::Number.between(30, 90),
+		title: Faker::Hacker.say_something_smart
 		)
 	end
 

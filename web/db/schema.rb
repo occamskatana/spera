@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304201504) do
+ActiveRecord::Schema.define(version: 20160304233117) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "title"
@@ -80,10 +80,22 @@ ActiveRecord::Schema.define(version: 20160304201504) do
     t.text     "description"
     t.boolean  "completed"
     t.integer  "length"
+    t.string   "title"
   end
 
   add_index "objectives", ["goal_id"], name: "index_objectives_on_goal_id"
   add_index "objectives", ["user_id"], name: "index_objectives_on_user_id"
+
+  create_table "occurrences", force: :cascade do |t|
+    t.integer  "objective_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.date     "date"
+  end
+
+  add_index "occurrences", ["objective_id"], name: "index_occurrences_on_objective_id"
+  add_index "occurrences", ["user_id"], name: "index_occurrences_on_user_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
