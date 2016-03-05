@@ -9,9 +9,16 @@ class Objective < ActiveRecord::Base
   def build_occurrences
 		$i = 0
 		until $i >= self.length do 
-			Occurrence.create!(objective_id: self.id, user: self.user, date: self.date += 1.day)
+			Occurrence.create!(objective_id: self.id, user: self.user, date: self.date += 1.day, completed: false)
 			$i += 1
 		end
+	end
+
+	def status 
+		total = self.occurrences.count
+		completed = self.occurrences.where(completed: true).count
+		percentage_complete = (completed.to_f / total.to_f)
+		return percentage_complete
 	end
 
   def day 
