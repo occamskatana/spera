@@ -27,7 +27,7 @@
 
 	goals = Goal.all 
 
-	objective = 100.times do Objective.create(
+	objective = 10.times do Objective.create(
 		user: users.sample,
 		goal: goals.sample,
 		description: Faker::Hacker.say_something_smart,
@@ -97,4 +97,5 @@
 	puts "#{Post.count} posts in database"
 	puts "#{Friendable.where(to_id: 1).count} friend requests made for user 1"
 	puts "#{Event.count} events in database"
+	puts "#{Occurrence.count} occurrences of events"
 

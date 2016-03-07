@@ -42,6 +42,9 @@ end
         resources :objectives, only: [] do 
           resources :occurrences, only: [:index]
         end
+        resources :occurrences, only: [:index] do 
+          put 'mark_complete' => 'occurrences#mark_complete', as: :mark_complete
+        end
       resources :events, only: [:index, :create] 
       resources :checkins, only: [:show, :create, :index]
       resources :notifications, only: [:index, :update]

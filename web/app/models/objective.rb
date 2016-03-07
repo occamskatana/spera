@@ -17,8 +17,12 @@ class Objective < ActiveRecord::Base
 	def status 
 		total = self.occurrences.count
 		completed = self.occurrences.where(completed: true).count
-		percentage_complete = (completed.to_f / total.to_f)
+		percentage_complete = (completed / total)
 		return percentage_complete
+	end
+
+	def daily
+		self.occurrences.where(date: Date.today)
 	end
 
   def day 

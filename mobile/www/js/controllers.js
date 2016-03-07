@@ -209,10 +209,25 @@ angular.module('starter.controllers', [])
 
 .controller('objectivesCtrl', function($scope, Objectives, $stateParams){
   Objectives.query({goal_id: $stateParams.id}).$promise.then(function(response){
-    console.log(response)
-    $scope.objectives = response;
-    
+    $scope.objectives = response;    
   })
+})
+
+.controller('occurrencesCtrl', function($scope, Occurrences, occurrenceComplete, $ionicPopup){
+  Occurrences.query().$promise.then(function(response){
+    $scope.occurrences = response;
+  })
+
+  $scope.delete = function (index) {
+    $scope.occurrences.splice(index, 1);
+}
+
+  $scope.markComplete = function(occurrence) {
+    occurrenceComplete.put({id: occurrence.id}).$promise.then(function(response){
+      
+    })
+    $ionicPopup.alert({title: "Great Job!"})
+  }
 })
 
 .controller('DashCtrl', function($scope, Goals, $http, $state, Events) {

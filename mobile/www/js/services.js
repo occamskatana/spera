@@ -49,6 +49,19 @@ angular.module('starter.services', [])
   });
 })
 
+
+.factory('Occurrences', function($resource){
+  return $resource('http://localhost:3000/api/v1/occurrences', {}, {
+    query: {method: 'GET', isArray: true}
+  })
+})
+
+.factory('occurrenceComplete', function($resource){
+  return $resource('http://localhost:3000/api/v1/occurrences/:occurrence_id/mark_complete', {occurrence_id: '@id'}, {
+    put: {method: 'PUT', isArray: false}
+  })
+})
+
 .factory('checkIn', function($resource) {
   return $resource("http://localhost:3000/api/v1/checkins", {user_id: "@user_id"}, {
     query: {method: 'GET', isArray: true},

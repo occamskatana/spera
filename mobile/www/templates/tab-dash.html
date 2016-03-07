@@ -6,17 +6,17 @@
       </button>
     
     <a class="button button-block button-positive item-icon-right" ui-sref="tab.goal-list">Goals &nbsp;<i class="ion-chevron-right"></i></a>
-  </div>
-    <ion-list ng-repeat="(key, value) in goals">   
-    {{value.date}}   
-      <div ng-repeat="objective in goals">
-        <div class="item item-text-wrap item-thumbnail-left"> 
+  </div><br />
+  <div ng-controller="occurrencesCtrl"> 
+    <h3 align="center">Today's Objectives</h3> 
+      <div ng-repeat="occurrence in occurrences">
+        <div class="item item-text-wrap"> 
           <!-- <img src="http://lorempixel.com/200/200/"> -->
-          <p>{{ objective.title | uppercase }}</p>
-          <a class="item-icon-right" ng-controller="goalPopoverCtrl" ng-click="openPopover($event)"><i class="icon ion-android-more-vertical"></i></a>
+          <p>{{ occurrence.title | uppercase }}</p>
+          <a class="item-icon-right" ng-click="markComplete(occurrence); delete($index)"><i class="icon ion-checkmark-circled"></i></a>
           <!-- <p>{{ objective.date | date:short }}</p>  -->
         </div>
       </div>
-    </ion-list>
+  </div>
   </ion-content>
 </ion-view>
