@@ -73,6 +73,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
+  .state('tab.new-objective', {
+    url: 'dash/:id/new-objective',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/new-objective.html',
+        controller: 'newObjectiveCtrl'
+      }
+    }
+  })
+
   .state('tab.checkin', {
     url: '/checkin',
     views: {
@@ -98,7 +108,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     url: '/dash/goal',
       views: {
         'tab-dash': {      
-          controller: 'DashCtrl',
+          controller: 'goalListCtrl',
           templateUrl: "templates/new-goal.html"
         }
     }

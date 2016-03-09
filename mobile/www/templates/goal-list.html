@@ -1,5 +1,6 @@
 <ion-view view-title="My Goals">
 	<ion-content>
+	<button class="button button-full button-energized" ui-sref="tab.new-goal">Add a Goal</button>
 		<ion-list ng-repeat="goal in goals">
 			<a class="item item-icon-right item-text-wrap" ui-sref="tab.goal({id:{{goal.id}}})">
 				<i class="icon ion-chevron-right"></i>

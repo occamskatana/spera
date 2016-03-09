@@ -2,7 +2,7 @@ class Objective < ActiveRecord::Base
   belongs_to :user
   belongs_to :goal
   has_many :occurrences, dependent: :destroy
-  after_create :build_occurrences
+  # after_create :build_occurrences
 
   before_save {self.completed ||= :false}
 
@@ -14,12 +14,12 @@ class Objective < ActiveRecord::Base
 		end
 	end
 
-	def status 
-		total = self.occurrences.count
-		completed = self.occurrences.where(completed: true).count
-		percentage_complete = (completed / total)
-		return percentage_complete
-	end
+	# def status 
+	# 	total = self.occurrences.count
+	# 	completed = self.occurrences.where(completed: true).count
+	# 	percentage_complete = (completed / total)
+	# 	return percentage_complete
+	# end
 
 	def daily
 		self.occurrences.where(date: Date.today)

@@ -19,11 +19,12 @@ class Api::V1::GoalsController < Api::V1::BaseController
     if goal == nil
       @goal = Goal.create(goal_params)
       @goal.save
-      Objective.create!(goal: @goal, user: current_user, date: params[:date], description: params[:description] )
+      render json: @goal, status: 201
+      @goal.objectives.create!(user: current_user, date: Date.today, title: "Complete #{@goal.title}", length: 1)
     else
-      Objective.create!(goal: goal, user: current_user, date: params[:date], description: params[:description] )
+      render json: goal, status: 201
+      goal.objectives.create!(user: current_user, date: Date.today, title: "Complete #{goal.title}", length: 1)
     end
-    render json: goal.to_json, status: 201
 	end
 
 	def show
