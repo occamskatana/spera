@@ -9,8 +9,9 @@ class Api::V1::ObjectivesController < Api::V1::BaseController
 
 	def create
 		goal = Goal.find(params[:goal_id])
+		objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:title], length: params[:length], date: Date.today)
 
-		render json: objective
+		render json: objective, root: false, status: 201
 	end
 
 	def show
@@ -23,8 +24,6 @@ class Api::V1::ObjectivesController < Api::V1::BaseController
 
 	private
 
-	def objective_params
-		params.require(:objective).permit(:goal, :title, :user, :date, :description, schedule_attributes: Schedulable::ScheduleSupport.param_names )
-	end
+	
 
 end

@@ -5,15 +5,26 @@
 		</div><br>
 
 		<div class="list">
-			<label class="item item-input">
+			<label class="item item-input item-floating-label">
+				<span class="input-label">Title</span>
 				<input type="text" ng-model="objective.title" placeholder="Title">
 			</label>
-			<label class="item item-input">
+			<label class="item item-input item-floating-label">
+				<span class="input-label">Description</span>
 				<input type="text" ng-model="objective.description" placeholder="Description">
 			</label>
-			<label class="item item-input">
+			<label class="item item-input item-floating-label">
+				<span class="input-label">How Many Days?</span>
 				<input type="number" ng-model="objective.length" placeholder="How many Days?">
 			</label>
+			<button class="button button-block button-positive" ng-click="addObjective()">Submit</button>
+			<button class="button button-block button-energized" ui-sref="tab.dash">Done</button>
+		</div>
+		<h3 align="center">Current Objectives</h3>
+		<div class="list" ng-repeat="sex in objectiveList track by $index">
+			<div class="item item-text-wrap">
+				I will {{sex.title}} for {{sex.length}} days!
+			</div>
 		</div>
 	</ion-content>
 </ion-view>

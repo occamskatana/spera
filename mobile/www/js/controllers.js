@@ -219,12 +219,15 @@ angular.module('starter.controllers', [])
     };  
 })
 
-.controller('newObjectiveCtrl', function($scope, Goals, Objectives, $state){
+.controller('newObjectiveCtrl', function($scope, Goals, Objectives, $state, $stateParams){
   $scope.objective = new Objectives();
+  $scope.objectiveList = []
   $scope.addObjective = function() {
-    $scope.objective.$save(function(){
-      $state.go('tab.goal-list')
-    });
+    $scope.objective.$save({goal_id: $stateParams.id}).then(function(response){
+      $scope.objectiveList.push(response);
+      console.log($scope.objectiveList)
+    })
+    
   }
 })
 
@@ -237,7 +240,8 @@ angular.module('starter.controllers', [])
 
 .controller('objectivesCtrl', function($scope, Objectives, $stateParams){
   Objectives.query({goal_id: $stateParams.id}).$promise.then(function(response){
-    $scope.objectives = response;    
+    $scope.objectives = response; 
+    console.log(response)   
   })
 })
 

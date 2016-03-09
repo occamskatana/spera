@@ -8,8 +8,8 @@
 		<h3 align="center">Objectives in this goal</h3>
 		<div class="list" ng-controller="objectivesCtrl">
 			<div class="item item-icon-right item-text-wrap" ng-repeat="objective in objectives">
-				 {{objective.description}}<br>
-				 {{objective.status | number : 2}}% Complete
+				 {{objective.title}}<br />
+				 Description:{{objective.description}}
 				 <a class="item-icon-right" ng-controller="objectivePopoverCtrl" ng-click="openPopover($event)"><i class="icon ion-android-more-vertical"></i></a>
 			</div>
 		</div>

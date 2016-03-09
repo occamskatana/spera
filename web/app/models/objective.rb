@@ -7,6 +7,7 @@ class Objective < ActiveRecord::Base
   before_save {self.completed ||= :false}
 
   def build_occurrences
+  	Occurrence.create!(objective_id: self.id, user: self.user, date: self.date, completed: false)
 		$i = 0
 		until $i >= self.length do 
 			Occurrence.create!(objective_id: self.id, user: self.user, date: self.date += 1.day, completed: false)
