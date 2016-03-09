@@ -8,15 +8,7 @@ class Api::V1::ObjectivesController < Api::V1::BaseController
 	end
 
 	def create
-	
-		goal = Goal.find_by title: "#{params["objective"]["title"]}"
-
-		if goal == nil
-			goal = Goal.create!(title: objective.title, description: objective.description)
-			objective.goal = goal
-		else
-			objective.goal = goal 
-		end
+		goal = Goal.find(params[:goal_id])
 
 		render json: objective
 	end

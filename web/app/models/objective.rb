@@ -2,7 +2,7 @@ class Objective < ActiveRecord::Base
   belongs_to :user
   belongs_to :goal
   has_many :occurrences, dependent: :destroy
-  # after_create :build_occurrences
+  after_create :build_occurrences
 
   before_save {self.completed ||= :false}
 

@@ -1,5 +1,19 @@
 <ion-view view-title="Add Objectives to your Goal!">
 	<ion-content padding="true">
-		
+		<div>
+			<p align="center">Research has shown that breaking a large goal down into bite-size pieces will help you achieve it. Set your daily objectives for your goal to be successful!</p>
+		</div><br>
+
+		<div class="list">
+			<label class="item item-input">
+				<input type="text" ng-model="objective.title" placeholder="Title">
+			</label>
+			<label class="item item-input">
+				<input type="text" ng-model="objective.description" placeholder="Description">
+			</label>
+			<label class="item item-input">
+				<input type="number" ng-model="objective.length" placeholder="How many Days?">
+			</label>
+		</div>
 	</ion-content>
 </ion-view>

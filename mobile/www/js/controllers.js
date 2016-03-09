@@ -219,8 +219,13 @@ angular.module('starter.controllers', [])
     };  
 })
 
-.controller('newObjectiveCtrl', function($scope, Goals, Objectives){
- 
+.controller('newObjectiveCtrl', function($scope, Goals, Objectives, $state){
+  $scope.objective = new Objectives();
+  $scope.addObjective = function() {
+    $scope.objective.$save(function(){
+      $state.go('tab.goal-list')
+    });
+  }
 })
 
 .controller('goalShowCtrl', function($scope, Goals, $http, $stateParams, Events){
