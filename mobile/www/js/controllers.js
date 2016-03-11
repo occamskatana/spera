@@ -224,7 +224,7 @@ angular.module('starter.controllers', [])
   $scope.objectiveList = []
   $scope.addObjective = function() {
     $scope.objective.$save({goal_id: $stateParams.id}).then(function(response){
-      $scope.objectiveList.push(response);
+      $scope.objectiveList.push($scope.objective);
       console.log($scope.objectiveList)
     })
     
