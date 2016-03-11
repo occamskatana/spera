@@ -48,6 +48,7 @@ end
       resources :events, only: [:index, :create] 
       resources :checkins, only: [:show, :create, :index]
       resources :notifications, only: [:index, :update]
+      resources :aboutmes, only: [:index, :create, :update]
       resources :boards do
         post '/up-vote' => 'votes#up_vote', as: :up_vote
         post '/down-vote' => 'votes#down_vote', as: :down_vote

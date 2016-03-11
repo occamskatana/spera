@@ -69,6 +69,12 @@ angular.module('starter.services', [])
   })
 })
 
+.factory('userInfo', function($resource){
+  return $resource("http://localhost:3000/api/v1/aboutmes", {id: '@id'}, {}, {
+    
+  })
+})
+
 .factory('Objectives', function($resource){
   return $resource("http://localhost:3000/api/v1/goals/:goal_id/objectives", {goal_id: '@goal_id'}, {
     query: {method: 'GET', isArray: true},

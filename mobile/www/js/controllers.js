@@ -348,6 +348,13 @@ angular.module('starter.controllers', [])
   };
 })
 
+.controller('aboutMeCtrl', function($scope, userInfo){
+  userInfo.get().$promise.then(function(response){
+    console.log(response.aboutme)
+    $scope.aboutme = response.aboutme
+  })
+})
+
 .controller('BoardCtrl', function($scope, $state, Board, $ionicPopup, upVote, $stateParams, downVote) {
   Board.query().$promise.then(function(response) {
     $scope.boards = response;  

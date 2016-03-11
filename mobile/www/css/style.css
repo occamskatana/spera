@@ -6,6 +6,17 @@
 }
 
 
+.aboutme-image {
+	
+	width: 268px;
+	
+	overflow: hidden
+}
+
+.pull-right {
+position: absolute;
+right: 2px;
+}
 
 
 .vote-arrows {
