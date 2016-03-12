@@ -358,17 +358,15 @@ angular.module('starter.controllers', [])
 .controller('BoardCtrl', function($scope, $state, Board, $ionicPopup, upVote, $stateParams, downVote) {
   Board.query().$promise.then(function(response) {
     $scope.boards = response;  
-    console.log(response)
   });
 
+
+  $scope.topic = new Board();
+
   $scope.newTopic = function(){
-    $scope.topicData = {
-      title: $scope.title,
-      description: $scope.description,
-      user: window.localStorage.userName
-    }
-    topic = new Board($scope.topicData)
-    topic.$create();
+    $scope.topic.$save();
+    $scope.boards.push($scope.topic);
+    $scope.$apply();
     $ionicPopup.alert({title: "Thanks! Your post is live"})
   } 
 
@@ -472,9 +470,18 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('PostCtrl', function($scope, $stateParams, Board) {
+.controller('PostCtrl', function($scope, $stateParams, Board, Post, $stateParams) {
   Board.get({id: $stateParams.id}).$promise.then(function(response) {
     $scope.board = response;
     $scope.posts = response.posts
-  })
+    console.log($scope.board)
+  });
+
+
+  $scope.post = new Post({board_id: $stateParams.id, user_id: window.localStorage.userId});
+  $scope.newPost = function(){
+    $scope.post.$save();
+    $scope.posts.push($scope.post);
+    console.log($scope.post);
+  };
 });

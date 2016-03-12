@@ -3,10 +3,10 @@
 	  <h1 class="title">New Board Topic</h1>
 	  <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
 	</ion-header-bar>
-	<ion-content ng-controller="BoardCtrl">
+	<ion-content ng-controller="BoardCtrl" padding="true">
 	  <form>
-	  	<input type="text" ng-model="title" placeholder="Title">
-	  	<input type="text" ng-model="description" placeholder="Description">
+	  	<input type="text" ng-model="topic.title" placeholder="Title">
+	  	<input type="text" ng-model="topic.description" placeholder="Description">
 	  	<button class="button button-royal" ng-click="newTopic()"> Bang that shit home, homie </button>
 	  </form>
 	</ion-content>
