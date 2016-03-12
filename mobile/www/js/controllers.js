@@ -479,9 +479,10 @@ angular.module('starter.controllers', [])
 
 
   $scope.post = new Post({board_id: $stateParams.id, user_id: window.localStorage.userId});
+
   $scope.newPost = function(){
     $scope.post.$save();
-    $scope.posts.push($scope.post);
+    $scope.posts.push({title: $scope.post.title, content: $scope.post.content, username: window.localStorage.userName});
     console.log($scope.post);
   };
 });
