@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311012445) do
+ActiveRecord::Schema.define(version: 20160313002141) do
 
   create_table "aboutmes", force: :cascade do |t|
     t.integer  "user_id"
@@ -68,6 +68,23 @@ ActiveRecord::Schema.define(version: 20160311012445) do
   create_table "goals", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "groupables", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "groupables", ["group_id"], name: "index_groupables_on_group_id"
+  add_index "groupables", ["user_id"], name: "index_groupables_on_user_id"
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

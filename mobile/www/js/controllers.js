@@ -355,6 +355,20 @@ angular.module('starter.controllers', [])
   })
 })
 
+.controller('groupsCtrl', function($scope, Groups){
+  Groups.get().$promise.then(function(response){
+    $scope.groups = response.groups
+    console.log($scope.groups)
+  })
+})
+
+.controller('groupCtrl', function($scope, Groups, $stateParams){
+  Groups.get({id: $stateParams.id}).$promise.then(function(response){
+    $scope.group = response.group
+    console.log(response.group)
+  })
+})
+
 .controller('BoardCtrl', function($scope, $state, Board, $ionicPopup, upVote, $stateParams, downVote) {
   Board.query().$promise.then(function(response) {
     $scope.boards = response;  
@@ -372,6 +386,7 @@ angular.module('starter.controllers', [])
 
   $scope.upVote = function(board_id){
     upVote.post({board_id: board_id}).$promise.then(function(response){
+      console.log(response)
     })
   }
 

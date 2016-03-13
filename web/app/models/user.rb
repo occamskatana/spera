@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
     has_many :events
     has_many :votes
     has_one :aboutme
+    has_many :groupables
+    has_many :groups, through: :groupables
 
     
 

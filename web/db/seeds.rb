@@ -88,6 +88,20 @@
 		user_id: users.sample.id
 		)
 	end
+
+	groups = 5.times do Group.create!(
+		name: Faker::Company.name, 
+		description: Faker::Company.bs 
+		)
+end
+
+	groups = Group.all 
+
+	groupables = 10.times do Groupable.create!(
+		user_id: users.sample.id, 
+		group_id: groups.sample.id 
+		)
+end
 	puts "#{Objective.count} Objectives in database"
 	puts "#{Goal.count} goals in database"
 	puts "#{User.count} users in database"
@@ -98,4 +112,6 @@
 	puts "#{Friendable.where(to_id: 1).count} friend requests made for user 1"
 	puts "#{Event.count} events in database"
 	puts "#{Occurrence.count} occurrences of events"
+	puts "#{Group.count} groups total"
+	puts "#{Groupable.count} groupables total"
 
