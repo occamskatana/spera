@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
     has_one :aboutme
     has_many :groupables
     has_many :groups, through: :groupables
+    has_many :messages
 
     
 

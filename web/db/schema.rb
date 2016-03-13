@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313002141) do
+ActiveRecord::Schema.define(version: 20160313200142) do
 
   create_table "aboutmes", force: :cascade do |t|
     t.integer  "user_id"
@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(version: 20160313002141) do
   end
 
   add_index "boards", ["user_id"], name: "index_boards_on_user_id"
+
+  create_table "chats", force: :cascade do |t|
+    t.integer  "friendable_id"
+    t.integer  "group_id"
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "chats", ["friendable_id"], name: "index_chats_on_friendable_id"
+  add_index "chats", ["group_id"], name: "index_chats_on_group_id"
 
   create_table "checkins", force: :cascade do |t|
     t.boolean  "sober"
@@ -88,6 +100,17 @@ ActiveRecord::Schema.define(version: 20160313002141) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "chat_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "messages", ["chat_id"], name: "index_messages_on_chat_id"
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "event_id"

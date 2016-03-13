@@ -47,6 +47,12 @@ angular.module('starter.services', [])
   })
 })
 
+.factory('Messages', function($resource) {
+  return $resource("http://localhost:3000/api/v1/chats/:chat_id/messages", {chat_id: '@chat_id'}, {
+    create: {method: 'POSt'}
+  })
+})
+
 //  friend request accept
 .factory('friendRequestAccept', function($resource){
  return $resource("http://localhost:3000/friendables/:id/friend_request_accept", {id: '@id'}, {

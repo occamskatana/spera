@@ -373,11 +373,81 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('groupCtrl', function($scope, Groups, $stateParams){
+.controller('groupCtrl', function($scope, $stateParams, $timeout, $interval, $ionicScrollDelegate, Groups, Messages){
   Groups.get({id: $stateParams.id}).$promise.then(function(response){
     $scope.group = response.group
     console.log(response.group)
+    $scope.messages = $scope.group.chat_messages
+    console.log($scope.messages)
   })
+
+  $scope.userId = window.localStorage.userId
+
+  $scope.hideTime = true;
+
+  var alternate,
+    isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
+
+  $scope.sendMessage = function() {
+
+    var d = new Date();
+    d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+
+    $scope.messages.push({
+      user_id: $scope.userId,
+      content: $scope.data.message,
+      time: d
+    });
+
+    Messages.create({chat_id: $scope.messages[0].chat_id, content: $scope.data.message})
+
+    delete $scope.data.message;
+    $ionicScrollDelegate.scrollBottom(true);
+
+  };
+
+
+  $scope.inputUp = function() {
+    if (isIOS) $scope.data.keyboardHeight = 216;
+    $timeout(function() {
+      $ionicScrollDelegate.scrollBottom(true);
+    }, 300);
+
+  };
+
+  $scope.inputDown = function() {
+    if (isIOS) $scope.data.keyboardHeight = 0;
+    $ionicScrollDelegate.resize();
+  };
+
+  $scope.closeKeyboard = function() {
+    // cordova.plugins.Keyboard.close();
+  };
+
+
+  $scope.data = {};
+  $scope.myId = '12345';
+  $scope.messages = [];
+
+
+
+  var refreshData = function() {
+    // Assign to scope within callback to avoid data flickering on screen
+    Groups.get({id: $stateParams.id}).$promise.then(function(response){
+      $scope.messages = response.group.chat_messages;
+      console.log('tick');
+    })
+  };
+
+  // Cancel interval on page changes
+  $scope.$on('$locationChangeStart', function(){
+    console.log("sould cancel");
+    $interval.cancel(promise);
+  });
+
+  var promise = $interval(refreshData, 3000);
+
+
 })
 
 .controller('BoardCtrl', function($scope, $state, Board, $ionicPopup, upVote, $stateParams, downVote) {
@@ -514,7 +584,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('Messages', function($scope, $timeout, $ionicScrollDelegate) {
+.controller('Messages', function($scope, $timeout, $ionicScrollDelegate, Chats) {
 
   $scope.hideTime = true;
 
