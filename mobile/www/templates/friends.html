@@ -8,9 +8,21 @@
 			</button>
 		</div>
 
+		<div class="list" ng-controller="groupsCtrl">
+			<label class="item item-input item-floating-label">
+				<span class="input-label">Group Title</span>
+				<input type="text" placeholder="Group Title" ng-model="group.name">
+			</label>
+			<label class="item item-input item-floating-label">
+				<span class="input-label">Group Description</span>
+				<input type="text" placeholder="Group Description" ng-model="group.description">
+			</label>
+			<button class="button button-block button-royal" ng-click="newGroup()">Create Group</button>
+		</div>
+
 		<div ng-controller="groupsCtrl">
 			<h3 align="center">Groups</h3>
-			<div class="list" ng-repeat="group in groups">
+			<div class="list" ng-repeat="group in groups track by $index">
 				<a class="item item-icon-right" ui-sref="tab.group-show({id: {{group.id}}})">
 					{{group.name}}
 					<i class="icon ion-chevron-right"></i>

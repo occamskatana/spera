@@ -54,7 +54,7 @@ end
         post '/down-vote' => 'votes#down_vote', as: :down_vote
         resources :posts 
       end
-      resources :groups, only: [:index, :show]
+      resources :groups, only: [:index, :show, :create]
   	end
   end
 

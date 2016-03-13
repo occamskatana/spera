@@ -360,8 +360,17 @@ angular.module('starter.controllers', [])
 .controller('groupsCtrl', function($scope, Groups){
   Groups.get().$promise.then(function(response){
     $scope.groups = response.groups
-    console.log($scope.groups)
   })
+
+  $scope.group = new Groups();
+  $scope.newGroup = function(){
+    $scope.group.$save().then(function(response){
+      console.log(response)
+    });
+    $scope.groups.push({name: $scope.group.name, description: $scope.group.description});
+    console.log($scope.group);
+    console.log($scope.groups);
+  }
 })
 
 .controller('groupCtrl', function($scope, Groups, $stateParams){
@@ -501,6 +510,7 @@ angular.module('starter.controllers', [])
     $scope.post.$save();
     $scope.posts.push({title: $scope.post.title, content: $scope.post.content, username: window.localStorage.userName});
     console.log($scope.post);
+    console.log($scope.posts);
   };
 })
 
