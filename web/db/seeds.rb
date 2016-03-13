@@ -19,23 +19,30 @@
 	users = User.all
 	
 
-	goals = 10.times do Goal.create(
-		title: Faker::Hipster.sentence,
-		description: Faker::Hacker.say_something_smart
-		)
-	end
+	goals = ['Stay Sober', 'Get a Job', 'Get in Shape', 'Buy a House']
+ 	goals = goals.each do |goal|
+ 	  Goal.create(
+ 			title: goal,
+ 			description: Faker::Hacker.say_something_smart
+  		)
+  	end
+  
+  	goals = Goal.all
 
 	goals = Goal.all 
 
-	objective = 10.times do Objective.create(
-		user: users.sample,
-		goal: goals.sample,
-		description: Faker::Hacker.say_something_smart,
-		date: Faker::Date.between(5.days.ago, Date.today),
-		length: Faker::Number.between(30, 90),
-		title: Faker::Hacker.say_something_smart
-		)
-	end
+	objective = ['Call Sponsor', 'Morning Routine', 'Evening Routine', 'Meditation', 
+ 		           'Therapy', 'Stepwork', 'Exercise', 'Meds', 'Relaxation', 'Read Literature']
+ 	objective = objective.each do |objective|
+ 	  Objective.create(
+ 			user: users.sample,
+ 			goal: goals.sample,
+ 			description: Faker::Hacker.say_something_smart,
+ 			date: Faker::Date.between(5.days.ago, Date.today),
+ 			length: Faker::Number.between(30, 90),
+ 			title: objective
+  		)
+  	end
 
 	checkin = 40.times do Checkin.create!(
 		user: users.sample,
