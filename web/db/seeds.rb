@@ -16,24 +16,29 @@
 		)
 	end
 
+
 	users = User.all
 	
-
-	goals = 10.times do Goal.create(
-		title: Faker::Hipster.sentence,
-		description: Faker::Hacker.say_something_smart
+	goals = ['Stay Sober', 'Get a Job', 'Get in Shape', 'Buy a House']
+	goals = goals.each do |goal|
+	  Goal.create(
+			title: goal,
+			description: Faker::Hacker.say_something_smart
 		)
 	end
 
 	goals = Goal.all 
 
-	objective = 10.times do Objective.create(
-		user: users.sample,
-		goal: goals.sample,
-		description: Faker::Hacker.say_something_smart,
-		date: Faker::Date.between(5.days.ago, Date.today),
-		length: Faker::Number.between(30, 90),
-		title: Faker::Hacker.say_something_smart
+	objective = ['Call Sponsor', 'Morning Routine', 'Evening Routine', 'Meditation', 
+		           'Therapy', 'Stepwork', 'Exercise', 'Meds', 'Relaxation', 'Read Literature']
+	objective = objective.each do |objective|
+	  Objective.create(
+			user: users.sample,
+			goal: goals.sample,
+			description: Faker::Hacker.say_something_smart,
+			date: Faker::Date.between(5.days.ago, Date.today),
+			length: Faker::Number.between(30, 90),
+			title: objective
 		)
 	end
 
@@ -89,11 +94,13 @@
 		)
 	end
 
-	groups = 5.times do Group.create!(
-		name: Faker::Company.name, 
-		description: Faker::Company.bs 
+	groups = ['Black Bear Alumni', 'Home Group', 'Connections Friends', 'Family']
+	groups = groups.each do |group| 
+	  Group.create!(
+			name: group,
+			description: Faker::Company.bs 
 		)
-end
+  end
 
 	groups = Group.all 
 
