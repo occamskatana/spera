@@ -7,6 +7,13 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngResource', 'starter.directives'])
 
+.constant('config', {
+  "pubnub": {
+    "publish-key": "pub-c-61756fe8-0fc3-4801-b6a9-6a07bd489103",
+    "subscribe-key": "sub-c-6eabf852-e947-11e5-ab43-02ee2ddab7fe"
+  }
+})
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
