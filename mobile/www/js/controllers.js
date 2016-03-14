@@ -373,12 +373,15 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('groupCtrl', function($scope, $stateParams, $timeout, $interval, $ionicScrollDelegate, Groups, Messages){
+.controller('groupCtrl', function($scope, $stateParams, $timeout, $interval, $ionicScrollDelegate, Groups, Messages, Chats){
   Groups.get({id: $stateParams.id}).$promise.then(function(response){
     $scope.group = response.group
-    console.log(response.group)
-    $scope.messages = $scope.group.chat_messages
-    console.log($scope.messages)
+    
+    if($scope.group.chat_messages) {
+      $scope.messages = $scope.group.chat_messages;
+    } else {
+      $scope.messages = [];
+    }
   })
 
   $scope.userId = window.localStorage.userId
@@ -399,7 +402,17 @@ angular.module('starter.controllers', [])
       time: d
     });
 
-    Messages.create({chat_id: $scope.messages[0].chat_id, content: $scope.data.message})
+    if($scope.messages[0].chat_id) {
+      Messages.create({chat_id: $scope.messages[0].chat_id, content: $scope.data.message});
+    } else {
+      var content = $scope.data.message
+      console.log(content);
+      Chats.create({group_id: $scope.group.id}).$promise.then(function(response) {
+        console.log(response.chat.id);
+        console.log($scope.data.message);
+        Messages.create({chat_id: response.chat.id, content: content});
+      })
+    }
 
     delete $scope.data.message;
     $ionicScrollDelegate.scrollBottom(true);
@@ -445,7 +458,7 @@ angular.module('starter.controllers', [])
     $interval.cancel(promise);
   });
 
-  var promise = $interval(refreshData, 3000);
+  var promise = $interval(refreshData, 10000);
 
 
 })
@@ -584,6 +597,7 @@ angular.module('starter.controllers', [])
   };
 })
 
+/*
 .controller('Messages', function($scope, $timeout, $ionicScrollDelegate, Chats) {
 
   $scope.hideTime = true;
@@ -631,4 +645,4 @@ angular.module('starter.controllers', [])
   $scope.myId = '12345';
   $scope.messages = [];
 
-});
+}); */

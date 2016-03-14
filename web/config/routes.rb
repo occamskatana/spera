@@ -55,7 +55,7 @@ end
         resources :posts 
       end
       resources :groups, only: [:index, :show, :create]
-      resources :chats, only: [:show] do
+      resources :chats, only: [:show, :create] do
         resources :messages
       end
   	end
