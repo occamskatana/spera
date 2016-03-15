@@ -391,6 +391,12 @@ angular.module('starter.controllers', [])
   var alternate,
     isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
 
+
+  var scrollHax = function(){
+    var element = document.getElementById("rawr");
+    element.scrollTop = element.scrollHeight;
+  }
+
   $scope.sendMessage = function() {
 
     var d = new Date();
@@ -412,6 +418,7 @@ angular.module('starter.controllers', [])
         console.log($scope.data.message);
         Messages.create({chat_id: response.chat.id, content: content});
       })
+      scrollHax();
     }
 
     delete $scope.data.message;
@@ -444,11 +451,12 @@ angular.module('starter.controllers', [])
 
 
 
+
   var refreshData = function() {
     // Assign to scope within callback to avoid data flickering on screen
     Groups.get({id: $stateParams.id}).$promise.then(function(response){
       $scope.messages = response.group.chat_messages;
-      console.log('tick');
+      // console.log('tick');
     })
   };
 

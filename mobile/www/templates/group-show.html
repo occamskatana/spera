@@ -24,7 +24,7 @@
 
       <div ng-repeat="message in messages"
            ng-class="{other: message.user_id != userId}"
-           class="messages">
+           class="messages" id="rawr">
 
         <div class="message" ng-class="{'slide-right': hideTime, '': !hideTime}">
           <span class="msg">{{ message.content }}</span>
