@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  friendable_id: 
+  groupable_id: 
+  title: MyString
+  description: MyString
+
+two:
+  friendable_id: 
+  groupable_id: 
+  title: MyString
+  description: MyString

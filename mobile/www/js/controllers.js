@@ -373,11 +373,102 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('groupCtrl', function($scope, Groups, $stateParams){
+.controller('groupCtrl', function($scope, $stateParams, $timeout, $interval, $ionicScrollDelegate, Groups, Messages, Chats){
   Groups.get({id: $stateParams.id}).$promise.then(function(response){
     $scope.group = response.group
-    console.log(response.group)
+    
+    if($scope.group.chat_messages) {
+      $scope.messages = $scope.group.chat_messages;
+    } else {
+      $scope.messages = [];
+    }
   })
+
+  $scope.userId = window.localStorage.userId
+
+  $scope.hideTime = true;
+
+  var alternate,
+    isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
+
+
+  var scrollHax = function(){
+    var element = document.getElementById("rawr");
+    element.scrollTop = element.scrollHeight;
+  }
+
+  $scope.sendMessage = function() {
+
+    var d = new Date();
+    d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+
+    $scope.messages.push({
+      user_id: $scope.userId,
+      content: $scope.data.message,
+      time: d
+    });
+
+    if($scope.messages[0].chat_id) {
+      Messages.create({chat_id: $scope.messages[0].chat_id, content: $scope.data.message});
+    } else {
+      var content = $scope.data.message
+      console.log(content);
+      Chats.create({group_id: $scope.group.id}).$promise.then(function(response) {
+        console.log(response.chat.id);
+        console.log($scope.data.message);
+        Messages.create({chat_id: response.chat.id, content: content});
+      })
+      scrollHax();
+    }
+
+    delete $scope.data.message;
+    $ionicScrollDelegate.scrollBottom(true);
+
+  };
+
+
+  $scope.inputUp = function() {
+    if (isIOS) $scope.data.keyboardHeight = 216;
+    $timeout(function() {
+      $ionicScrollDelegate.scrollBottom(true);
+    }, 300);
+
+  };
+
+  $scope.inputDown = function() {
+    if (isIOS) $scope.data.keyboardHeight = 0;
+    $ionicScrollDelegate.resize();
+  };
+
+  $scope.closeKeyboard = function() {
+    // cordova.plugins.Keyboard.close();
+  };
+
+
+  $scope.data = {};
+  $scope.myId = '12345';
+  $scope.messages = [];
+
+
+
+
+  var refreshData = function() {
+    // Assign to scope within callback to avoid data flickering on screen
+    Groups.get({id: $stateParams.id}).$promise.then(function(response){
+      $scope.messages = response.group.chat_messages;
+      // console.log('tick');
+    })
+  };
+
+  // Cancel interval on page changes
+  $scope.$on('$locationChangeStart', function(){
+    console.log("sould cancel");
+    $interval.cancel(promise);
+  });
+
+  var promise = $interval(refreshData, 10000);
+
+
 })
 
 .controller('BoardCtrl', function($scope, $state, Board, $ionicPopup, upVote, $stateParams, downVote) {
@@ -514,7 +605,8 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('Messages', function($scope, $timeout, $ionicScrollDelegate) {
+/*
+.controller('Messages', function($scope, $timeout, $ionicScrollDelegate, Chats) {
 
   $scope.hideTime = true;
 
@@ -561,4 +653,4 @@ angular.module('starter.controllers', [])
   $scope.myId = '12345';
   $scope.messages = [];
 
-});
+}); */
