@@ -8,6 +8,16 @@
 			</button>
 		</div>
 
+		<div>
+			<h3 align="center">Friends</h3>
+			<div class="list" ng-repeat="friend in friends">
+				<a class="item item-icon-right" ui-sref="tab.friend-chat({id: {{friend.id}}})">
+				  {{friend.first_name}} {{friend.last_name}} {{friend.last_checkin.mood}} {{friend.last_checkin.need_support ? 'Needs Support' : ''}}
+					<i class="icon ion-chevron-right"></i>
+				</a>
+			</div>
+		</div>
+
 		<div ng-controller="groupsCtrl">
 			<h3 align="center">Groups</h3>
 			<button class='button button-block button-royal' ui-sref="tab.new-group">New Group</button>
