@@ -2,7 +2,7 @@
 	<ion-content>
 	
 		<a class="button button-block button-positive" href="#/tab/checkin/new">Check In! <i class="ion-android-calendar"></i></a>
-		<ion-list ng-repeat="checkin in checkIns">
+		<ion-list ng-repeat="checkin in checkIns | orderBy:'created_at':true ">
 
 				<div class="list card">
 					<div class="item item-avatar">
@@ -12,7 +12,13 @@
 					</div>
 
 					<div class="item item-body">
-						<img class="full-image" src="img/nedry.jpg">
+						<!-- img class="full-image" src="img/nedry.jpg" -->
+						<p>
+							<span class="badge badge-assertive">{{checkin.need_support ? 'Needs Help' : '' }}</span>
+						</p>
+						<p>
+							{{checkin.mood}}
+						</p>
 						<p>
 							{{checkin.remarks}}
 						</p>
