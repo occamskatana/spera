@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 	    	
 	    	friends_ids << friend_id
 	    end  
-	    return friends_ids.uniq.delete_if{|id| id == self.id}
+	    return friends_ids.uniq.delete_if {|id| id == self.id}
     end
 
     def friend_requests

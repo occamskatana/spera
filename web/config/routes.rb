@@ -58,6 +58,7 @@ end
       resources :chats, only: [:show, :create] do
         resources :messages
       end
+      resources :friends, only: [:index, :show]
   	end
   end
 
