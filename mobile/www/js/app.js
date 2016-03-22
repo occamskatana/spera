@@ -162,6 +162,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
+  .state('tab.new-group', {
+    url: 'chats/group/new',
+    views: {
+      'tab-chats': {
+        templateUrl: 'templates/new-group.html',
+        controller: 'groupsCtrl'
+      }
+    }
+  })
+
   .state('tab.user-show', {
     url: 'chats/results/:id',
     views: {
