@@ -221,6 +221,12 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
     controller: 'LoginCtrl'
   })
 
+  .state('register', {
+    url: '/register',
+    templateUrl: 'templates/register.html',
+    controller: 'RegisterCtrl'
+  })
+
   .state('tab.account', {
     url: '/account',
     views: {

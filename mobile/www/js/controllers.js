@@ -43,6 +43,27 @@ angular.module('starter.controllers', [])
   }
 })
 
+.controller('RegisterCtrl', function($scope, RegisterSession, $location, $ionicPopup, $rootScope){
+  $scope.data = {};
+
+  $scope.register = function(){
+    console.log($scope.data)
+    var user_user = new RegisterSession({user: $scope.data});
+    user_user.$save(
+      function(data){
+        $location.path('login');
+      },
+
+      function(err) {
+        var confirmPopup = $ionicPopup.alert({
+          title: 'An error occured. Please try again',
+          template: 'error'
+        });
+      });     
+  }
+
+})
+
 .controller('modalCtrl', function($scope, $ionicModal){
   $ionicModal.fromTemplateUrl('/templates/friend-request-modal.html', function($ionicModal) {
         $scope.modal = $ionicModal;
