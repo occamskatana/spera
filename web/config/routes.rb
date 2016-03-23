@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
  
-
   get 'events/create'
 
   get 'friendables/friend_request'
 
   root to: 'welcome#index'
   
-  devise_for :users, controllers: {registrations: 'registrations', passwords: 'users/passwords', sessions: 'users/sessions' }
+  devise_for :users, controllers: {registrations: 'users/registrations', passwords: 'users/passwords', sessions: 'users/sessions' }
 
   resources :users, only: [:show] do 
     resources :goals
