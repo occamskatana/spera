@@ -112,6 +112,12 @@ angular.module('starter.services', [])
   })
 })
 
+.factory('SuggestedObjectives', function($resource){
+  return $resource("http://localhost:3000/api/v1/suggested_objectives", {
+    query: {method: 'GET', isArray: true}
+  })
+})
+
 .factory('Events', function($resource) {
   return $resource("http://localhost:3000/api/v1/events", {}, {
     query: {method: 'GET', isArray: true},

@@ -4,6 +4,8 @@ class Objective < ActiveRecord::Base
   has_many :occurrences, dependent: :destroy
   after_create :build_occurrences
 
+  validates_presence_of :title
+
   before_save {self.completed ||= :false}
 
   def build_occurrences

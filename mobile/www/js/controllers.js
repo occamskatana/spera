@@ -345,9 +345,13 @@ angular.module('starter.controllers', [])
     };  
 })
 
-.controller('newObjectiveCtrl', function($scope, Goals, Objectives, $state, $stateParams){
+.controller('newObjectiveCtrl', function($scope, Goals, Objectives, SuggestedObjectives, $state, $stateParams){
+  SuggestedObjectives.query().$promise.then(function(response) {
+    $scope.suggested_objectives = response;
+  })
   $scope.objective = new Objectives();
-  $scope.objectiveList = []
+  $scope.objectiveList = [];
+  
   $scope.addObjective = function() {
     $scope.objective.$save({goal_id: $stateParams.id}).then(function(response){
       $scope.objectiveList.push($scope.objective);

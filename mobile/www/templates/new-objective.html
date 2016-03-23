@@ -5,11 +5,19 @@
 		</div><br>
 
 		<div class="list">
-			<label class="item item-input item-floating-label">
+			<label class="item item-input item-select">
+		    <div class="input-label">
+		      Objective
+		    </div>
+		    <select ng-model="objective.suggested_title">
+		      <option ng-repeat="obj in suggested_objectives" value="{{obj.title}}">{{obj.title}}</option>
+		    </select>
+		  </label>
+			<label class="item item-input item-floating-label" ng-show="objective.suggested_title == 'Create my own!'">
 				<span class="input-label">Title</span>
 				<input type="text" ng-model="objective.title" placeholder="Title">
 			</label>
-			<label class="item item-input item-floating-label">
+			<label class="item item-input item-floating-label" ng-show="objective.suggested_title == 'Create my own!'">
 				<span class="input-label">Description</span>
 				<input type="text" ng-model="objective.description" placeholder="Description">
 			</label>

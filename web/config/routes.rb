@@ -38,12 +38,16 @@ end
   		resources :goals do
         resources :objectives, only: [:index, :create]
       end
-        resources :objectives, only: [] do 
-          resources :occurrences, only: [:index]
-        end
-        resources :occurrences, only: [:index] do 
-          put 'mark_complete' => 'occurrences#mark_complete', as: :mark_complete
-        end
+      resources :suggested_objectives, only: [:index]
+      
+      # These resources needed?
+      resources :objectives, only: [] do 
+        resources :occurrences, only: [:index]
+      end
+
+      resources :occurrences, only: [:index] do 
+        put 'mark_complete' => 'occurrences#mark_complete', as: :mark_complete
+      end
       resources :events, only: [:index, :create] 
       resources :checkins, only: [:show, :create, :index]
       resources :notifications, only: [:index, :update]

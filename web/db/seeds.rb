@@ -31,6 +31,12 @@
 
 	goals = Goal.all 
 
+	suggested_objectives = ['Call Sponsor', 'Morning Routine', 'Evening Routine', 'Meditation', 
+ 		           						'Therapy', 'Stepwork', 'Exercise', 'Meds', 'Relaxation', 'Read Literature', 'Create my own!']
+  suggested_objectives = suggested_objectives.each do |obj|
+  	SuggestedObjective.create!(title: obj)
+  end
+
 	objective = ['Call Sponsor', 'Morning Routine', 'Evening Routine', 'Meditation', 
  		           'Therapy', 'Stepwork', 'Exercise', 'Meds', 'Relaxation', 'Read Literature']
  	objective = objective.each do |objective|
