@@ -60,16 +60,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
-  .state('tab.goal', {
-    url:'/dash/:id',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/goal.html',
-        controller: 'goalShowCtrl'
-      }
-    }
-  })
-
   .state('tab.goal-list', {
     url: 'dash/goal-list',
     views: {
@@ -79,6 +69,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
+
+  .state('tab.goal', {
+    url:'/goal/:id',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/goal.html',
+        controller: 'goalShowCtrl'
+      }
+    }
+  })
+
 
   .state('tab.new-objective', {
     url: 'dash/:id/new-objective',
@@ -91,6 +92,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   })
 
   .state('tab.checkin', {
+    cache: false,
     url: '/checkin',
     views: {
       'tab-checkin': {
