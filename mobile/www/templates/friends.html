@@ -12,7 +12,9 @@
 			<h3 align="center">Friends</h3>
 			<div class="list" ng-repeat="friend in friends">
 				<a class="item item-icon-right" ui-sref="tab.friend-chat({id: {{friend.id}}})">
-				  {{friend.first_name}} {{friend.last_name}} {{friend.last_checkin.mood}} {{friend.last_checkin.need_support ? 'Needs Support' : ''}}
+				  <span>{{friend.first_name}} {{friend.last_name}} </span>
+				  <span> {{friend.last_checkin.mood}} </span>
+				  <span class='badge badge-assertive'> {{friend.last_checkin.need_support ? 'Needs Support' : ''}} </span>
 					<i class="icon ion-chevron-right"></i>
 				</a>
 			</div>

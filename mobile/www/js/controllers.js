@@ -199,7 +199,7 @@ angular.module('starter.controllers', [])
 .controller('friendChatCtrl', function($scope, friends, Chats, Messages, $http, $state, $stateParams, $interval, $timeout, $ionicScrollDelegate){
   friends.get({id: $stateParams.id}).$promise.then(function(response){
     $scope.friendship = response.friendable;
-    console.log($scope.friendship.id);
+    console.log($scope.friendship);
     
 
     if($scope.friendship.chat_messages) {
