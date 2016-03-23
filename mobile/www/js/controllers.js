@@ -29,6 +29,7 @@ angular.module('starter.controllers', [])
         
         window.localStorage['userId'] = data.user.id;
         window.localStorage['userName'] = data.user.username;
+
         $location.path('tab/dash');
       },
 
