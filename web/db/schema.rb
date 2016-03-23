@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323163927) do
+ActiveRecord::Schema.define(version: 20160323181913) do
 
   create_table "aboutmes", force: :cascade do |t|
     t.integer  "user_id"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 20160323163927) do
     t.boolean  "completed"
     t.integer  "length"
     t.string   "title"
+    t.string   "recurring"
   end
 
   add_index "objectives", ["goal_id"], name: "index_objectives_on_goal_id"

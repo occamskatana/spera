@@ -350,6 +350,7 @@ angular.module('starter.controllers', [])
     $scope.suggested_objectives = response;
   })
   $scope.objective = new Objectives();
+  $scope.objective.recurring = 'daily';
   $scope.objectiveList = [];
   
   $scope.addObjective = function() {

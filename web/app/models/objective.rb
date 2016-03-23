@@ -9,11 +9,22 @@ class Objective < ActiveRecord::Base
   before_save {self.completed ||= :false}
 
   def build_occurrences
-  	Occurrence.create!(objective_id: self.id, user: self.user, date: self.date, completed: false)
-		$i = 0
-		until $i >= self.length do 
-			Occurrence.create!(objective_id: self.id, user: self.user, date: self.date += 1.day, completed: false)
-			$i += 1
+  	if self.recurring == 'daily'
+	  	Occurrence.create!(objective_id: self.id, user: self.user, date: self.date, completed: false)
+			$i = 0
+			until $i >= self.length do 
+				Occurrence.create!(objective_id: self.id, user: self.user, date: self.date += 1.day, completed: false)
+				$i += 1
+			end
+		elsif self.recurring == 'weekly'
+			Occurrence.create!(objective_id: self.id, user: self.user, date: self.date, completed: false)
+			$i = 0
+			until $i >= self.length do 
+				Occurrence.create!(objective_id: self.id, user: self.user, date: self.date += 7.day, completed: false)
+				$i += 1
+			end
+		else
+			# should create single occurence on date they specify
 		end
 	end
 

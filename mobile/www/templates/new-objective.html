@@ -14,17 +14,26 @@
 		    </select>
 		  </label>
 			<label class="item item-input item-floating-label" ng-show="objective.suggested_title == 'Create my own!'">
-				<span class="input-label">Title</span>
+				<span class="input-label">Name Your Objective</span>
 				<input type="text" ng-model="objective.title" placeholder="Title">
 			</label>
 			<label class="item item-input item-floating-label" ng-show="objective.suggested_title == 'Create my own!'">
-				<span class="input-label">Description</span>
+				<span class="input-label">What do you want to accomplish?</span>
 				<input type="text" ng-model="objective.description" placeholder="Description">
 			</label>
 			<label class="item item-input item-floating-label">
 				<span class="input-label">How Many Days?</span>
 				<input type="number" ng-model="objective.length" placeholder="How many Days?">
 			</label>
+			<label class="item item-input item-select">
+		    <div class="input-label">
+		      Recurring
+		    </div>
+		    <select ng-model="objective.recurring">
+		      <option ng-selected="true" value="daily">Daily</option>
+		      <option value="weekly">Weekly</option>
+		    </select>
+		  </label>
 			<button class="button button-block button-positive" ng-click="addObjective()">Submit</button>
 			<button class="button button-block button-energized" ui-sref="tab.dash">Done</button>
 		</div>

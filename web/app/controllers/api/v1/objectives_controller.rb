@@ -10,11 +10,11 @@ class Api::V1::ObjectivesController < Api::V1::BaseController
 	def create
 		goal = Goal.find(params[:goal_id])
 		if params[:title]
-			objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:title], length: params[:length], date: Date.today)
+			objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:title], length: params[:length], recurring: params[:recurring], date: Date.today)
 
 			render json: objective, root: false, status: 201
 		else
-			objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:suggested_title], length: params[:length], date: Date.today)
+			objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:suggested_title], length: params[:length], recurring: params[:recurring], date: Date.today)
 
 			render json: objective, root: false, status: 201
 		end
