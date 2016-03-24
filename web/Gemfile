@@ -11,6 +11,7 @@ gem 'devise'
 gem 'faker'
 gem 'bootswatch-rails'
 gem 'active_model_serializers'
+gem "paperclip", "~> 4.3"
 
 
 # Use SCSS for stylesheets
