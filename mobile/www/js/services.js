@@ -8,7 +8,7 @@ angular.module('starter.services', [])
 })
 
 .factory('RegisterSession', function($resource) {
-  return $resource("http://localhost:3000/users");
+  return $resource("http://localhost:3000/users.json");
 })
 
 .factory('Goals', function($resource){
