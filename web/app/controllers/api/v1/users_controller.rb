@@ -17,7 +17,6 @@ class Api::V1::UsersController < Api::V1::BaseController
 			default_serializer_options
 
 			friend = User.find(params[:id])
-			binding.pry
 			
 			render json: friend, serializer: UserSerializer, root: false, status: 201			
 	end

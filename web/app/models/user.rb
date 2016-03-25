@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
     has_many :groupables
     has_many :groups, through: :groupables
     has_many :messages
-    has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: ActionController::Base.helpers.asset_path('no-picture-default.jpg')
+    has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: 'https://s3.amazonaws.com/spera-data/no-picture-default.jpg'
+    # default_url: ActionController::Base.helpers.asset_path('no-picture-default.jpg')
     validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
     

@@ -12,6 +12,7 @@ gem 'faker'
 gem 'bootswatch-rails'
 gem 'active_model_serializers'
 gem "paperclip", "~> 4.3"
+gem 'aws-sdk', '>= 2.0.34'
 
 
 # Use SCSS for stylesheets
