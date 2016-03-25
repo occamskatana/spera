@@ -1,0 +1,9 @@
+development:
+  access_key_id: AKIAJMKZFYDRUDEZFXBA
+  secret_access_key: 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
+
+test:
+
+# instead read values from the environment.
+production:
+
