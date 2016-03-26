@@ -11,11 +11,9 @@ class Api::V1::EventsController < Api::V1::BaseController
 		puts params
 		user = current_user
 		event = current_user.events.create!(user_id: current_user.id, name: params[:title])
+		
 		render json: event
-
 	end
-
-	private
 
 
 end

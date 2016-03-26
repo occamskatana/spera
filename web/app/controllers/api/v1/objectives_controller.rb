@@ -27,9 +27,4 @@ class Api::V1::ObjectivesController < Api::V1::BaseController
 		render json: objective, status: 201, root: false
 	end
 
-
-	private
-
-	
-
 end

@@ -1,25 +1,31 @@
 Rails.application.routes.draw do
  
+  # Being used?
   get 'events/create'
 
+  # Being used?
   get 'friendables/friend_request'
 
+  # Being used?
   root to: 'welcome#index'
   
   devise_for :users, controllers: {registrations: 'users/registrations', passwords: 'users/passwords', sessions: 'users/sessions' }
 
+  # Are these routes being used?
   resources :users, only: [:show] do 
     resources :goals
     resources :checkins, only: []
     # resources :events, only: [:create]
   end
 
+  # Are these routes being used?
   resources :friendable, defaults: {format: 'json'} do
     member do 
       put 'friend_request' 
     end 
   end
 
+  # Are these routes being used?
   resources :friendables do
     member do
       put 'friend_request'
@@ -64,8 +70,5 @@ end
       resources :friends, only: [:index, :show]
   	end
   end
-
-  
-
-  
+ 
 end
