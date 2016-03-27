@@ -6,6 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+	user_images = ['https://s3.amazonaws.com/spera-data/asian-girl.jpeg',
+								 'https://s3.amazonaws.com/spera-data/black-guy-1.jpeg',
+								 'https://s3.amazonaws.com/spera-data/white-guy-1.jpeg',
+								 'https://s3.amazonaws.com/spera-data/white-guy-2.jpeg' 
+								]
 
 	users = 10.times do User.create!(
 		username: Faker::Internet.user_name,
@@ -13,6 +18,7 @@
 		last_name: Faker::Name.last_name,
 		email: Faker::Internet.email,
 		password: 'helloworld'
+	#	avatar: user_images.sample
 		)
 	end
 
@@ -30,6 +36,12 @@
   	goals = Goal.all
 
 	goals = Goal.all 
+
+	suggested_objectives = ['Call Sponsor', 'Morning Routine', 'Evening Routine', 'Meditation', 
+ 		           						'Therapy', 'Stepwork', 'Exercise', 'Meds', 'Relaxation', 'Read Literature', 'Create my own!']
+  suggested_objectives = suggested_objectives.each do |obj|
+  	SuggestedObjective.create!(title: obj)
+  end
 
 	objective = ['Call Sponsor', 'Morning Routine', 'Evening Routine', 'Meditation', 
  		           'Therapy', 'Stepwork', 'Exercise', 'Meds', 'Relaxation', 'Read Literature']

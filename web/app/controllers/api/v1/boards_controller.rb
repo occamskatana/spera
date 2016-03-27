@@ -19,7 +19,9 @@ class Api::V1::BoardsController < Api::V1::BaseController
 
 
 private
+	
 	def board_params
 		params.require(:board).permit(:title, :description, :user)
 	end
+	
 end

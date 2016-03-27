@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313002141) do
+ActiveRecord::Schema.define(version: 20160323185507) do
 
   create_table "aboutmes", force: :cascade do |t|
     t.integer  "user_id"
@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(version: 20160313002141) do
   end
 
   add_index "boards", ["user_id"], name: "index_boards_on_user_id"
+
+  create_table "chats", force: :cascade do |t|
+    t.integer  "friendable_id"
+    t.integer  "group_id"
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "chats", ["friendable_id"], name: "index_chats_on_friendable_id"
+  add_index "chats", ["group_id"], name: "index_chats_on_group_id"
 
   create_table "checkins", force: :cascade do |t|
     t.boolean  "sober"
@@ -89,6 +101,17 @@ ActiveRecord::Schema.define(version: 20160313002141) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.integer  "chat_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "messages", ["chat_id"], name: "index_messages_on_chat_id"
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
+
   create_table "notifications", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "to_id"
@@ -110,6 +133,7 @@ ActiveRecord::Schema.define(version: 20160313002141) do
     t.boolean  "completed"
     t.integer  "length"
     t.string   "title"
+    t.string   "recurring"
   end
 
   add_index "objectives", ["goal_id"], name: "index_objectives_on_goal_id"
@@ -139,6 +163,16 @@ ActiveRecord::Schema.define(version: 20160313002141) do
   add_index "posts", ["board_id"], name: "index_posts_on_board_id"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
+  create_table "suggested_objectives", force: :cascade do |t|
+    t.integer  "goal_id_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "suggested_objectives", ["goal_id_id"], name: "index_suggested_objectives_on_goal_id_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -156,6 +190,10 @@ ActiveRecord::Schema.define(version: 20160313002141) do
     t.string   "last_name"
     t.string   "username"
     t.boolean  "private"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

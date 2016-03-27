@@ -1,8 +1,14 @@
 angular.module('starter.services', [])
 .constant('BaseUrl', 'http://localhost:3000/api/v1')
+                     // 'http://localhost:3000/api/v1'
+                     // 'https://gentle-escarpment-94708.herokuapp.com/api/v1'
 
 .factory('UserSession', function($resource) {
   return $resource("http://localhost:3000/users/sign_in.json");
+})
+
+.factory('RegisterSession', function($resource) {
+  return $resource("http://localhost:3000/users.json");
 })
 
 .factory('Goals', function($resource){
@@ -10,12 +16,6 @@ angular.module('starter.services', [])
     query: {method: 'GET', isArray: false},
     create: {method: 'POST'},
     get: {method: 'GET', isArray: false, id: '@id'}
-  })
-})
-
-.factory('friendRequests', function($resource){
-  return $resource("http://localhost:3000/api/v1/friendables/:id", {id: '@id'}, {
-    query: {method: 'GET', isArray: true },
   })
 })
 
@@ -44,6 +44,24 @@ angular.module('starter.services', [])
 .factory('Groups', function($resource){
   return $resource("http://localhost:3000/api/v1/groups/:id", {id: '@id'}, {
     
+  })
+})
+
+.factory('Messages', function($resource) {
+  return $resource("http://localhost:3000/api/v1/chats/:chat_id/messages", {chat_id: '@chat_id'}, {
+    create: {method: 'POST'}
+  })
+})
+
+.factory('Chats', function($resource) {
+  return $resource("http://localhost:3000/api/v1/chats", {}, {
+    create: {method: 'POST'}
+  })
+})
+
+.factory('friendRequests', function($resource){
+  return $resource("http://localhost:3000/api/v1/friendables/:id", {id: '@id'}, {
+    query: {method: 'GET', isArray: true },
   })
 })
 
@@ -94,6 +112,12 @@ angular.module('starter.services', [])
   })
 })
 
+.factory('SuggestedObjectives', function($resource){
+  return $resource("http://localhost:3000/api/v1/suggested_objectives", {
+    query: {method: 'GET', isArray: true}
+  })
+})
+
 .factory('Events', function($resource) {
   return $resource("http://localhost:3000/api/v1/events", {}, {
     query: {method: 'GET', isArray: true},
@@ -127,7 +151,7 @@ angular.module('starter.services', [])
 
 
 .factory('friends', function($resource) {
-  return $resource("http://localhost:3000/api/v1/users/:user_id/friend_list", {user_id: "@user_id"}, {
+  return $resource("http://localhost:3000/api/v1/friends/:id", {user_id: "@user_id", id: "@id"}, {
     query: {method: 'GET', isArray: true}
   })
 })
@@ -156,55 +180,3 @@ angular.module('starter.services', [])
     create: {method: 'POST'}
   })
 })
-
-
-
-
-.factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
-  var chats = [{
-    id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'img/ben.png'
-  }, {
-    id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'img/max.png'
-  }, {
-    id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'img/adam.jpg'
-  }, {
-    id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'img/perry.png'
-  }, {
-    id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }];
-
-  return {
-    all: function() {
-      return chats;
-    },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
-    },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
-        }
-      }
-      return null;
-    }
-  };
-});

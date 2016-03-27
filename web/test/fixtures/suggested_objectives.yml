@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  goal_id_id: 
+  title: MyString
+  description: MyText
+
+two:
+  goal_id_id: 
+  title: MyString
+  description: MyText

@@ -16,6 +16,7 @@ class ObjectivesController < ApplicationController
     respond_to do |format|
       format.json {render json: :show, status: :created, location: @objective}
       format.html {redirect_to user_path(current_user)}
+    end
   end
 
   def destroy

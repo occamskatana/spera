@@ -8,7 +8,7 @@ class Api::V1::GroupsController < Api::V1::BaseController
 
 	def show
 		group = Group.find(params[:id])
-
+		
 		render json: group, status: 200
 	end
 
@@ -16,7 +16,6 @@ class Api::V1::GroupsController < Api::V1::BaseController
 		user = current_user
 		group = user.groups.create!(group_params)
 		
-
 		render json: group, status: 201
 	end
 
@@ -25,6 +24,5 @@ private
 	def group_params
 		params.require(:group).permit(:name, :description)
 	end
-
 
 end

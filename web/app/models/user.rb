@@ -17,6 +17,12 @@ class User < ActiveRecord::Base
     has_one :aboutme
     has_many :groupables
     has_many :groups, through: :groupables
+    has_many :messages
+    has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: 'https://s3.amazonaws.com/spera-data/no-picture-default.jpg',
+                               s3_credentials: {access_key_id: 'AKIAJMKZFYDRUDEZFXBA', secret_access_key: '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'}
+                                # add s3_credentials to config with ENV variables
+    # default_url: ActionController::Base.helpers.asset_path('no-picture-default.jpg')
+    validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
     
 
@@ -34,7 +40,7 @@ class User < ActiveRecord::Base
 	    	
 	    	friends_ids << friend_id
 	    end  
-	    return friends_ids.uniq.delete_if{|id| id == self.id}
+	    return friends_ids.uniq.delete_if {|id| id == self.id}
     end
 
     def friend_requests
