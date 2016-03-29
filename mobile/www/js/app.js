@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngResource', 'starter.directives'])
+angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 'starter.services', 'ngResource', 'starter.directives'])
 
 .constant('config', {
   "pubnub": {
@@ -60,16 +60,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
-  .state('tab.goal', {
-    url:'/dash/:id',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/goal.html',
-        controller: 'goalShowCtrl'
-      }
-    }
-  })
-
   .state('tab.goal-list', {
     url: 'dash/goal-list',
     views: {
@@ -79,6 +69,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
+
+  .state('tab.goal', {
+    url:'/goal/:id',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/goal.html',
+        controller: 'goalShowCtrl'
+      }
+    }
+  })
+
 
   .state('tab.new-objective', {
     url: 'dash/:id/new-objective',
@@ -91,6 +92,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   })
 
   .state('tab.checkin', {
+    cache: false,
     url: '/checkin',
     views: {
       'tab-checkin': {
@@ -152,12 +154,32 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
   })
 
+  .state('tab.friend-chat', {
+    url: 'chats/friend-chat/:id',
+    views: {
+      'tab-chats': {
+        templateUrl: 'templates/friend-chat.html',
+        controller: 'friendChatCtrl'
+      }
+    }
+  })
+
   .state('tab.group-show', {
     url: 'chats/group/:id',
     views: {
       'tab-chats': {
         templateUrl: 'templates/group-show.html',
         controller: 'groupCtrl'
+      }
+    }
+  })
+
+  .state('tab.new-group', {
+    url: 'chats/group/new',
+    views: {
+      'tab-chats': {
+        templateUrl: 'templates/new-group.html',
+        controller: 'groupsCtrl'
       }
     }
   })
@@ -197,6 +219,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     url: '/login',
     templateUrl: 'templates/login.html',
     controller: 'LoginCtrl'
+  })
+
+  .state('register', {
+    url: '/register',
+    templateUrl: 'templates/register.html',
+    controller: 'RegisterCtrl'
   })
 
   .state('tab.account', {

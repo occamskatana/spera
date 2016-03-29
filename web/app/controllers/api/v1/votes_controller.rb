@@ -1,7 +1,5 @@
 class Api::V1::VotesController < Api::V1::BaseController
 
-
-
 	def down_vote
 		update_vote(-1)
 		redirect_to :back

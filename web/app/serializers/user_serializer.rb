@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-	attributes :id, :first_name, :last_name, :sober_date, :last_checkin, :username, :notifications
+	attributes :id, :first_name, :last_name, :sober_date, :last_checkin, :username, :notifications, :avatar
 
 	def last_checkin
 		object.checkins.last

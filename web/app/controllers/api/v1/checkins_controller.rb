@@ -22,7 +22,7 @@ class Api::V1::CheckinsController < Api::V1::BaseController
 	def index
 		user = User.find(params[:user_id])
 		checkins = user.checkins
-		render json: checkins.to_json, status: 200
+		render json: checkins, status: 200, root: false
 	end
 
 

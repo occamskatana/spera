@@ -12,6 +12,6 @@ class Api::V1::ChatsController < Api::V1::BaseController
 	private
 
 	def chat_params
-		params.require(:chat).permit(:group_id)
+		params.require(:chat).permit(:group_id, :friendable_id)
 	end
 end

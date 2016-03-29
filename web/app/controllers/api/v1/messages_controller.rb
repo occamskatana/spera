@@ -1,4 +1,5 @@
 class Api::V1::MessagesController < Api::V1::BaseController
+	
 	def create
 		message = current_user.messages.create(message_params)
 		render json: message

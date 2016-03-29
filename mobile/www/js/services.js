@@ -1,8 +1,14 @@
 angular.module('starter.services', [])
 .constant('BaseUrl', 'http://localhost:3000/api/v1')
+                     // 'http://localhost:3000/api/v1'
+                     // 'https://gentle-escarpment-94708.herokuapp.com/api/v1'
 
 .factory('UserSession', function($resource) {
   return $resource("http://localhost:3000/users/sign_in.json");
+})
+
+.factory('RegisterSession', function($resource) {
+  return $resource("http://localhost:3000/users.json");
 })
 
 .factory('Goals', function($resource){
@@ -10,12 +16,6 @@ angular.module('starter.services', [])
     query: {method: 'GET', isArray: false},
     create: {method: 'POST'},
     get: {method: 'GET', isArray: false, id: '@id'}
-  })
-})
-
-.factory('friendRequests', function($resource){
-  return $resource("http://localhost:3000/api/v1/friendables/:id", {id: '@id'}, {
-    query: {method: 'GET', isArray: true },
   })
 })
 
@@ -56,6 +56,12 @@ angular.module('starter.services', [])
 .factory('Chats', function($resource) {
   return $resource("http://localhost:3000/api/v1/chats", {}, {
     create: {method: 'POST'}
+  })
+})
+
+.factory('friendRequests', function($resource){
+  return $resource("http://localhost:3000/api/v1/friendables/:id", {id: '@id'}, {
+    query: {method: 'GET', isArray: true },
   })
 })
 
@@ -106,6 +112,12 @@ angular.module('starter.services', [])
   })
 })
 
+.factory('SuggestedObjectives', function($resource){
+  return $resource("http://localhost:3000/api/v1/suggested_objectives", {
+    query: {method: 'GET', isArray: true}
+  })
+})
+
 .factory('Events', function($resource) {
   return $resource("http://localhost:3000/api/v1/events", {}, {
     query: {method: 'GET', isArray: true},
@@ -139,7 +151,7 @@ angular.module('starter.services', [])
 
 
 .factory('friends', function($resource) {
-  return $resource("http://localhost:3000/api/v1/users/:user_id/friend_list", {user_id: "@user_id"}, {
+  return $resource("http://localhost:3000/api/v1/friends/:id", {user_id: "@user_id", id: "@id"}, {
     query: {method: 'GET', isArray: true}
   })
 })
