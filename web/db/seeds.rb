@@ -25,11 +25,17 @@
 	users = User.all
 	
 
-	goals = ['Stay Sober', 'Get a Job', 'Get in Shape', 'Buy a House']
- 	goals = goals.each do |goal|
+	goal_info = [ 
+						{title: 'Stay Sober', description: 'I want to stay sober and spiritually fit'},
+						{title: 'Get a Job', description: 'I want to land a great job I can be proud of'},
+						{title: 'Get in Shape', description: 'Help me get fit!'},
+						{title: 'Buy a House', description: 'Help me save up to buy a place of my own'} 
+					]
+
+ 	goals = goal_info.each do |goal|
  	  Goal.create(
- 			title: goal,
- 			description: Faker::Hacker.say_something_smart
+ 			title: goal[:title],
+ 			description: goal[:description]
   		)
   	end
   
@@ -43,25 +49,40 @@
   	SuggestedObjective.create!(title: obj)
   end
 
-	objective = ['Call Sponsor', 'Morning Routine', 'Evening Routine', 'Meditation', 
- 		           'Therapy', 'Stepwork', 'Exercise', 'Meds', 'Relaxation', 'Read Literature']
+	objective = [ {title: 'Call Sponsor', description: 'Keep up to date with my sponsor'},
+								{title: 'Morning Routine', description: 'Start the day with a spiritual reflection'},
+								{title: 'Evening Routine', description: 'Pray before I sleep at night'},
+								{title: 'Meditation', description: 'Take a few minutes to ground myself in mindfulness'},
+								{title: 'Therapy', description: 'Keep up with my therapist'},
+								{title: 'Stepwork', description: 'Work through my 10th step!'},
+								{title: 'Exercise', description: 'Running, biking, and swimming to stay fit'},
+								{title: 'Meds', description: 'Take my happy meds :)'},
+								{title: 'Relaxation', description: 'Take some time to relax for myself'},
+								{title: 'Literature Reading', description: 'Read up on recovery!'}
+							]
+	 
  	objective = objective.each do |objective|
  	  Objective.create(
- 			user: users.sample,
+ 			user: User.find(1,2).sample,
  			goal: goals.sample,
- 			description: Faker::Hacker.say_something_smart,
+ 			description: objective[:description],
  			date: Faker::Date.between(5.days.ago, Date.today),
  			length: Faker::Number.between(30, 90),
- 			title: objective
+ 			title: objective[:title],
+ 			recurring: 'daily'
   		)
   	end
 
+  checkin_remarks = ["I'm feeling better than yesterday", 'I love myself today and thankful for all you guys', 
+  									 'Struggling but staying strong... I know I can do it', 'I could really use some help today :(',
+  									 "I'm so overwhelemed but know the meeting tonight will help :)"]
+
 	checkin = 40.times do Checkin.create!(
 		user: users.sample,
-		remarks: Faker::Company.bs, 
-		mood: Faker::Number.between(0, 6),
-		sober: true,
-		need_support: true,
+		remarks: checkin_remarks.sample, 
+		mood: Faker::Number.between(0, 9),
+		sober: [true,false].sample,
+		need_support: [true,false].sample,
 		created_at: Faker::Time.between(10.days.ago, Time.now, :all)
 		)
 	end
@@ -103,24 +124,34 @@
 	end
 
 	events = 50.times do Event.create!(
-		name: Faker::Company.bs, 
+		name: Faker::Lorem.sentence,
 		user_id: users.sample.id
 		)
 	end
 
-	groups = 5.times do Group.create!(
-		name: Faker::Company.name, 
-		description: Faker::Company.bs 
+	groups = [
+						{name: 'Connections Bros', description: 'Connections represent'},
+						{name: "Michael's House Alumni", description: "Michael's House alumni program"},
+						{name: 'United Methodist Home group', description: 'Home group friends'},
+						{name: 'Family', description: 'The Carters'},
+						{name: '813 Besties', description: 'Recovery friends in Tampa'}
+					 ]
+
+	groups = groups.each do |group|
+		Group.create!(
+		name: group[:name], 
+		description: group[:description]
 		)
-end
+	end
 
 	groups = Group.all 
 
-	groupables = 10.times do Groupable.create!(
+	groupables = 15.times do Groupable.create!(
 		user_id: users.sample.id, 
 		group_id: groups.sample.id 
 		)
-end
+	end
+
 	puts "#{Objective.count} Objectives in database"
 	puts "#{Goal.count} goals in database"
 	puts "#{User.count} users in database"
