@@ -479,10 +479,10 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('aboutMeCtrl', function($scope, userInfo){
-  userInfo.get().$promise.then(function(response){
-    console.log(response.aboutme)
-    $scope.aboutme = response.aboutme
+.controller('aboutMeCtrl', function($scope, friend){
+  friend.get({id: window.localStorage.userId}).$promise.then(function(response){
+    $scope.soberDate = response.sober_date;
+    console.log($scope.soberDate)
   })
 })
 

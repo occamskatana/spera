@@ -5,14 +5,14 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 'starter.services', 'ngResource', 'starter.directives'])
+angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 'starter.services', 'ngResource', 'starter.directives', 'yaru22.angular-timeago'])
 
-.constant('config', {
-  "pubnub": {
-    "publish-key": "pub-c-61756fe8-0fc3-4801-b6a9-6a07bd489103",
-    "subscribe-key": "sub-c-6eabf852-e947-11e5-ab43-02ee2ddab7fe"
-  }
-})
+// .constant('config', {
+//   "pubnub": {
+//     "publish-key": "pub-c-61756fe8-0fc3-4801-b6a9-6a07bd489103",
+//     "subscribe-key": "sub-c-6eabf852-e947-11e5-ab43-02ee2ddab7fe"
+//   }
+// })
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
