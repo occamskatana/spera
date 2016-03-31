@@ -9,6 +9,7 @@ class Api::V1::ObjectivesController < Api::V1::BaseController
 
 	def create
 		goal = Goal.find(params[:goal_id])
+		Notifier.notification_email(current_user).deliver_now
 		if params[:title]
 			objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:title], length: params[:length], recurring: params[:recurring], date: Date.today)
 
