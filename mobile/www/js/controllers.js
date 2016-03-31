@@ -20,13 +20,14 @@ angular.module('starter.controllers', [])
 
 
 .controller('LoginCtrl', function($scope, $location, UserSession, $ionicPopup, $rootScope){
+
   $scope.data = {};
 
   $scope.login = function(){
     var user_session = new UserSession({user: $scope.data});
     user_session.$save(
       function(data){
-        
+        console.log("happy login path!");
         window.localStorage['userId'] = data.user.id;
         window.localStorage['userName'] = data.user.username;
 
@@ -34,7 +35,11 @@ angular.module('starter.controllers', [])
       },
 
       function(err) {
-        var error = err["data"]["error"] 
+        console.log("sad login path :(");
+        var error;
+        if (err["data"]) {
+          error = err["data"]["error"] 
+        }
         var confirmPopup = $ionicPopup.alert({
           title: 'An error occured. Please try again',
           template: 'error'
