@@ -81,7 +81,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
-<<<<<<< HEAD
     concurrent-ruby (1.0.0)
     daemons (1.2.3)
     debug_inspector (0.0.2)
