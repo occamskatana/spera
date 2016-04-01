@@ -47,6 +47,12 @@ class User < ActiveRecord::Base
         friend_requests = Friendable.where(to_id: self.id, accepted: false).to_a.uniq!{|e| e.from_id}
     end
 
+    def visible_groups
+        self.groups.each do |group|
+           groupables = group.groupables.where(user_id: self.id, accepted: true)
+       end
+    end
+
     def check
         check = Array.new
         self.friend_requests.each do |x|
@@ -62,6 +68,10 @@ class User < ActiveRecord::Base
     	buddies <<	User.find(f)
     	end
     	return buddies
+    end
+
+    def group_invites
+        Groupable.where(user_id: self.id, accepted: false)
     end
 
     def notifications

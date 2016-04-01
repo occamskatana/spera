@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331232510) do
+
+
+ActiveRecord::Schema.define(version: 20160331223939) do
 
   create_table "aboutmes", force: :cascade do |t|
     t.integer  "user_id"
@@ -105,6 +107,7 @@ ActiveRecord::Schema.define(version: 20160331232510) do
     t.integer  "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "accepted"
   end
 
   add_index "groupables", ["group_id"], name: "index_groupables_on_group_id"

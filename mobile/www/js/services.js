@@ -29,6 +29,12 @@ angular.module('starter.services', [])
   })
 })
 
+.factory('groupInvites', function($resource){
+  return $resource("http://localhost:3000/api/v1/users/:id/invites_index", {id: '@user_id'}, {
+    accept: {method: 'PUT'}
+  })
+})
+
 .factory('downVote', function($resource){
   return $resource("http://localhost:3000/api/v1/boards/:board_id/down-vote", {board_id: '@board_id'}, {
     post: {method: 'POST'},

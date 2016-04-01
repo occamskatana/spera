@@ -148,9 +148,19 @@
 
 	groupables = 15.times do Groupable.create!(
 		user_id: users.sample.id, 
-		group_id: groups.sample.id 
+		group_id: groups.sample.id, 
+		accepted: true
 		)
 	end
+
+	group_invites = 25.times do Groupable.create!(
+		user_id: users.sample.id, 
+		group_id: groups.sample.id,
+		accepted: false
+		)
+	end
+
+	group_invites = Groupable.where(accepted: false)
 
 	puts "#{Objective.count} Objectives in database"
 	puts "#{Goal.count} goals in database"
@@ -164,4 +174,5 @@
 	puts "#{Occurrence.count} occurrences of events"
 	puts "#{Group.count} groups total"
 	puts "#{Groupable.count} groupables total"
+	puts "#{group_invites.count} Group invites created"
 
