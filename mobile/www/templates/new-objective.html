@@ -34,6 +34,9 @@
 		      <option value="weekly">Weekly</option>
 		    </select>
 		  </label>
+		  <ion-toggle ng-model="objective.has_reminder" ng-click="something()">
+	        Reminder?
+	    </ion-toggle>
 			<button class="button button-block button-positive" ng-click="addObjective()">Submit</button>
 			<button class="button button-block button-energized" ui-sref="tab.dash">Done</button>
 		</div>
