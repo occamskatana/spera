@@ -22,6 +22,11 @@
 
 		<div ng-controller="groupsCtrl">
 			<h3 align="center">Groups</h3>
+			<div ng-controller="invitesModalCtrl">
+				<button class="button button-wide" ng-click="modal.show()" align="center">
+					<i align="center"class="icon ion-person-stalker">{{invites.length}} Group Invites</i>
+				</button>
+			</div>
 			<button class='button button-block button-royal' ui-sref="tab.new-group">New Group</button>
 			<div class="list" ng-repeat="group in groups track by $index">
 				<a class="item item-icon-right" ui-sref="tab.group-show({id: {{group.id}}})">

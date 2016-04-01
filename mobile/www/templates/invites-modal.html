@@ -1,0 +1,18 @@
+<ion-modal-view>
+	<ion-header-bar class="bar bar-header bar-positive">
+		<h1 class="title">Group Invites</h1>
+		<div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
+	</ion-header-bar>
+	<ion-content ng-controller="groupsCtrl">
+		<ion-list ng-repeat = "invite in invites">
+			<a class="item item-avatar-left item-icon-right item-text-wrap">
+	  		<img src="img/manuel.jpg">
+	  		{{invite.from_user}} has invited you to join {{invite.group_name}}
+	  	<div class="pull-right">
+				<button class="button button-assertive" ng-click="rejectRequest({{invite.id}})">Reject</button>
+				<button class="button button-calm" ng-click="acceptRequest({{invite.id}})">Accept</button>
+			</div>
+	  	</a>
+		</ion-list>
+	</ion-content>
+</ion-modal-view>

@@ -458,7 +458,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('checkinListController', function($scope, checkIn, $http, $state){
+.controller('checkinListController', function($scope, checkIn, $http, $state, $ionicModal){
   checkIn.query({user_id: window.localStorage.userId}).$promise.then(function(response){
     $scope.checkIns = response;
     
@@ -486,7 +486,7 @@ angular.module('starter.controllers', [])
   })
 })
 
-.controller('groupsCtrl', function($scope, Groups){
+.controller('groupsCtrl', function($scope, Groups, groupInvites, $http){
   Groups.get().$promise.then(function(response){
     $scope.groups = response.groups
   })
@@ -500,6 +500,30 @@ angular.module('starter.controllers', [])
     console.log($scope.group);
     console.log($scope.groups);
   }
+
+  groupInvites.get({id: window.localStorage.userId}).$promise.then(function(response){
+    $scope.invites = response.groups;
+    console.log(response.groups)
+  });
+
+   $scope.acceptRequest = function(id){
+    $http.put('http://localhost:3000/api/v1/groupable/'+ id +'/accept')
+  };
+
+  $scope.rejectRequest = function(id){
+    $http.put('http://localhost:3000/api/v1/groupable/'+ id +'/ignore')
+  };
+})
+
+.controller('invitesModalCtrl', function($scope, $ionicModal){
+  $ionicModal.fromTemplateUrl('/templates/invites-modal.html', function($ionicModal) {
+        $scope.modal = $ionicModal;
+    }, {
+        // Use our scope for the scope of the modal to keep it simple
+        scope: $scope,
+        // The animation we want to use for the modal entrance
+        animation: 'slide-in-up'
+    });  
 })
 
 .controller('groupCtrl', function($scope, $stateParams, $timeout, $interval, $ionicScrollDelegate, Groups, Messages, Chats){
