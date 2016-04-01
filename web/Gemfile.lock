@@ -205,18 +205,12 @@ GEM
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-<<<<<<< HEAD
-    uglifier (3.0.0)
-      execjs (>= 0.3.0, < 3)
-    warden (1.2.6)
-=======
     tzinfo-data (1.2016.3)
       tzinfo (>= 1.0.0)
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     warden (1.2.5)
->>>>>>> master
       rack (>= 1.0)
     web-console (2.3.0)
       activemodel (>= 4.0)
