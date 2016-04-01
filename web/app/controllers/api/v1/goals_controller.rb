@@ -4,7 +4,8 @@ class Api::V1::GoalsController < Api::V1::BaseController
 	def index
 		user = current_user
 		goals = user.goals.all
-		render json: goals, status: 201
+		
+		render json: goals, status: 200
 	end
 
 	# Create action needs to be cleaned

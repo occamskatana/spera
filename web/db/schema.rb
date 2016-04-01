@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331232510) do
+ActiveRecord::Schema.define(version: 20160401025823) do
 
   create_table "aboutmes", force: :cascade do |t|
     t.integer  "user_id"
@@ -143,8 +143,8 @@ ActiveRecord::Schema.define(version: 20160331232510) do
   create_table "objectives", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "goal_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.date     "date"
     t.text     "description"
     t.boolean  "completed"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(version: 20160331232510) do
     t.string   "recurring"
     t.boolean  "has_reminder"
     t.time     "reminder_time"
+    t.integer  "times_completed"
   end
 
   add_index "objectives", ["goal_id"], name: "index_objectives_on_goal_id"

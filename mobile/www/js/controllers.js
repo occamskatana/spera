@@ -327,7 +327,7 @@ angular.module('starter.controllers', [])
 
 .controller('goalListCtrl', function($scope, Goals, $http, $state, Events){
   Goals.query().$promise.then(function(response){
-    $scope.goals = response.goals 
+    $scope.goals = response.goals;
   })
 
   $scope.goalData = {title: $scope.title,

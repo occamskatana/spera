@@ -18,22 +18,22 @@ class Api::V1::ObjectivesController < Api::V1::BaseController
 		if params[:title]
 			if params[:has_reminder]
 				reminder_time = params[:reminder_time].to_time
-				objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:title], length: params[:length], recurring: params[:recurring], has_reminder: params[:has_reminder], reminder_time: reminder_time, date: Date.today)
+				objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:title], length: params[:length], recurring: params[:recurring], has_reminder: params[:has_reminder], reminder_time: reminder_time, times_completed: 0, date: Date.today)
 
 				render json: objective, root: false, status: 201
 			else
-				objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:title], length: params[:length], recurring: params[:recurring], has_reminder: params[:has_reminder], date: Date.today)
+				objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:title], length: params[:length], recurring: params[:recurring], has_reminder: params[:has_reminder], times_completed: 0, date: Date.today)
 
 				render json: objective, root: false, status: 201
 			end
 		else
 			if params[:has_reminder]
 				reminder_time = params[:reminder_time].to_time
-				objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:suggested_title], length: params[:length], recurring: params[:recurring], has_reminder: params[:has_reminder], reminder_time: reminder_time, date: Date.today)
+				objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:suggested_title], length: params[:length], recurring: params[:recurring], has_reminder: params[:has_reminder], reminder_time: reminder_time, times_completed: 0, date: Date.today)
 
 				render json: objective, root: false, status: 201
 			else
-				objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:suggested_title], length: params[:length], recurring: params[:recurring], has_reminder: params[:has_reminder], date: Date.today)
+				objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:suggested_title], length: params[:length], recurring: params[:recurring], has_reminder: params[:has_reminder], times_completed: 0, date: Date.today)
 
 				render json: objective, root: false, status: 201
 			end
