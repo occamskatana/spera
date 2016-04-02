@@ -69,7 +69,8 @@
  			date: Faker::Date.between(5.days.ago, Date.today),
  			length: Faker::Number.between(30, 90),
  			title: objective[:title],
- 			recurring: 'daily'
+ 			recurring: 'daily',
+ 			times_completed: 0
   		)
   	end
 

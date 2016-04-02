@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
       
     has_many :checkins
     has_many :objectives
-    has_many :goals, through: :objectives
+    # "-> {distinct} tells collection to only return unique goals"
+    has_many :goals, -> {distinct}, through: :objectives
     has_many :friendables
     has_many :users, through: :friendables
     has_many :posts
