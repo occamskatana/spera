@@ -5,7 +5,7 @@ class Api::V1::PostsController < Api::V1::BaseController
 		board = Board.find(params[:board_id])
 		post = board.posts.create!(post_params)
 
-		render json: post, status: 200
+		render json: post, status: 201
 	end
 
 
