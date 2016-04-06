@@ -394,13 +394,16 @@ angular.module('starter.controllers', [])
 })
 
 .controller('DashCtrl', function($scope, $http, $state) {
-
+  //variable we pass in - we need to add attribute to user backend and use a service to grab and store it
   var soberDate = '1/1/2010';
 
+  //when the view loads, this fires and unfucks itself
   $scope.$on('$ionicView.loaded', function(){
     upTime(soberDate)
   })
 
+
+  //hell yeah ghetto function
   function upTime(soberDate) {
     now = new Date();
     countTo = new Date(soberDate);
