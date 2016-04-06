@@ -6,6 +6,10 @@ scroll {
   padding: 10px 0 50px !important;
 }
 
+#sober-card p {
+	display: inline-block;
+}
+
 .messages {
   display: -webkit-box !important;
   display: -moz-box !important;
