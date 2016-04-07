@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
       
     has_many :checkins
     has_many :objectives
-    has_many :goals, through: :objectives
+    # "-> {distinct} tells collection to only return unique goals"
+    has_many :goals, -> {distinct}, through: :objectives
     has_many :friendables
     has_many :users, through: :friendables
     has_many :posts
@@ -47,6 +48,10 @@ class User < ActiveRecord::Base
         friend_requests = Friendable.where(to_id: self.id, accepted: false).to_a.uniq!{|e| e.from_id}
     end
 
+    def joined_groups
+        
+    end
+
     def check
         check = Array.new
         self.friend_requests.each do |x|
@@ -62,6 +67,10 @@ class User < ActiveRecord::Base
     	buddies <<	User.find(f)
     	end
     	return buddies
+    end
+
+    def group_invites
+        Groupable.where(user_id: self.id, accepted: false)
     end
 
     def notifications

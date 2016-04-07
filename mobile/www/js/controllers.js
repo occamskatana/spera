@@ -20,13 +20,14 @@ angular.module('starter.controllers', [])
 
 
 .controller('LoginCtrl', function($scope, $location, UserSession, $ionicPopup, $rootScope){
+
   $scope.data = {};
 
   $scope.login = function(){
     var user_session = new UserSession({user: $scope.data});
     user_session.$save(
       function(data){
-        
+        console.log("happy login path!");
         window.localStorage['userId'] = data.user.id;
         window.localStorage['userName'] = data.user.username;
 
@@ -34,7 +35,11 @@ angular.module('starter.controllers', [])
       },
 
       function(err) {
-        var error = err["data"]["error"] 
+        console.log("sad login path :(");
+        var error;
+        if (err["data"]) {
+          error = err["data"]["error"] 
+        }
         var confirmPopup = $ionicPopup.alert({
           title: 'An error occured. Please try again',
           template: 'error'
@@ -223,7 +228,6 @@ angular.module('starter.controllers', [])
     $scope.friendship = response.friendable;
     console.log($scope.friendship);
     
-
     if($scope.friendship.chat_messages) {
       $scope.messages = $scope.friendship.chat_messages;
     } else {
@@ -306,7 +310,8 @@ angular.module('starter.controllers', [])
     // Assign to scope within callback to avoid data flickering on screen
     friends.get({id: $stateParams.id}).$promise.then(function(response){
       $scope.messages = response.friendable.chat_messages;
-      // console.log('tick');
+      console.log('tick');
+      console.log(response.friendable.chat_messages);
     })
   };
 
@@ -322,7 +327,7 @@ angular.module('starter.controllers', [])
 
 .controller('goalListCtrl', function($scope, Goals, $http, $state, Events){
   Goals.query().$promise.then(function(response){
-    $scope.goals = response.goals 
+    $scope.goals = response.goals;
   })
 
   $scope.goalData = {title: $scope.title,
@@ -345,21 +350,46 @@ angular.module('starter.controllers', [])
     };  
 })
 
-.controller('newObjectiveCtrl', function($scope, Goals, Objectives, SuggestedObjectives, $state, $stateParams){
+.controller('newObjectiveCtrl', function($scope, Goals, Objectives, SuggestedObjectives, $state, $stateParams, ionicTimePicker){
   SuggestedObjectives.query().$promise.then(function(response) {
     $scope.suggested_objectives = response;
   })
   $scope.objective = new Objectives();
   $scope.objective.recurring = 'daily';
   $scope.objectiveList = [];
+
+  var time_picker_active = false;
   
   $scope.addObjective = function() {
     $scope.objective.$save({goal_id: $stateParams.id}).then(function(response){
       $scope.objectiveList.push($scope.objective);
       console.log($scope.objectiveList)
     })
-    
   }
+
+  $scope.something = function() {
+    time_picker_active = !time_picker_active;
+
+    // time-picker setup
+    var ipObj1 = {
+      callback: function (val) {      //Mandatory
+        if (typeof (val) === 'undefined') {
+          console.log('Time not selected');
+        } else {
+          var selectedTime = new Date(val * 1000);
+          console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
+          $scope.objective.reminder_time = selectedTime.getUTCHours() + ':' + selectedTime.getUTCMinutes();
+        }
+      },
+      inputTime: 50400,   //Optional
+      format: 12,         //Optional
+      step: 15,           //Optional
+      setLabel: 'Set2'    //Optional
+    };
+
+    ionicTimePicker.openTimePicker(ipObj1);
+  }
+
 })
 
 .controller('goalShowCtrl', function($scope, Goals, $http, $stateParams, Events){
@@ -393,16 +423,36 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('DashCtrl', function($scope, Goals, $http, $state, Events) {
+.controller('DashCtrl', function($scope, $http, $state) {
+  //variable we pass in - we need to add attribute to user backend and use a service to grab and store it
+  var soberDate = '1/1/2010';
 
-   // $scope.loadData = function() { 
-   //    Goals.query().$promise.then(function(response) {
-   //      $scope.goals = response.goals
-   //      $scope.userName = localStorage['userName'] 
-   //      });
-   //  }
+  //when the view loads, this fires and unfucks itself
+  $scope.$on('$ionicView.loaded', function(){
+    upTime(soberDate)
+  })
 
-   //  $scope.loadData();
+
+  //hell yeah ghetto function
+  function upTime(soberDate) {
+    now = new Date();
+    countTo = new Date(soberDate);
+    difference = (now - countTo);
+
+    days = Math.floor(difference / (60 * 60 * 1000 * 24) * 1);
+    hours = Math.floor((difference % (60 * 60 * 1000 * 24)) / (60 * 60 * 1000) * 1);
+    mins=Math.floor(((difference%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
+    secs=Math.floor((((difference%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
+
+    document.getElementById('days').firstChild.nodeValue = days;
+    document.getElementById('hours').firstChild.nodeValue = hours;
+    document.getElementById('minutes').firstChild.nodeValue = mins;
+    document.getElementById('seconds').firstChild.nodeValue = secs;
+
+    clearTimeout(upTime.to);
+    upTime.to = setTimeout(function(){upTime(countTo); }, 1000);
+  }
+
 
 
 })
@@ -458,7 +508,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('checkinListController', function($scope, checkIn, $http, $state){
+.controller('checkinListController', function($scope, checkIn, $http, $state, $ionicModal){
   checkIn.query({user_id: window.localStorage.userId}).$promise.then(function(response){
     $scope.checkIns = response;
     
@@ -479,14 +529,14 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('aboutMeCtrl', function($scope, userInfo){
-  userInfo.get().$promise.then(function(response){
-    console.log(response.aboutme)
-    $scope.aboutme = response.aboutme
+.controller('aboutMeCtrl', function($scope, friend){
+  friend.get({id: window.localStorage.userId}).$promise.then(function(response){
+    $scope.soberDate = response.sober_date;
+    console.log($scope.soberDate)
   })
 })
 
-.controller('groupsCtrl', function($scope, Groups){
+.controller('groupsCtrl', function($scope, Groups, groupInvites, $http){
   Groups.get().$promise.then(function(response){
     $scope.groups = response.groups
   })
@@ -500,6 +550,30 @@ angular.module('starter.controllers', [])
     console.log($scope.group);
     console.log($scope.groups);
   }
+
+  groupInvites.get({id: window.localStorage.userId}).$promise.then(function(response){
+    $scope.invites = response.groups;
+    console.log(response.groups)
+  });
+
+   $scope.acceptRequest = function(id){
+    $http.put('http://localhost:3000/api/v1/groupable/'+ id +'/accept')
+  };
+
+  $scope.rejectRequest = function(id){
+    $http.put('http://localhost:3000/api/v1/groupable/'+ id +'/ignore')
+  };
+})
+
+.controller('invitesModalCtrl', function($scope, $ionicModal){
+  $ionicModal.fromTemplateUrl('/templates/invites-modal.html', function($ionicModal) {
+        $scope.modal = $ionicModal;
+    }, {
+        // Use our scope for the scope of the modal to keep it simple
+        scope: $scope,
+        // The animation we want to use for the modal entrance
+        animation: 'slide-in-up'
+    });  
 })
 
 .controller('groupCtrl', function($scope, $stateParams, $timeout, $interval, $ionicScrollDelegate, Groups, Messages, Chats){

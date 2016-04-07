@@ -1,7 +1,7 @@
 angular.module('starter.services', [])
 .constant('BaseUrl', 'http://localhost:3000/api/v1')
-                     // 'http://localhost:3000/api/v1'
-                     // 'https://gentle-escarpment-94708.herokuapp.com/api/v1'
+                     // 'https://glacial-dawn-64234.herokuapp.com/api/v1'
+                     // 'http://localhost:3000/api/v1/'
 
 .factory('UserSession', function($resource) {
   return $resource("http://localhost:3000/users/sign_in.json");
@@ -26,6 +26,12 @@ angular.module('starter.services', [])
 .factory('upVote', function($resource){
   return $resource("http://localhost:3000/api/v1/boards/:board_id/up-vote", {board_id: '@board_id'}, {
     post: {method: 'POST'},
+  })
+})
+
+.factory('groupInvites', function($resource){
+  return $resource("http://localhost:3000/api/v1/users/:id/invites_index", {id: '@user_id'}, {
+    accept: {method: 'PUT'}
   })
 })
 

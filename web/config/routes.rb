@@ -38,6 +38,7 @@ end
   	namespace :v1 do 
   		resources :users, only: [:show, :index] do 
         get 'friend_list'
+        get '/invites_index' => 'groups#group_invites'
         resources :checkins, only: [:show, :index] 
       end
       resources :friendables, only: [:show, :index]
@@ -63,7 +64,16 @@ end
         post '/down-vote' => 'votes#down_vote', as: :down_vote
         resources :posts 
       end
-      resources :groups, only: [:index, :show, :create]
+
+
+     
+      resources :groups, only: [:index, :show, :create] 
+       
+      resources :groupable, only: [] do 
+        put '/accept' => 'groups#accept'
+        put '/ignore' => 'groups#ignore'
+      end
+      
       resources :chats, only: [:show, :create] do
         resources :messages
       end

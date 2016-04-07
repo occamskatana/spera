@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323185507) do
+ActiveRecord::Schema.define(version: 20160401025823) do
 
   create_table "aboutmes", force: :cascade do |t|
     t.integer  "user_id"
@@ -60,6 +60,22 @@ ActiveRecord::Schema.define(version: 20160323185507) do
 
   add_index "checkins", ["user_id"], name: "index_checkins_on_user_id"
 
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
   create_table "events", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -89,6 +105,7 @@ ActiveRecord::Schema.define(version: 20160323185507) do
     t.integer  "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "accepted"
   end
 
   add_index "groupables", ["group_id"], name: "index_groupables_on_group_id"
@@ -126,14 +143,17 @@ ActiveRecord::Schema.define(version: 20160323185507) do
   create_table "objectives", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "goal_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.date     "date"
     t.text     "description"
     t.boolean  "completed"
     t.integer  "length"
     t.string   "title"
     t.string   "recurring"
+    t.boolean  "has_reminder"
+    t.time     "reminder_time"
+    t.integer  "times_completed"
   end
 
   add_index "objectives", ["goal_id"], name: "index_objectives_on_goal_id"

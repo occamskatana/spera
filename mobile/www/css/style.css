@@ -1,9 +1,13 @@
-/* Empty. Add your own CSS if you like */
+/* Legacy CSS from John */
 
 
 
 scroll {
   padding: 10px 0 50px !important;
+}
+
+#sober-card p {
+	display: inline-block;
 }
 
 .messages {
