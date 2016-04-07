@@ -1,2 +1,6 @@
 # Ignore Mac DS_Store files
 .DS_Store
+
+#ignore the shittons of files that are node_modules
+
+node_modules/

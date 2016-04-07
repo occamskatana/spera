@@ -1,14 +1,27 @@
-/* Legacy CSS from John */
+#sober-card p {
+	display: inline-block;
+}
+
+#sober-card h4 {
+	text-align: center;
+}
 
 
+
+#sober-time {
+	text-align: center;
+}
+
+/* Empty. Add your own CSS if you like */
+
+#sober-card {
+	padding-bottom: 20px;
+}
 
 scroll {
   padding: 10px 0 50px !important;
 }
 
-#sober-card p {
-	display: inline-block;
-}
 
 .messages {
   display: -webkit-box !important;
@@ -120,6 +133,7 @@ right: 2px;
 
 
 textarea {
+	min-height: 125px;
   height:auto;
   max-width:600px;
   color:black;
@@ -133,11 +147,11 @@ textarea {
   border:none;
   box-shadow:0px 0px 5px 1px rgba(0,0,0,0.1);
   padding:30px;
-  -webkit-transition: height 2s ease;
--moz-transition: height 2s ease;
--ms-transition: height 2s ease;
--o-transition: height 2s ease;
-transition: height 2s ease;
+  -webkit-transition: height .75s ease;
+	-moz-transition: height .75s ease;
+	-ms-transition: height .75s ease;
+	-o-transition: height .75s ease;
+	transition: height .75s ease;
 }
 
 * {
@@ -149,18 +163,6 @@ transition: height 2s ease;
   height: 100%;
 }
 
-./*popover {
-  height: auto;
-}
-
-ion-popover-view.fit ion-content {
-  position: relative !important;
-}*/
-
-
-.scroll {
-  height: 100%;
-}
 
 .meter {
 			height: 20px;  /* Can be anything */
@@ -260,20 +262,5 @@ ion-popover-view.fit ion-content {
 		}
 
 
-.goals-tabs {
-	margin-top: 5px;
-}
 
-.list .item.item-accordion {
-  line-height: 38px;
-  padding-top: 0;
-  padding-bottom: 0;
-  transition: 0.09s all linear;
-}
-.list .item.item-accordion.ng-hide {
-  line-height: 0px;
-}
-.list .item.item-accordion.ng-hide-add,
-.list .item.item-accordion.ng-hide-remove {
-  display: block !important;
-}
+

@@ -1,7 +1,7 @@
 class Api::V1::GroupsController < Api::V1::BaseController
 
 	def index
-		groups = current_user.visible_groups
+		groups = current_user.groups
 
 		render json: groups, status: 200
 	end

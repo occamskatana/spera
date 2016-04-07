@@ -48,10 +48,8 @@ class User < ActiveRecord::Base
         friend_requests = Friendable.where(to_id: self.id, accepted: false).to_a.uniq!{|e| e.from_id}
     end
 
-    def visible_groups
-        self.groups.each do |group|
-           groupables = group.groupables.where(user_id: self.id, accepted: true)
-       end
+    def joined_groups
+        
     end
 
     def check
