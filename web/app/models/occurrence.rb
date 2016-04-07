@@ -10,4 +10,5 @@ class Occurrence < ActiveRecord::Base
   		self.objective.update_attributes({times_completed: self.objective.times_completed + 1})
   	end
   end
+  
 end

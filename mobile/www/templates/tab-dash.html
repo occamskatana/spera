@@ -13,7 +13,12 @@
       <div class="item item-divider">
         Today
       </div>
-      <a ng-repeat="occurrence in occurrences" class="item item-icon-right" href="#" ng-click="markComplete(occurrence); delete($index)">{{ occurrence.title }}<i class="icon ion-checkmark-circled"></i></a> 
+      <a ng-repeat="occurrence in occurrences" class="item item-icon-right" href="#" ng-click="markComplete(occurrence); delete($index)">
+        <span>{{ occurrence.title }}<span>
+        <br>
+        <span class="daily-goal-time">{{occurrence.time}}</span>
+        <i class="icon ion-checkmark-circled"></i>
+      </a> 
     </div>
   </ion-content>
 </ion-view>

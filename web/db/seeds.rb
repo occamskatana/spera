@@ -70,6 +70,7 @@
  			length: Faker::Number.between(30, 90),
  			title: objective[:title],
  			recurring: 'daily',
+ 			reminder_time: Time.at(0.0 + rand * (Time.now.to_f - 0.0.to_f)).to_datetime,
  			times_completed: 0
   		)
   	end

@@ -22,6 +22,10 @@ $dark:                            #444 !default;
 .dash-page a.item i {
   color: #43C2F0; }
 
+.dash-page a.item .daily-goal-time {
+  font-size: 85%;
+  color: #596066; }
+
 /* Progress Page */
 .progress-page {
   background-color: #eff1f3; }
