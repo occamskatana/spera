@@ -8,7 +8,9 @@
     <button class="button button-full button-balanced" ng-controller="eventsPopoverCtrl" ng-click="openPopover($event)">
       <p ng-controller="userEventsCtrl"> <i class="icon ion-alert"></i>&nbsp;&nbsp;{{events.length}} Notifications</p>
     </button>
-    <a class="button button-block button-energized item-icon-right" ui-sref="tab.goal-list">Goals &nbsp;<i class="ion-chevron-right"></i></a>
+    <a class="button button-block button-balanced" href="#/tab/checkin/new">Check In! <i class="ion-android-calendar"></i></a>
+    <!-- button to old goals only page 
+    <a class="button button-block button-energized item-icon-right" ui-sref="tab.goal-list">Goals &nbsp;<i class="ion-chevron-right"></i></a> -->
     <div ng-controller="occurrencesCtrl" class="list"> 
       <div class="item item-divider">
         Today
