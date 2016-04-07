@@ -1,0 +1,47 @@
+<ion-view view-title="Progress">
+	<ion-content class="progress-page">
+		<div ng-controller="DashCtrl" id="sober-card" class="sober-card">
+      <div id="sober-time" class="sober-time">
+        <span id="days">00</span><span class="timeRefDays time-ref">D</span>
+        <span id="hours">00</span><span class="timeRefHours time-ref">H</span>
+        <span id="minutes">00</span><span class="timeRefMinutes time-ref">M</span>
+        <span id="seconds">00</span><span class="timeRefSeconds time-ref">S</span>
+      </div>
+      <div>
+      	<h6>Of Sobriety</h6>
+      </div>
+    </div>
+
+    <!-- Daily Goals/Activities -->
+    <ul class="list">
+	    <li class="item">
+	      Goals
+	    </li>
+		</ul>
+		<div ng-repeat="objective in objectives" class="card">
+		  <div class="item item-text-wrap">
+		    <h4>{{objective.title}}<h4>
+		    <p>
+		    	<span>{{objective.description}}</span>
+		    	<span class="recurring-status">{{objective.recurring}}</span>
+		    </p>
+		  </div>
+		</div>
+
+    <!-- Life Challenges/Goals -->
+		<ul class="list">
+	    <li class="item">
+	      Life Challenges
+	    </li>
+		</ul>
+		<div ng-repeat="goal in goals" class="card">
+			<a class="item item-icon-right item-text-wrap" ui-sref="tab.goal({id:{{goal.id}}})">
+				<h4>{{goal.title}}</h4>
+				<p>{{goal.description}}</p>
+				<i class="icon ion-ios-arrow-thin-right"></i>
+			</a>
+		</div>
+
+
+	</ion-content>
+</ion-view>

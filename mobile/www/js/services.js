@@ -111,6 +111,13 @@ angular.module('starter.services', [])
   })
 })
 
+.factory('userObjectives', function($resource){
+  return $resource("http://localhost:3000/api/v1/users/:user_id/objectives", {user_id: '@user_id'}, {
+    query: {method: 'GET', isArray: true},
+    create: {method: 'POST'}
+  })
+})
+
 .factory('Objectives', function($resource){
   return $resource("http://localhost:3000/api/v1/goals/:goal_id/objectives", {goal_id: '@goal_id'}, {
     query: {method: 'GET', isArray: true},

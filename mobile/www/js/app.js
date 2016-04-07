@@ -76,6 +76,16 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
     }
   })
 
+  .state('tab.progress', {
+    url: '/progress',
+    views: {
+      'tab-progress': {
+        templateUrl: 'templates/tab-progress.html',
+        controller: 'progressCtrl'
+      }
+    }
+  })
+
   .state('tab.goal-list', {
     url: 'dash/goal-list',
     views: {

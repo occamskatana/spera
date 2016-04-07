@@ -39,7 +39,8 @@ end
   		resources :users, only: [:show, :index] do 
         get 'friend_list'
         get '/invites_index' => 'groups#group_invites'
-        resources :checkins, only: [:show, :index] 
+        resources :checkins, only: [:show, :index]
+        resources :objectives
       end
       resources :friendables, only: [:show, :index]
   		resources :goals do

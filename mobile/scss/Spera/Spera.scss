@@ -11,6 +11,38 @@
 	}
 }
 
+/* Progress Page */
+.progress-page {
+	background-color: #eff1f3;
+
+	.sober-card {
+		padding: 20px 0px 10px 0px;
+		background-color: #fff;
+	}
+
+	.sober-time {
+		font-size: 20px;
+		text-align: center;
+	}
+
+
+	.time-ref {
+		color: #596066;
+		font-size: 12px;
+	}
+
+	h6 {
+		text-align: center;
+		color: #596066;
+	}
+
+	.recurring-status {
+		float: right;
+		font-size: 12px;
+	}
+}
+
+
 /* Friends & Groups Page */
 
 .friends-page {

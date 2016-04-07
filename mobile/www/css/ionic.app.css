@@ -22,6 +22,25 @@ $dark:                            #444 !default;
 .dash-page a.item i {
   color: #43C2F0; }
 
+/* Progress Page */
+.progress-page {
+  background-color: #eff1f3; }
+  .progress-page .sober-card {
+    padding: 20px 0px 10px 0px;
+    background-color: #fff; }
+  .progress-page .sober-time {
+    font-size: 20px;
+    text-align: center; }
+  .progress-page .time-ref {
+    color: #596066;
+    font-size: 12px; }
+  .progress-page h6 {
+    text-align: center;
+    color: #596066; }
+  .progress-page .recurring-status {
+    float: right;
+    font-size: 12px; }
+
 /* Friends & Groups Page */
 .friends-page .friends-list {
   margin-bottom: 0px; }

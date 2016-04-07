@@ -26,8 +26,8 @@
 	
 
 	goal_info = [ 
-						{title: 'Stay Sober', description: 'I want to stay sober and spiritually fit'},
-						{title: 'Get a Job', description: 'I want to land a great job I can be proud of'},
+						{title: 'Stay Sober', description: "I want to stay sober and spiritually fit. I had a great month at Michael's House and feel the best I have in a long time and now I'm going home stay on track."},
+						{title: 'Get a Job', description: 'I want to land a great job I can be proud of. I am beginning the process building my resume and looking for places back home.'},
 						{title: 'Get in Shape', description: 'Help me get fit!'},
 						{title: 'Buy a House', description: 'Help me save up to buy a place of my own'} 
 					]
