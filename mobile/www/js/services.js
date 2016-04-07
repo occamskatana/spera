@@ -1,7 +1,7 @@
 angular.module('starter.services', [])
 .constant('BaseUrl', 'http://localhost:3000/api/v1')
-                     // 'http://localhost:3000/api/v1'
-                     // 'https://gentle-escarpment-94708.herokuapp.com/api/v1'
+                     // 'https://glacial-dawn-64234.herokuapp.com/api/v1'
+                     // 'http://localhost:3000/api/v1/'
 
 .factory('UserSession', function($resource) {
   return $resource("http://localhost:3000/users/sign_in.json");

@@ -9,14 +9,34 @@ class Api::V1::ObjectivesController < Api::V1::BaseController
 
 	def create
 		goal = Goal.find(params[:goal_id])
+		
+		# Practicing with delayed job
+		Notifier.delay(run_at: 5.seconds.from_now).notification_email(current_user)
+		
+		# Note that TIME ZONE IS CURRENTLY WRONG SO TIME IS WRONG
+		
 		if params[:title]
-			objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:title], length: params[:length], recurring: params[:recurring], date: Date.today)
+			if params[:has_reminder]
+				reminder_time = params[:reminder_time].to_time
+				objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:title], length: params[:length], recurring: params[:recurring], has_reminder: params[:has_reminder], reminder_time: reminder_time, times_completed: 0, date: Date.today)
 
-			render json: objective, root: false, status: 201
+				render json: objective, root: false, status: 201
+			else
+				objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:title], length: params[:length], recurring: params[:recurring], has_reminder: params[:has_reminder], times_completed: 0, date: Date.today)
+
+				render json: objective, root: false, status: 201
+			end
 		else
-			objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:suggested_title], length: params[:length], recurring: params[:recurring], date: Date.today)
+			if params[:has_reminder]
+				reminder_time = params[:reminder_time].to_time
+				objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:suggested_title], length: params[:length], recurring: params[:recurring], has_reminder: params[:has_reminder], reminder_time: reminder_time, times_completed: 0, date: Date.today)
 
-			render json: objective, root: false, status: 201
+				render json: objective, root: false, status: 201
+			else
+				objective = goal.objectives.create!(user: current_user, description: params[:description], title: params[:suggested_title], length: params[:length], recurring: params[:recurring], has_reminder: params[:has_reminder], times_completed: 0, date: Date.today)
+
+				render json: objective, root: false, status: 201
+			end
 		end
 	end
 
