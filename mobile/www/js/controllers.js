@@ -228,7 +228,6 @@ angular.module('starter.controllers', [])
     $scope.friendship = response.friendable;
     console.log($scope.friendship);
     
-
     if($scope.friendship.chat_messages) {
       $scope.messages = $scope.friendship.chat_messages;
     } else {
@@ -311,7 +310,8 @@ angular.module('starter.controllers', [])
     // Assign to scope within callback to avoid data flickering on screen
     friends.get({id: $stateParams.id}).$promise.then(function(response){
       $scope.messages = response.friendable.chat_messages;
-      // console.log('tick');
+      console.log('tick');
+      console.log(response.friendable.chat_messages);
     })
   };
 

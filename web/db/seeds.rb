@@ -88,10 +88,11 @@
 		)
 	end
 
-	friendables = 15.times do Friendable.create!(
-		to_id: users.sample.id, 
-		from_id: users.sample.id, 
-		accepted: true
+	friendables = users[0..5].each_with_index do |user, i|
+		Friendable.create!(
+			to_id: user.id + 1,
+			from_id: user.id,
+			accepted: true
 		)
 	end
 
@@ -110,9 +111,9 @@
 		user_id: users.sample.id
 		)
 
-	friend_requests = 20.times do Friendable.create!(
+	friend_requests = 1.times do Friendable.create!(
 		to_id: 1, 
-		from_id: users.sample.id, 
+		from_id: 8 ,
 		accepted: false
 		)
 	end
