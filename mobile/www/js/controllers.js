@@ -461,6 +461,22 @@ angular.module('starter.controllers', [])
     })
     $ionicPopup.alert({title: "Great Job!"})
   }
+
+  // var indexedDates = [];
+
+  // // this will reset the list of indexed teams each time the list is rendered again
+  // $scope.occurrencesToFilter = function() {
+  //     indexedDates = [];
+  //     return $scope.occurrences;
+  // }
+
+  // $scope.filterDates = function(occurrence) {
+  //     var dateIsNew = indexedDates.indexOf(occurrence.date) == -1;
+  //     if (dateIsNew) {
+  //         indexedDates.push(occurrence.date);
+  //     }
+  //     return dateIsNew;
+  // }
 })
 
 .controller('DashCtrl', function($scope, $http, $state) {

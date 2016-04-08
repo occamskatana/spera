@@ -1,5 +1,5 @@
 class OccurrenceSerializer < ActiveModel::Serializer 
-	attributes :id, :completed, :title, :description, :time
+	attributes :id, :completed, :title, :description, :time, :date
 
 	def title
 		object.objective.title

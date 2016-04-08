@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 'starter.services', 'ngResource', 'starter.directives', 'ionic-timepicker', 'yaru22.angular-timeago'])
+angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 'starter.services', 'ngResource', 'starter.directives', 'ionic-timepicker', 'yaru22.angular-timeago', 'angular.filter'])
 
 .constant('config', {
   "pubnub": {
