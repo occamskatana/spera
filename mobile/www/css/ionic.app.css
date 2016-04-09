@@ -61,10 +61,10 @@ $dark:                            #444 !default;
 .friends-page .ion-chatbox {
   color: #fefefe;
   position: absolute;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   right: 1rem;
   top: 0.8rem;
-  padding: 10px 12px;
+  padding: 10px 12px 8px 12px;
   background-color: #43C2F0;
   border-radius: 99px; }
 
