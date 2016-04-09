@@ -8,25 +8,21 @@
     <button class="button button-full button-balanced" ng-controller="eventsPopoverCtrl" ng-click="openPopover($event)">
       <p ng-controller="userEventsCtrl"> <i class="icon ion-alert"></i>&nbsp;&nbsp;{{events.length}} Notifications</p>
     </button>
-    <a class="button button-block button-energized item-icon-right" ui-sref="tab.goal-list">Goals &nbsp;<i class="ion-chevron-right"></i></a>
-    <div ng-controller="DashCtrl" id="sober-card">
-      <h4>My Sober Time</h4>
-      <div id="sober-time">
-        <p id="days">00</p>
-        <p class="timeRefDays">days</p>
-        <p id="hours">00</p>
-        <p class="timeRefHours">hours</p>
-        <p id="minutes">00</p>
-        <p class="timeRefMinutes">minutes</p>
-        <p id="seconds">00</p>
-        <p class="timeRefSeconds">seconds</p>
-      </div>
-    </div>
+    <a class="button button-block button-balanced" href="#/tab/checkin/new">Check In! <i class="ion-android-calendar"></i></a>
+    <!-- button to old goals only page 
+    <a class="button button-block button-energized item-icon-right" ui-sref="tab.goal-list">Goals &nbsp;<i class="ion-chevron-right"></i></a> -->
     <div ng-controller="occurrencesCtrl" class="list"> 
+      <div ng-repeat="(key, value) in occurrences | groupBy: 'date'">
       <div class="item item-divider">
-        Today
+        {{ key | date: MM/DD/YY }}
       </div>
-      <a ng-repeat="occurrence in occurrences" class="item item-icon-right" href="#" ng-click="markComplete(occurrence); delete($index)">{{ occurrence.title }}<i class="icon ion-checkmark-circled"></i></a> 
+      <a ng-repeat="occurrence in value" class="item item-icon-right" href="#" ng-click="markComplete(occurrence); delete($index)">
+        <span>{{ occurrence.title }}<span>
+        <br>
+        <span class="daily-goal-time">{{occurrence.time}}</span>
+        <i class="icon ion-checkmark-circled"></i>
+      </a> 
+      </div>
     </div>
   </ion-content>
 </ion-view>

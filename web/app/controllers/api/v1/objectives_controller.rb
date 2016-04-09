@@ -1,10 +1,16 @@
 class Api::V1::ObjectivesController < Api::V1::BaseController
 
 	def index
-		user = current_user
-		goal = Goal.find(params[:goal_id])
-		objectives = Objective.where(user_id: user.id, goal_id: goal.id) 
-		render json: objectives, status: 201, root: false
+		if params[:user_id]
+			user = User.find(params[:user_id])
+			objectives = Objective.where(user_id: user.id)
+			render json: objectives, status: 200, root: false
+		else
+			user = current_user
+			goal = Goal.find(params[:goal_id])
+			objectives = Objective.where(user_id: user.id, goal_id: goal.id) 
+			render json: objectives, status: 200, root: false
+		end
 	end
 
 	def create

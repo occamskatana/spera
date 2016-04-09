@@ -11,7 +11,7 @@
 		  </div>
 		  <ion-list ng-repeat="user in users">
 		  <a ui-sref="tab.user-show({id: {{user.id}} })" class="item item-thumbnail-left item-icon-right item-text-wrap">	
-	  		<img src="img/nedry.jpg">
+	  		<img ng-src="{{ user.avatar }}">
 	  		<p>
 		  		Username: {{user.username}}<br>
 		  		Name: {{user.first_name}} {{user.last_name}}<br>

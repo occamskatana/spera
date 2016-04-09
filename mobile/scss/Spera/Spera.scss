@@ -1,3 +1,7 @@
+html body {
+	
+}
+
 /* Home Page */
 
 .dash-page {
@@ -9,7 +13,44 @@
 	a.item i {
 		color: $positive;
 	}
+
+	a.item .daily-goal-time {
+		font-size: 85%;
+		color: #596066;
+	}
 }
+
+/* Progress Page */
+.progress-page {
+	background-color: #eff1f3;
+
+	.sober-card {
+		padding: 20px 0px 10px 0px;
+		background-color: #fff;
+	}
+
+	.sober-time {
+		font-size: 20px;
+		text-align: center;
+	}
+
+
+	.time-ref {
+		color: #596066;
+		font-size: 12px;
+	}
+
+	h6 {
+		text-align: center;
+		color: #596066;
+	}
+
+	.recurring-status {
+		float: right;
+		font-size: 12px;
+	}
+}
+
 
 /* Friends & Groups Page */
 
@@ -33,10 +74,10 @@
 	.ion-chatbox {
 		color: #fefefe;
 		position: absolute;
-		font-size: 1.3rem;
+		font-size: 1.1rem;
 		right: 1rem;
 		top: 0.8rem;
-		padding: 10px 12px;
+		padding: 10px 12px 8px 12px;
 		background-color: $positive;
 		border-radius: 99px;
 	}

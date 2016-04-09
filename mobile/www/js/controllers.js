@@ -325,6 +325,49 @@ angular.module('starter.controllers', [])
 
 })
 
+// Progress screen displays all goals (recurring activities/habits) and life challenges
+.controller('progressCtrl', function($scope, $http, $state, Goals, userObjectives, userInfo){
+  Goals.query().$promise.then(function(response){
+    $scope.goals = response.goals;
+  })
+
+  userObjectives.query({user_id: window.localStorage.userId}).$promise.then(function(response){
+    $scope.objectives = response;   
+  })
+
+  //variable we pass in - we need to add attribute to user backend and use a service to grab and store it
+  var soberDate = '1/1/2016';
+
+  //when the view loads, this fires and unfucks itself
+  $scope.$on('$ionicView.loaded', function(){
+    userInfo.get({id: window.localStorage.userId}).$promise.then(function(response){
+      soberDate = response.sober_date;
+      upTime(soberDate);
+    })
+  })
+
+
+  //hell yeah ghetto function
+  function upTime(soberDate) {
+    now = new Date();
+    countTo = new Date(soberDate);
+    difference = (now - countTo);
+
+    days = Math.floor(difference / (60 * 60 * 1000 * 24) * 1);
+    hours = Math.floor((difference % (60 * 60 * 1000 * 24)) / (60 * 60 * 1000) * 1);
+    mins=Math.floor(((difference%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
+    secs=Math.floor((((difference%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
+
+    document.getElementById('days').firstChild.nodeValue = days;
+    document.getElementById('hours').firstChild.nodeValue = hours;
+    document.getElementById('minutes').firstChild.nodeValue = mins;
+    document.getElementById('seconds').firstChild.nodeValue = secs;
+
+    clearTimeout(upTime.to);
+    upTime.to = setTimeout(function(){upTime(countTo); }, 1000);
+  }
+})
+
 .controller('goalListCtrl', function($scope, Goals, $http, $state, Events){
   Goals.query().$promise.then(function(response){
     $scope.goals = response.goals;
@@ -421,39 +464,25 @@ angular.module('starter.controllers', [])
     })
     $ionicPopup.alert({title: "Great Job!"})
   }
+
+  // var indexedDates = [];
+
+  // // this will reset the list of indexed teams each time the list is rendered again
+  // $scope.occurrencesToFilter = function() {
+  //     indexedDates = [];
+  //     return $scope.occurrences;
+  // }
+
+  // $scope.filterDates = function(occurrence) {
+  //     var dateIsNew = indexedDates.indexOf(occurrence.date) == -1;
+  //     if (dateIsNew) {
+  //         indexedDates.push(occurrence.date);
+  //     }
+  //     return dateIsNew;
+  // }
 })
 
 .controller('DashCtrl', function($scope, $http, $state) {
-  //variable we pass in - we need to add attribute to user backend and use a service to grab and store it
-  var soberDate = '1/1/2010';
-
-  //when the view loads, this fires and unfucks itself
-  $scope.$on('$ionicView.loaded', function(){
-    upTime(soberDate)
-  })
-
-
-  //hell yeah ghetto function
-  function upTime(soberDate) {
-    now = new Date();
-    countTo = new Date(soberDate);
-    difference = (now - countTo);
-
-    days = Math.floor(difference / (60 * 60 * 1000 * 24) * 1);
-    hours = Math.floor((difference % (60 * 60 * 1000 * 24)) / (60 * 60 * 1000) * 1);
-    mins=Math.floor(((difference%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
-    secs=Math.floor((((difference%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
-
-    document.getElementById('days').firstChild.nodeValue = days;
-    document.getElementById('hours').firstChild.nodeValue = hours;
-    document.getElementById('minutes').firstChild.nodeValue = mins;
-    document.getElementById('seconds').firstChild.nodeValue = secs;
-
-    clearTimeout(upTime.to);
-    upTime.to = setTimeout(function(){upTime(countTo); }, 1000);
-  }
-
-
 
 })
 
