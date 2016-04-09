@@ -1,5 +1,5 @@
 class ObjectiveSerializer < ActiveModel::Serializer 
-	attributes :id, :date, :description, :title, :length, :recurring, :time, :times_completed
+	attributes :id, :date, :description, :title, :length, :recurring, :time, :times_completed, :total_times_due, :streak_count
 
 	# def status
 	# 	object.status

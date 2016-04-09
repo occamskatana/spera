@@ -106,7 +106,7 @@ angular.module('starter.services', [])
 })
 
 .factory('userInfo', function($resource){
-  return $resource("http://localhost:3000/api/v1/aboutmes", {id: '@id'}, {}, {
+  return $resource("http://localhost:3000/api/v1/users/:id", {id: '@id'}, {}, {
     
   })
 })

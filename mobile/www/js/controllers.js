@@ -326,7 +326,7 @@ angular.module('starter.controllers', [])
 })
 
 // Progress screen displays all goals (recurring activities/habits) and life challenges
-.controller('progressCtrl', function($scope, $http, $state, Goals, userObjectives){
+.controller('progressCtrl', function($scope, $http, $state, Goals, userObjectives, userInfo){
   Goals.query().$promise.then(function(response){
     $scope.goals = response.goals;
   })
@@ -340,7 +340,10 @@ angular.module('starter.controllers', [])
 
   //when the view loads, this fires and unfucks itself
   $scope.$on('$ionicView.loaded', function(){
-    upTime(soberDate);
+    userInfo.get({id: window.localStorage.userId}).$promise.then(function(response){
+      soberDate = response.sober_date;
+      upTime(soberDate);
+    })
   })
 
 

@@ -17,7 +17,8 @@
 		first_name: Faker::Name.first_name,
 		last_name: Faker::Name.last_name,
 		email: Faker::Internet.email,
-		password: 'helloworld'
+		password: 'helloworld',
+		sober_date: DateTime.now - 30.day
 	#	avatar: user_images.sample
 		)
 	end

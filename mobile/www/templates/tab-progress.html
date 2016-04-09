@@ -21,9 +21,11 @@
 		<div ng-repeat="objective in objectives" class="card">
 		  <div class="item item-text-wrap">
 		    <h4>{{objective.title}}<h4>
+		    <p>{{objective.description}}</p>
 		    <p>
-		    	<span>{{objective.description}}</span>
-		    	<span class="recurring-status">{{objective.recurring}}</span>
+		    	<span>{{ ((objective.times_completed / objective.total_times_due) | number:2) * 100 }}%</span>
+		    	<span>Streak {{ objective.streak_count }}</span>
+		    	<span class="recurring-status">{{ objective.recurring }}</span>
 		    </p>
 		  </div>
 		</div>

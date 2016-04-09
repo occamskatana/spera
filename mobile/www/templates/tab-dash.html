@@ -14,7 +14,7 @@
     <div ng-controller="occurrencesCtrl" class="list"> 
       <div ng-repeat="(key, value) in occurrences | groupBy: 'date'">
       <div class="item item-divider">
-        {{key}}
+        {{ key | date: MM/DD/YY }}
       </div>
       <a ng-repeat="occurrence in value" class="item item-icon-right" href="#" ng-click="markComplete(occurrence); delete($index)">
         <span>{{ occurrence.title }}<span>
