@@ -223,17 +223,25 @@ angular.module('starter.controllers', [])
   // })
 })
 
-.controller('friendChatCtrl', function($scope, friends, Chats, Messages, $http, $state, $stateParams, $interval, $timeout, $ionicScrollDelegate){
+.controller('friendChatCtrl', function($scope, friends, Chats, Messages, $http, $state, $stateParams, $interval, $timeout, $ionicScrollDelegate, $firebaseArray){
   friends.get({id: $stateParams.id}).$promise.then(function(response){
     $scope.friendship = response.friendable;
     console.log($scope.friendship);
-    
+
     if($scope.friendship.chat_messages) {
       $scope.messages = $scope.friendship.chat_messages;
     } else {
       $scope.messages = [];
     }
     console.log($scope.messages);
+
+    // Overwrite Rails data with Frebase data haha
+    var friendship_id = response.friendable.id
+    var ref = new Firebase('https://spera.firebaseio.com/userMessages');
+    var fire_messages = $firebaseArray(ref.child(friendship_id));
+    console.log(fire_messages);
+
+    $scope.messages = fire_messages;
   });
 
   $scope.userId = window.localStorage.userId
