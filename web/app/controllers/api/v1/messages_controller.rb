@@ -7,7 +7,12 @@ class Api::V1::MessagesController < Api::V1::BaseController
 		chat_id = params[:chat_id]
 		friendship = Chat.find(chat_id).friendable
 		firebase = Firebase::Client.new('https://spera.firebaseio.com/')
-		response = firebase.push("userMessages/#{friendship.id}", { content: params[:content], author_id: current_user.id })
+		if friendship 
+			response = firebase.push("userMessages/#{friendship.id}", { content: params[:content], user_id: current_user.id })
+		else
+			group = Chat.find(chat_id).group
+			response = firebase.push("groupMessages/#{group.id}", { content: params[:content], user_id: current_user.id })
+		end
 
 		render json: message
 	end
