@@ -1,22 +1,6 @@
-#sober-card p {
-	display: inline-block;
-}
 
-#sober-card h4 {
-	text-align: center;
-}
+/* Styles should be placed in scss/Spera/Spera.scss - NOT HERE  */
 
-
-
-#sober-time {
-	text-align: center;
-}
-
-/* Empty. Add your own CSS if you like */
-
-#sober-card {
-	padding-bottom: 20px;
-}
 
 scroll {
   padding: 10px 0 50px !important;

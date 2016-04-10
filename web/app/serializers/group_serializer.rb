@@ -1,6 +1,6 @@
 class GroupSerializer < ActiveModel::Serializer 
 
-	attributes :id, :name, :description, :users, :chat_messages
+	attributes :id, :name, :description, :users, :chat_id, :chat_messages
 
 	def users
 		object.visible_members

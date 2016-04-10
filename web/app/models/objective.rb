@@ -48,4 +48,22 @@ class Objective < ActiveRecord::Base
   	self.date.strftime(("%B %d, %Y"))
   end
 
+  def total_times_due
+  	self.occurrences.where("date < ?", Date.today).count
+  end
+
+  # Does NOT handle case where there are multiple occurrences for same goal in a given day
+  def streak_count
+  	all = self.occurrences.where("date < ?", Date.today).order(:date).reverse
+		completed = 0
+		if !all.empty?
+			index = 0
+			while all[index].completed && index < (all.length - 1)
+				completed += 1
+				index += 1
+			end
+  	end
+  	completed
+  end
+
 end

@@ -12,7 +12,7 @@
 				
 				<div ng-repeat="friend in friends" class="list card">
 				  <a ui-sref="tab.friend-chat({id: {{friend.id}}})" class="item item-avatar">
-				    <img src="mcfly.jpg">
+				    <img ng-src="{{ friend.avatar }}">
 				    <h2>{{friend.first_name}} {{friend.last_name}}</h2>
 			 <!-- <p>Subtext goes here</p> -->
 			 			<i class="icon ion-chatbox"></i>
