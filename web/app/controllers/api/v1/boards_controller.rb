@@ -3,7 +3,7 @@ class Api::V1::BoardsController < Api::V1::BaseController
 
 	def index
 		boards = Board.all
-		render json: boards, each_serializer: BoardSerializer, status: 201, root: false
+		render json: boards, each_serializer: BoardSerializer, status: 200, root: false
 	end
 
 	def show
@@ -14,14 +14,14 @@ class Api::V1::BoardsController < Api::V1::BaseController
 	def create
 		puts params
 		board = Board.create!(board_params)
-		render json: board, serializer: BoardSerializer, status: 301
+		render json: board, serializer: BoardSerializer, status: 201
 	end
 
 
 private
 	
 	def board_params
-		params.require(:board).permit(:title, :description, :user)
+		params.require(:board).permit(:title, :description, :user, :user_id)
 	end
 	
 end

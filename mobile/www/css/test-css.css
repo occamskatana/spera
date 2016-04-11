@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #sober-card p {
 	display: inline-block;
 	color: blue;
@@ -7,17 +8,11 @@
 	text-align: center;
 }
 
+=======
+>>>>>>> try-push-notifications
 
+/* Styles should be placed in scss/Spera/Spera.scss - NOT HERE  */
 
-#sober-time {
-	text-align: center;
-}
-
-/* Empty. Add your own CSS if you like */
-
-#sober-card {
-	padding-bottom: 20px;
-}
 
 
 

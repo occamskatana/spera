@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331223939) do
+ActiveRecord::Schema.define(version: 20160409012557) do
 
   create_table "aboutmes", force: :cascade do |t|
     t.integer  "user_id"
@@ -59,6 +59,22 @@ ActiveRecord::Schema.define(version: 20160331223939) do
   end
 
   add_index "checkins", ["user_id"], name: "index_checkins_on_user_id"
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -127,14 +143,17 @@ ActiveRecord::Schema.define(version: 20160331223939) do
   create_table "objectives", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "goal_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.date     "date"
     t.text     "description"
     t.boolean  "completed"
     t.integer  "length"
     t.string   "title"
     t.string   "recurring"
+    t.boolean  "has_reminder"
+    t.time     "reminder_time"
+    t.integer  "times_completed"
   end
 
   add_index "objectives", ["goal_id"], name: "index_objectives_on_goal_id"
@@ -195,6 +214,7 @@ ActiveRecord::Schema.define(version: 20160331223939) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.datetime "sober_date"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
