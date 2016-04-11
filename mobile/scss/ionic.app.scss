@@ -18,8 +18,12 @@ $dark:                            #444 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
+/*  don't believe this is working */
+$font-family-base: "museo-sans-rounded", sans-serif !default; 
 
 @import "Spera/_variables";
+
+@import "Spera/Spera";
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";

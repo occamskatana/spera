@@ -5,16 +5,15 @@
       <ion-item class="row">
         <div class="col col-20 vote-arrows">
           <a ng-click="upVote({{board.id}}); addPoint(board)" class="button icon-left ion-chevron-up">
-            
           </a>
           <div class="board-points">{{board.points}}</div>
           <a ng-click="downVote({{board.id}}); removePoint(board)" class="button icon-left ion-chevron-down">
-
           </a>
         </div>
       <div class="col item-icon-right">
           <h2>{{board.title}}</h2><br />
           <p>{{board.description}}</p>
+          <p>{{board.posts.length}} comments</p>
         <a href="#/tab/boards/{{board.id}}"> 
           <i class="icon ion-chevron-right icon-accessory"></i>
         </a>

@@ -17,7 +17,8 @@
 		first_name: Faker::Name.first_name,
 		last_name: Faker::Name.last_name,
 		email: Faker::Internet.email,
-		password: 'helloworld'
+		password: 'helloworld',
+		sober_date: DateTime.now - 30.day
 	#	avatar: user_images.sample
 		)
 	end
@@ -26,8 +27,8 @@
 	
 
 	goal_info = [ 
-						{title: 'Stay Sober', description: 'I want to stay sober and spiritually fit'},
-						{title: 'Get a Job', description: 'I want to land a great job I can be proud of'},
+						{title: 'Stay Sober', description: "I want to stay sober and spiritually fit. I had a great month at Michael's House and feel the best I have in a long time and now I'm going home stay on track."},
+						{title: 'Get a Job', description: 'I want to land a great job I can be proud of. I am beginning the process building my resume and looking for places back home.'},
 						{title: 'Get in Shape', description: 'Help me get fit!'},
 						{title: 'Buy a House', description: 'Help me save up to buy a place of my own'} 
 					]
@@ -70,6 +71,7 @@
  			length: Faker::Number.between(30, 90),
  			title: objective[:title],
  			recurring: 'daily',
+ 			reminder_time: Time.at(0.0 + rand * (Time.now.to_f - 0.0.to_f)).to_datetime,
  			times_completed: 0
   		)
   	end
@@ -88,10 +90,11 @@
 		)
 	end
 
-	friendables = 15.times do Friendable.create!(
-		to_id: users.sample.id, 
-		from_id: users.sample.id, 
-		accepted: true
+	friendables = users[0..5].each_with_index do |user, i|
+		Friendable.create!(
+			to_id: user.id + 1,
+			from_id: user.id,
+			accepted: true
 		)
 	end
 
@@ -110,9 +113,9 @@
 		user_id: users.sample.id
 		)
 
-	friend_requests = 20.times do Friendable.create!(
+	friend_requests = 1.times do Friendable.create!(
 		to_id: 1, 
-		from_id: users.sample.id, 
+		from_id: 8 ,
 		accepted: false
 		)
 	end
