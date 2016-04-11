@@ -411,8 +411,8 @@ angular.module('starter.controllers', [])
 
     days = Math.floor(difference / (60 * 60 * 1000 * 24) * 1);
     hours = Math.floor((difference % (60 * 60 * 1000 * 24)) / (60 * 60 * 1000) * 1);
-    mins=Math.floor(((difference%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
-    secs=Math.floor((((difference%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
+    mins = Math.floor(((difference%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
+    secs = Math.floor((((difference%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
 
     document.getElementById('days').firstChild.nodeValue = days;
     document.getElementById('hours').firstChild.nodeValue = hours;
@@ -502,7 +502,7 @@ angular.module('starter.controllers', [])
 .controller('aboutMeCtrl', function($scope, friend){
   friend.get({id: window.localStorage.userId}).$promise.then(function(response){
     $scope.soberDate = response.sober_date;
-    console.log($scope.soberDate)
+    
   })
 })
 
@@ -514,11 +514,10 @@ angular.module('starter.controllers', [])
   $scope.group = new Groups();
   $scope.newGroup = function(){
     $scope.group.$save().then(function(response){
-      console.log(response)
+      
     });
     $scope.groups.push({name: $scope.group.name, description: $scope.group.description});
-    console.log($scope.group);
-    console.log($scope.groups);
+    
   }
 
   groupInvites.get({id: window.localStorage.userId}).$promise.then(function(response){

@@ -1,5 +1,6 @@
 #sober-card p {
 	display: inline-block;
+	color: blue;
 }
 
 #sober-card h4 {
@@ -18,9 +19,7 @@
 	padding-bottom: 20px;
 }
 
-scroll {
-  padding: 10px 0 50px !important;
-}
+
 
 
 .messages {
@@ -160,6 +159,10 @@ textarea {
 
 #map {
   width: 100%;
+  height: 100%;
+}
+
+.scroll {
   height: 100%;
 }
 
