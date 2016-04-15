@@ -233,13 +233,6 @@ angular.module('starter.controllers', [])
     $scope.friendship = response.friendable;
     $scope.messages = [];
 
-    // Code when this was all Rails (not firebase)
-    //
-    // if($scope.friendship.chat_messages) {
-    //   $scope.messages = $scope.friendship.chat_messages;
-    // } else {
-    //   $scope.messages = [];
-    // }
 
     // Firebase style
     var friendship_id = $scope.friendship.id
@@ -262,16 +255,7 @@ angular.module('starter.controllers', [])
 
   $scope.sendMessage = function() {
 
-    // No longer need this cause Firebase will update auto
-
-    // var d = new Date();
-    // d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-
-    // $scope.messages.push({
-    //   user_id: $scope.userId,
-    //   content: $scope.data.message,
-    //   time: d
-    // });
+  
 
     if($scope.friendship.chat_id != 'nil') {
       Messages.create({chat_id: $scope.friendship.chat_id, content: $scope.data.message});
@@ -283,7 +267,7 @@ angular.module('starter.controllers', [])
         console.log($scope.data.message);
         Messages.create({chat_id: response.chat.id, content: content});
       })
-      //scrollHax();
+      //we need a function that binds view to bottom on new message
     }
 
     delete $scope.data.message;
@@ -308,32 +292,6 @@ angular.module('starter.controllers', [])
   $scope.closeKeyboard = function() {
     // cordova.plugins.Keyboard.close();
   };
-
-  // Why is this needed?
-  $scope.data = {};
-  $scope.myId = '12345';
-  $scope.messages = [];
-
-
-
-  // OLD RAILS SOLUTION WITH POLLING
-  // --------------------------------
-  // var refreshData = function() {
-  //   // Assign to scope within callback to avoid data flickering on screen
-  //   friends.get({id: $stateParams.id}).$promise.then(function(response){
-  //     $scope.messages = response.friendable.chat_messages;
-  //     console.log('tick');
-  //     console.log(response.friendable.chat_messages);
-  //   })
-  // };
-
-  // // Cancel interval on page changes
-  // $scope.$on('$locationChangeStart', function(){
-  //   console.log("sould cancel");
-  //   $interval.cancel(promise);
-  // });
-
-  // var promise = $interval(refreshData, 10000);
 
 })
 
@@ -485,7 +443,7 @@ angular.module('starter.controllers', [])
   //     return $scope.occurrences;
   // }
 
-<<<<<<< HEAD
+
   //hell yeah ghetto function
   function upTime(soberDate) {
     now = new Date();
@@ -506,7 +464,6 @@ angular.module('starter.controllers', [])
     upTime.to = setTimeout(function(){upTime(countTo); }, 1000);
   }
 
-=======
   // $scope.filterDates = function(occurrence) {
   //     var dateIsNew = indexedDates.indexOf(occurrence.date) == -1;
   //     if (dateIsNew) {
@@ -515,7 +472,7 @@ angular.module('starter.controllers', [])
   //     return dateIsNew;
   // }
 })
->>>>>>> try-push-notifications
+
 
 .controller('DashCtrl', function($scope, $http, $state) {
 

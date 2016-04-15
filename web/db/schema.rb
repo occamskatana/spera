@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(version: 20160409012557) do
     t.string   "title"
     t.string   "recurring"
     t.boolean  "has_reminder"
-    t.time     "reminder_time"
+    t.datetime "reminder_time"
     t.integer  "times_completed"
   end
 
@@ -214,7 +214,7 @@ ActiveRecord::Schema.define(version: 20160409012557) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.datetime "sober_date"
+    t.date     "sober_date"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
